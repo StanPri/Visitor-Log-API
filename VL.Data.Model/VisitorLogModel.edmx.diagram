@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7b867657b8884392a2ccec9fc459b1fd" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="VL.Data.Model.AccessArea" Width="1.5" PointX="3.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.Campu" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.EmpRef" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.Room" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.SecuredArea" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.sysdiagram" Width="1.5" PointX="8.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.TenantDepartment" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.BadgeType" Width="1.5" PointX="7.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorLog" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.EmployeeRole" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.LogCounter" Width="1.5" PointX="10.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.Role" Width="1.5" PointX="10.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.Visitor" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorCheckInOut" Width="1.5" PointX="5.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorDetail" Width="1.5" PointX="11.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorFile" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorLogAccessID" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorLogRoomID" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="VL.Data.Model.FK_AccessArea_Campus" ManuallyRouted="false" />
+        <AssociationConnector Association="VL.Data.Model.FK_VisitorLogAccessID_AccessArea" ManuallyRouted="false" />
+        <AssociationConnector Association="VL.Data.Model.FK_VisitorLogRoomID_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="VL.Data.Model.FK_Visitor_VisitorLog" ManuallyRouted="false" />
+        <AssociationConnector Association="VL.Data.Model.FK_VisitorFiles_VisitorLog" ManuallyRouted="false" />
+        <AssociationConnector Association="VL.Data.Model.FK_VisitorLogAccessID_VisitorLog" ManuallyRouted="false" />
+        <AssociationConnector Association="VL.Data.Model.FK_VisitorLogRoomID_VisitorLog" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C5A2DE0-C451-4033-BF59-03B71EC91342}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VL.Business.Services</RootNamespace>
+    <AssemblyName>VL.Business.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Implementation\VisitorLogService.cs" />
+    <Compile Include="Interface\IVisitorLogService.cs" />
+    <Compile Include="Mapper\AccessAreaMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BadgeTypeMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BusinessMapper.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\CampuMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\EmployeeRoleMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\EmpRefMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\LogCounterMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\RoleMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\RoomMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\SecuredAreaMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\sysdiagramMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\TenantDepartmentMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorCheckInOutMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorDetailMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorFileMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorLogAccessIDMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorLogMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorLogRoomIDMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITSD.BPAS.Resolver\ITSD.BPAS.Resolver.csproj">
+      <Project>{b66d9b21-b96d-43d1-a212-2c8f5b8a5150}</Project>
+      <Name>ITSD.BPAS.Resolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VL.Business.Entities\VL.Business.Entities.csproj">
+      <Project>{b47f9643-53fa-4f91-b5d2-03f4cb4d12e4}</Project>
+      <Name>VL.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VL.Data.Model\VL.Data.Model.csproj">
+      <Project>{cb0841f6-82df-4705-b2e5-c5c0b0126ec5}</Project>
+      <Name>VL.Data.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Mapper\BusinessMapper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BusinessMapper.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
