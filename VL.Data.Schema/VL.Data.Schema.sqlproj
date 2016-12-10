@@ -65,5 +65,42 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\VisitVisitor.sql" />
+    <Build Include="dbo\Tables\VisitorHistory.sql" />
+    <Build Include="dbo\Tables\VisitorBadge.sql" />
+    <Build Include="dbo\Tables\VisitorAsset.sql" />
+    <Build Include="dbo\Tables\Visitor.sql" />
+    <Build Include="dbo\Tables\VisitLocation.sql" />
+    <Build Include="dbo\Tables\VisitHistory.sql" />
+    <Build Include="dbo\Tables\Visit.sql" />
+    <Build Include="dbo\Tables\UserRole.sql" />
+    <Build Include="dbo\Tables\StationHistory.sql" />
+    <Build Include="dbo\Tables\Station.sql" />
+    <Build Include="dbo\Tables\RolePermission.sql" />
+    <Build Include="dbo\Tables\Role.sql" />
+    <Build Include="dbo\Tables\Permission.sql" />
+    <Build Include="dbo\Tables\LogVisit.sql" />
+    <Build Include="dbo\Tables\Log.sql" />
+    <Build Include="dbo\Tables\LocationHistory.sql" />
+    <Build Include="dbo\Tables\Location.sql" />
+    <Build Include="dbo\Tables\Company.sql" />
+    <Build Include="dbo\Tables\CampusStationHistory.sql" />
+    <Build Include="dbo\Tables\CampusStation.sql" />
+    <Build Include="dbo\Tables\CampusLocationHistory.sql" />
+    <Build Include="dbo\Tables\CampusLocation.sql" />
+    <Build Include="dbo\Tables\CampusHistory.sql" />
+    <Build Include="dbo\Tables\Campus.sql" />
+    <Build Include="dbo\Tables\BadgeTypeHistory.sql" />
+    <Build Include="dbo\Tables\BadgeType.sql" />
+    <Build Include="dbo\Tables\BadgeHistory.sql" />
+    <Build Include="dbo\Tables\Badge.sql" />
+    <Build Include="dbo\Tables\AssetTypeHistory.sql" />
+    <Build Include="dbo\Tables\AssetType.sql" />
+    <Build Include="dbo\Tables\AssetHistory.sql" />
+    <Build Include="dbo\Tables\Asset.sql" />
   </ItemGroup>
 </Project>
