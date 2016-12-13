@@ -12,23 +12,28 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BadgeType
+    public partial class Location
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BadgeType()
+        public Location()
         {
-            this.BadgeTypeBadges = new HashSet<BadgeTypeBadge>();
+            this.CampusLocations = new HashSet<CampusLocation>();
+            this.LocationHistories = new HashSet<LocationHistory>();
+            this.LogVisitors = new HashSet<LogVisitor>();
         }
     
         public int ID { get; set; }
-        public string Code { get; set; }
         public string Name { get; set; }
         public string CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedByUserID { get; set; }
-        public System.DateTime ModifedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadgeTypeBadge> BadgeTypeBadges { get; set; }
+        public virtual ICollection<CampusLocation> CampusLocations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LocationHistory> LocationHistories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LogVisitor> LogVisitors { get; set; }
     }
 }

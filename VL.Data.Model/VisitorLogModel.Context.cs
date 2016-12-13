@@ -18,6 +18,7 @@ namespace VL.Data.Model
         public VisitorLogContext()
             : base("name=VisitorLogContext")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,23 +26,40 @@ namespace VL.Data.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AccessArea> AccessAreas { get; set; }
-        public virtual DbSet<Campu> Campus { get; set; }
-        public virtual DbSet<EmpRef> EmpRefs { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<SecuredArea> SecuredAreas { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TenantDepartment> TenantDepartments { get; set; }
+        public virtual DbSet<Asset> Assets { get; set; }
+        public virtual DbSet<AssetHistory> AssetHistories { get; set; }
+        public virtual DbSet<AssetType> AssetTypes { get; set; }
+        public virtual DbSet<AssetTypeAsset> AssetTypeAssets { get; set; }
+        public virtual DbSet<AssetTypeAssetHistory> AssetTypeAssetHistories { get; set; }
+        public virtual DbSet<AssetTypeHistory> AssetTypeHistories { get; set; }
+        public virtual DbSet<Badge> Badges { get; set; }
+        public virtual DbSet<BadgeHistory> BadgeHistories { get; set; }
         public virtual DbSet<BadgeType> BadgeTypes { get; set; }
-        public virtual DbSet<VisitorLog> VisitorLogs { get; set; }
-        public virtual DbSet<EmployeeRole> EmployeeRoles { get; set; }
-        public virtual DbSet<LogCounter> LogCounters { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<BadgeTypeBadge> BadgeTypeBadges { get; set; }
+        public virtual DbSet<BadgeTypeBadgeHistory> BadgeTypeBadgeHistories { get; set; }
+        public virtual DbSet<BadgeTypeHistory> BadgeTypeHistories { get; set; }
+        public virtual DbSet<Campus> Campus1 { get; set; }
+        public virtual DbSet<CampusHistory> CampusHistories { get; set; }
+        public virtual DbSet<CampusLocation> CampusLocations { get; set; }
+        public virtual DbSet<CampusLocationHistory> CampusLocationHistories { get; set; }
+        public virtual DbSet<CampusStation> CampusStations { get; set; }
+        public virtual DbSet<CampusStationHistory> CampusStationHistories { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<CompanyHistory> CompanyHistories { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<LocationHistory> LocationHistories { get; set; }
+        public virtual DbSet<Log> Logs { get; set; }
+        public virtual DbSet<LogVisitor> LogVisitors { get; set; }
+        public virtual DbSet<Station> Stations { get; set; }
+        public virtual DbSet<StationHistory> StationHistories { get; set; }
+        public virtual DbSet<Visit> Visits { get; set; }
+        public virtual DbSet<VisitHistory> VisitHistories { get; set; }
         public virtual DbSet<Visitor> Visitors { get; set; }
-        public virtual DbSet<VisitorCheckInOut> VisitorCheckInOuts { get; set; }
-        public virtual DbSet<VisitorDetail> VisitorDetails { get; set; }
-        public virtual DbSet<VisitorFile> VisitorFiles { get; set; }
-        public virtual DbSet<VisitorLogAccessID> VisitorLogAccessIDs { get; set; }
-        public virtual DbSet<VisitorLogRoomID> VisitorLogRoomIDs { get; set; }
+        public virtual DbSet<VisitorBadge> VisitorBadges { get; set; }
+        public virtual DbSet<VisitorCompany> VisitorCompanies { get; set; }
+        public virtual DbSet<VisitorHistory> VisitorHistories { get; set; }
+        public virtual DbSet<VisitorVisit> VisitorVisits { get; set; }
+        public virtual DbSet<VisitVisitorHistory> VisitVisitorHistories { get; set; }
     }
 }

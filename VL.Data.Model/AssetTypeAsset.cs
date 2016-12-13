@@ -12,23 +12,16 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BadgeType
+    public partial class AssetTypeAsset
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BadgeType()
-        {
-            this.BadgeTypeBadges = new HashSet<BadgeTypeBadge>();
-        }
-    
-        public int ID { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public int AssetTypeID { get; set; }
+        public int AssetID { get; set; }
         public string CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedByUserID { get; set; }
-        public System.DateTime ModifedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadgeTypeBadge> BadgeTypeBadges { get; set; }
+        public virtual Asset Asset { get; set; }
+        public virtual AssetType AssetType { get; set; }
     }
 }

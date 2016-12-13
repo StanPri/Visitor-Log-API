@@ -12,19 +12,26 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Campu
+    public partial class Badge
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Campu()
+        public Badge()
         {
-            this.AccessAreas = new HashSet<AccessArea>();
+            this.BadgeTypeBadges = new HashSet<BadgeTypeBadge>();
+            this.VisitorBadges = new HashSet<VisitorBadge>();
         }
     
-        public byte CampusID { get; set; }
-        public string Campus { get; set; }
-        public bool Active { get; set; }
+        public int ID { get; set; }
+        public string Number { get; set; }
+        public bool IsActive { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccessArea> AccessAreas { get; set; }
+        public virtual ICollection<BadgeTypeBadge> BadgeTypeBadges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VisitorBadge> VisitorBadges { get; set; }
     }
 }

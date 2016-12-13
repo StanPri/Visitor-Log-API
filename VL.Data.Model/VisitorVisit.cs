@@ -12,13 +12,19 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class VisitorLogRoomID
+    public partial class VisitorVisit
     {
+        public int VisitorID { get; set; }
         public int VisitID { get; set; }
-        public short RoomID { get; set; }
-        public string OtherRoom { get; set; }
+        public int AssetID { get; set; }
+        public string Comment { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
-        public virtual Room Room { get; set; }
-        public virtual VisitorLog VisitorLog { get; set; }
+        public virtual Asset Asset { get; set; }
+        public virtual Visit Visit { get; set; }
+        public virtual Visitor Visitor { get; set; }
     }
 }

@@ -12,9 +12,14 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SecuredArea
+    public partial class BadgeTypeHistory
     {
-        public int Id { get; set; }
-        public string SecuredArea1 { get; set; }
+        public int ID { get; set; }
+        public int BadgeTypeID { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public System.DateTime AuditDate { get; set; }
     }
 }

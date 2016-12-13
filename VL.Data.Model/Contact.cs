@@ -12,23 +12,24 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BadgeType
+    public partial class Contact
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BadgeType()
+        public Contact()
         {
-            this.BadgeTypeBadges = new HashSet<BadgeTypeBadge>();
+            this.LogVisitors = new HashSet<LogVisitor>();
         }
     
         public int ID { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public string ContactUserID { get; set; }
+        public string Phone { get; set; }
+        public string Mobile { get; set; }
         public string CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedByUserID { get; set; }
-        public System.DateTime ModifedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadgeTypeBadge> BadgeTypeBadges { get; set; }
+        public virtual ICollection<LogVisitor> LogVisitors { get; set; }
     }
 }

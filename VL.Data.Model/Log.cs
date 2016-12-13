@@ -12,21 +12,25 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class AccessArea
+    public partial class Log
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AccessArea()
+        public Log()
         {
-            this.VisitorLogAccessIDs = new HashSet<VisitorLogAccessID>();
+            this.LogVisitors = new HashSet<LogVisitor>();
         }
     
-        public short AccessID { get; set; }
-        public byte CampusID { get; set; }
-        public string Access { get; set; }
-        public bool Active { get; set; }
+        public int ID { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public string Reason { get; set; }
+        public string SpecialInstructions { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
-        public virtual Campu Campu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorLogAccessID> VisitorLogAccessIDs { get; set; }
+        public virtual ICollection<LogVisitor> LogVisitors { get; set; }
     }
 }

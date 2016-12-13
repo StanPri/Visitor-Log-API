@@ -4,762 +4,1630 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="VL.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AccessArea">
+      <Schema Namespace="VL.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asset">
           <Key>
-            <PropertyRef Name="AccessID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="AccessID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CampusID" Type="tinyint" Nullable="false" />
-          <Property Name="Access" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetID" Type="int" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetTypeAsset">
+          <Key>
+            <PropertyRef Name="AssetTypeID" />
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetTypeAssetHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetTypeID" Type="nchar" MaxLength="10" />
+          <Property Name="AssetID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ModifiedDate" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetTypeHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetTypeID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BadgeHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BadgeID" Type="int" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BadgeType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BadgeTypeBadge">
+          <Key>
+            <PropertyRef Name="BadgeTypeID" />
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="BadgeTypeID" Type="int" Nullable="false" />
+          <Property Name="BadgeID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BadgeTypeBadgeHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BadgeTypeID" Type="int" Nullable="false" />
+          <Property Name="BadgeID" Type="int" Nullable="false" />
+          <Property Name="ModifedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BadgeTypeHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BadgeTypeID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Campus">
           <Key>
-            <PropertyRef Name="CampusID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="CampusID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Campus" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="128" />
+          <Property Name="Address2" Type="varchar" MaxLength="128" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.EmployeeRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="EmployeeRole">
-          <Key>
-            <PropertyRef Name="EmployeeId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="EmployeeId" Type="int" Nullable="false" />
-          <Property Name="RoleId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="EmpRef">
-          <Key>
-            <PropertyRef Name="EmpID" />
-          </Key>
-          <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FullName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserID" Type="varchar" MaxLength="20" />
-          <Property Name="Division" Type="varchar" MaxLength="200" />
-          <Property Name="Phone" Type="varchar" MaxLength="20" />
-          <Property Name="Pager" Type="varchar" MaxLength="20" />
-          <Property Name="CellPhone" Type="varchar" MaxLength="20" />
-          <Property Name="EMail" Type="varchar" MaxLength="100" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="Guard" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.LogCounter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="LogCounter">
-          <Key>
-            <PropertyRef Name="FY" />
-            <PropertyRef Name="LogNoCounter" />
-            <PropertyRef Name="LogCounterID" />
-          </Key>
-          <Property Name="FY" Type="char" MaxLength="7" Nullable="false" />
-          <Property Name="LogNoCounter" Type="int" Nullable="false" />
-          <Property Name="LogCounterID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleName" />
-          </Key>
-          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Room">
-          <Key>
-            <PropertyRef Name="RoomID" />
-          </Key>
-          <Property Name="RoomID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CampusID" Type="tinyint" Nullable="false" />
-          <Property Name="Room" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SecuredArea">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SecuredArea" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="TenantDepartment">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenantDepartment" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Type">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.Visitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Visitor">
-          <Key>
-            <PropertyRef Name="VisitID" />
-          </Key>
-          <Property Name="VisitID" Type="int" Nullable="false" />
-          <Property Name="VisitorNo" Type="tinyint" />
-          <Property Name="Visitor" Type="varchar" MaxLength="100" />
-          <Property Name="SecuredAreaId" Type="int" />
-          <Property Name="TenantDepartmentId" Type="int" />
-          <Property Name="TypeId" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.VisitorCheckInOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VisitorCheckInOut">
-          <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="Visitor" />
-            <PropertyRef Name="VisitDate" />
-            <PropertyRef Name="CheckInTime" />
-          </Key>
-          <Property Name="VisitID" Type="int" Nullable="false" />
-          <Property Name="Visitor" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="VisitDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="CheckInTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="CheckOutTime" Type="smalldatetime" />
-          <Property Name="EquipmentInfo" Type="varchar(max)" />
-          <Property Name="BadgeNo" Type="varchar" MaxLength="30" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.VisitorDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VisitorDetail">
-          <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="VisitorNo" />
-            <PropertyRef Name="VisitDate" />
-          </Key>
-          <Property Name="VisitID" Type="int" Nullable="false" />
-          <Property Name="VisitorNo" Type="tinyint" Nullable="false" />
-          <Property Name="VisitDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="CheckInTime" Type="smalldatetime" />
-          <Property Name="CheckOutTime" Type="smalldatetime" />
-          <Property Name="EquipmentInfo" Type="varchar(max)" />
-          <Property Name="BadgeNo" Type="varchar" MaxLength="30" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.VisitorFiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VisitorFiles">
+        <EntityType Name="CampusHistory">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampusID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="128" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampusLocation">
+          <Key>
+            <PropertyRef Name="CampusID" />
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="CampusID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampusLocationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CampusID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampusStation">
+          <Key>
+            <PropertyRef Name="CampusID" />
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="CampusID" Type="int" Nullable="false" />
+          <Property Name="StationID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampusStationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampusID" Type="int" Nullable="false" />
+          <Property Name="StationID" Type="int" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Reason" Type="varchar" MaxLength="256" />
+          <Property Name="SpecialInstructions" Type="varchar" MaxLength="512" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogVisitor">
+          <Key>
+            <PropertyRef Name="LogID" />
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="ContactID" />
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LogID" Type="int" Nullable="false" />
+          <Property Name="VisitorID" Type="int" Nullable="false" />
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduledCheckInTime" Type="datetime" />
+          <Property Name="ScheduledCheckOutTime" Type="datetime" />
+          <Property Name="ActualCheckInTime" Type="datetime" Nullable="false" />
+          <Property Name="ActualCheckOutTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VisitHistory">
+          <Key>
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VisitID" Type="int" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ScheduledCheckInTime" Type="datetime" Nullable="false" />
+          <Property Name="ScheduledCheckOutTime" Type="datetime" Nullable="false" />
+          <Property Name="ActualCheckInTime" Type="datetime" />
+          <Property Name="ActualCheckOutTime" Type="datetime" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="VisitorLog">
+        <EntityType Name="Visitor">
           <Key>
-            <PropertyRef Name="VisitID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="VisitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VisitorLogNo" Type="char" MaxLength="10" />
-          <Property Name="FY" Type="char" MaxLength="7" Nullable="false" />
-          <Property Name="StatusId" Type="tinyint" />
-          <Property Name="Amendment" Type="tinyint" />
-          <Property Name="AmendDateTime" Type="smalldatetime" />
-          <Property Name="StartDateTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="EndDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="OnGoing" Type="bit" />
-          <Property Name="Company" Type="varchar" MaxLength="200" />
-          <Property Name="CampusID" Type="tinyint" Nullable="false" />
-          <Property Name="OtherRoomInfo" Type="varchar" MaxLength="100" />
-          <Property Name="OtherAccessAreaInfo" Type="varchar" MaxLength="100" />
-          <Property Name="PrimaryContactId" Type="int" />
-          <Property Name="SecondaryContactId" Type="int" />
-          <Property Name="Reason" Type="varchar(max)" />
-          <Property Name="SpecialInstruction" Type="varchar(max)" />
-          <Property Name="SubmittedById" Type="int" />
-          <Property Name="DistributedById" Type="int" />
-          <Property Name="CreatedById" Type="int" />
-          <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="ModifiedById" Type="int" />
-          <Property Name="ModifiedDate" Type="datetime" />
-          <Property Name="Testing" Type="nchar" MaxLength="10" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="int" Nullable="false" />
+          <Property Name="PersonIDCardNumber" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.VisitorLogAccessID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VisitorLogAccessID">
+        <EntityType Name="VisitorBadge">
           <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="AccessID" />
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="BadgeID" />
           </Key>
+          <Property Name="VisitorID" Type="int" Nullable="false" />
+          <Property Name="BadgeID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitorCompany">
+          <Key>
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="VisitorID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitorHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisitorID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisitorVisit">
+          <Key>
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="VisitID" />
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="VisitorID" Type="int" Nullable="false" />
           <Property Name="VisitID" Type="int" Nullable="false" />
-          <Property Name="AccessID" Type="smallint" Nullable="false" />
-          <Property Name="OtherAccess" Type="varchar" MaxLength="100" />
+          <Property Name="AssetID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'VISITORLOG.dbo.VisitorLogRoomID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VisitorLogRoomID">
+        <EntityType Name="VisitVisitorHistory">
           <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VisitID" Type="int" Nullable="false" />
-          <Property Name="RoomID" Type="smallint" Nullable="false" />
-          <Property Name="OtherRoom" Type="varchar" MaxLength="100" />
+          <Property Name="VisitorID" Type="int" Nullable="false" />
+          <Property Name="ContactUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="FK_AccessArea_Campus">
+        <Association Name="FK_AssetTypeAsset_Asset">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+          <End Role="AssetTypeAsset" Type="Self.AssetTypeAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AssetTypeAsset">
+              <PropertyRef Name="AssetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssetTypeAsset_AssetType">
+          <End Role="AssetType" Type="Self.AssetType" Multiplicity="1" />
+          <End Role="AssetTypeAsset" Type="Self.AssetTypeAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssetType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AssetTypeAsset">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgeTypeBadge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="BadgeTypeBadge" Type="Self.BadgeTypeBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BadgeTypeBadge">
+              <PropertyRef Name="BadgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgeTypeBadge_BadgeType">
+          <End Role="BadgeType" Type="Self.BadgeType" Multiplicity="1" />
+          <End Role="BadgeTypeBadge" Type="Self.BadgeTypeBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BadgeType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BadgeTypeBadge">
+              <PropertyRef Name="BadgeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampusStation_Campus">
           <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
-          <End Role="AccessArea" Type="Self.AccessArea" Multiplicity="*" />
+          <End Role="CampusStation" Type="Self.CampusStation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Campus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CampusStation">
               <PropertyRef Name="CampusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampusStation_Station">
+          <End Role="Station" Type="Self.Station" Multiplicity="1" />
+          <End Role="CampusStation" Type="Self.CampusStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="AccessArea">
+            <Dependent Role="CampusStation">
+              <PropertyRef Name="StationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationHistory_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="LocationHistory" Type="Self.LocationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationHistory">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogVisit_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogVisitor_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogVisitor_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteRoom_Room">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="CampusLocation" Type="Self.CampusLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CampusLocation">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteRoom_Site">
+          <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
+          <End Role="CampusLocation" Type="Self.CampusLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CampusLocation">
               <PropertyRef Name="CampusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visitor_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="0..1" />
+        <Association Name="FK_VisitorAsset_Asset">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Asset">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Visitor">
+            <Dependent Role="VisitorVisit">
+              <PropertyRef Name="AssetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorAsset_Visit">
+          <End Role="Visit" Type="Self.Visit" Multiplicity="1" />
+          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorVisit">
               <PropertyRef Name="VisitID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorFiles_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="VisitorFiles" Type="Self.VisitorFiles" Multiplicity="*" />
+        <Association Name="FK_VisitorAsset_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorFiles">
-              <PropertyRef Name="VisitID" />
+            <Dependent Role="VisitorVisit">
+              <PropertyRef Name="VisitorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogAccessID_AccessArea">
-          <End Role="AccessArea" Type="Self.AccessArea" Multiplicity="1" />
-          <End Role="VisitorLogAccessID" Type="Self.VisitorLogAccessID" Multiplicity="*" />
+        <Association Name="FK_VisitorBadge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="VisitorBadge" Type="Self.VisitorBadge" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AccessArea">
-              <PropertyRef Name="AccessID" />
+            <Principal Role="Badge">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogAccessID">
-              <PropertyRef Name="AccessID" />
+            <Dependent Role="VisitorBadge">
+              <PropertyRef Name="BadgeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogAccessID_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="VisitorLogAccessID" Type="Self.VisitorLogAccessID" Multiplicity="*" />
+        <Association Name="FK_VisitorBadge_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="VisitorBadge" Type="Self.VisitorBadge" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogAccessID">
-              <PropertyRef Name="VisitID" />
+            <Dependent Role="VisitorBadge">
+              <PropertyRef Name="VisitorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogRoomID_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="VisitorLogRoomID" Type="Self.VisitorLogRoomID" Multiplicity="*" />
+        <Association Name="FK_VisitorCompany_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="VisitorCompany" Type="Self.VisitorCompany" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogRoomID">
-              <PropertyRef Name="RoomID" />
+            <Dependent Role="VisitorCompany">
+              <PropertyRef Name="CompanyID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogRoomID_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="VisitorLogRoomID" Type="Self.VisitorLogRoomID" Multiplicity="*" />
+        <Association Name="FK_VisitorCompany_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="VisitorCompany" Type="Self.VisitorCompany" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogRoomID">
-              <PropertyRef Name="VisitID" />
+            <Dependent Role="VisitorCompany">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorLog_Log">
+          <End Role="Log" Type="Self.Log" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Log">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="LogID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="VLDataModelStoreContainer">
-          <EntitySet Name="AccessArea" EntityType="Self.AccessArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset" EntityType="Self.Asset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetHistory" EntityType="Self.AssetHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetType" EntityType="Self.AssetType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetTypeAsset" EntityType="Self.AssetTypeAsset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetTypeAssetHistory" EntityType="Self.AssetTypeAssetHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssetTypeHistory" EntityType="Self.AssetTypeHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadgeHistory" EntityType="Self.BadgeHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadgeType" EntityType="Self.BadgeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadgeTypeBadge" EntityType="Self.BadgeTypeBadge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadgeTypeBadgeHistory" EntityType="Self.BadgeTypeBadgeHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadgeTypeHistory" EntityType="Self.BadgeTypeHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Campus" EntityType="Self.Campus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EmpRef" EntityType="Self.EmpRef" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SecuredArea" EntityType="Self.SecuredArea" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TenantDepartment" EntityType="Self.TenantDepartment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VisitorLog" EntityType="Self.VisitorLog" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EmployeeRole" EntityType="Self.EmployeeRole" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [EmployeeRole].[EmployeeId] AS [EmployeeId], 
-    [EmployeeRole].[RoleId] AS [RoleId]
-    FROM [dbo].[EmployeeRole] AS [EmployeeRole]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="LogCounter" EntityType="Self.LogCounter" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [LogCounter].[FY] AS [FY], 
-    [LogCounter].[LogNoCounter] AS [LogNoCounter], 
-    [LogCounter].[LogCounterID] AS [LogCounterID]
-    FROM [dbo].[LogCounter] AS [LogCounter]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Roles].[RoleId] AS [RoleId], 
-    [Roles].[RoleName] AS [RoleName]
-    FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Visitor" EntityType="Self.Visitor" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Visitor].[VisitID] AS [VisitID], 
-    [Visitor].[VisitorNo] AS [VisitorNo], 
-    [Visitor].[Visitor] AS [Visitor], 
-    [Visitor].[SecuredAreaId] AS [SecuredAreaId], 
-    [Visitor].[TenantDepartmentId] AS [TenantDepartmentId], 
-    [Visitor].[TypeId] AS [TypeId]
-    FROM [dbo].[Visitor] AS [Visitor]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VisitorCheckInOut" EntityType="Self.VisitorCheckInOut" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VisitorCheckInOut].[VisitID] AS [VisitID], 
-    [VisitorCheckInOut].[Visitor] AS [Visitor], 
-    [VisitorCheckInOut].[VisitDate] AS [VisitDate], 
-    [VisitorCheckInOut].[CheckInTime] AS [CheckInTime], 
-    [VisitorCheckInOut].[CheckOutTime] AS [CheckOutTime], 
-    [VisitorCheckInOut].[EquipmentInfo] AS [EquipmentInfo], 
-    [VisitorCheckInOut].[BadgeNo] AS [BadgeNo]
-    FROM [dbo].[VisitorCheckInOut] AS [VisitorCheckInOut]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VisitorDetail" EntityType="Self.VisitorDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VisitorDetail].[VisitID] AS [VisitID], 
-    [VisitorDetail].[VisitorNo] AS [VisitorNo], 
-    [VisitorDetail].[VisitDate] AS [VisitDate], 
-    [VisitorDetail].[CheckInTime] AS [CheckInTime], 
-    [VisitorDetail].[CheckOutTime] AS [CheckOutTime], 
-    [VisitorDetail].[EquipmentInfo] AS [EquipmentInfo], 
-    [VisitorDetail].[BadgeNo] AS [BadgeNo]
-    FROM [dbo].[VisitorDetail] AS [VisitorDetail]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VisitorFiles" EntityType="Self.VisitorFiles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VisitorFiles].[ID] AS [ID], 
-    [VisitorFiles].[VisitID] AS [VisitID], 
-    [VisitorFiles].[FileName] AS [FileName]
-    FROM [dbo].[VisitorFiles] AS [VisitorFiles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VisitorLogAccessID" EntityType="Self.VisitorLogAccessID" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VisitorLogAccessID].[VisitID] AS [VisitID], 
-    [VisitorLogAccessID].[AccessID] AS [AccessID], 
-    [VisitorLogAccessID].[OtherAccess] AS [OtherAccess]
-    FROM [dbo].[VisitorLogAccessID] AS [VisitorLogAccessID]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VisitorLogRoomID" EntityType="Self.VisitorLogRoomID" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VisitorLogRoomID].[VisitID] AS [VisitID], 
-    [VisitorLogRoomID].[RoomID] AS [RoomID], 
-    [VisitorLogRoomID].[OtherRoom] AS [OtherRoom]
-    FROM [dbo].[VisitorLogRoomID] AS [VisitorLogRoomID]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_AccessArea_Campus" Association="Self.FK_AccessArea_Campus">
+          <EntitySet Name="CampusHistory" EntityType="Self.CampusHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusLocation" EntityType="Self.CampusLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusLocationHistory" EntityType="Self.CampusLocationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusStation" EntityType="Self.CampusStation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusStationHistory" EntityType="Self.CampusStationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyHistory" EntityType="Self.CompanyHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationHistory" EntityType="Self.LocationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogVisitor" EntityType="Self.LogVisitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Station" EntityType="Self.Station" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StationHistory" EntityType="Self.StationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visit" EntityType="Self.Visit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitHistory" EntityType="Self.VisitHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitorBadge" EntityType="Self.VisitorBadge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitorCompany" EntityType="Self.VisitorCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitorHistory" EntityType="Self.VisitorHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitorVisit" EntityType="Self.VisitorVisit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitVisitorHistory" EntityType="Self.VisitVisitorHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AssetTypeAsset_Asset" Association="Self.FK_AssetTypeAsset_Asset">
+            <End Role="Asset" EntitySet="Asset" />
+            <End Role="AssetTypeAsset" EntitySet="AssetTypeAsset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssetTypeAsset_AssetType" Association="Self.FK_AssetTypeAsset_AssetType">
+            <End Role="AssetType" EntitySet="AssetType" />
+            <End Role="AssetTypeAsset" EntitySet="AssetTypeAsset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgeTypeBadge_Badge" Association="Self.FK_BadgeTypeBadge_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="BadgeTypeBadge" EntitySet="BadgeTypeBadge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgeTypeBadge_BadgeType" Association="Self.FK_BadgeTypeBadge_BadgeType">
+            <End Role="BadgeType" EntitySet="BadgeType" />
+            <End Role="BadgeTypeBadge" EntitySet="BadgeTypeBadge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampusStation_Campus" Association="Self.FK_CampusStation_Campus">
             <End Role="Campus" EntitySet="Campus" />
-            <End Role="AccessArea" EntitySet="AccessArea" />
+            <End Role="CampusStation" EntitySet="CampusStation" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visitor_VisitorLog" Association="Self.FK_Visitor_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLog" />
+          <AssociationSet Name="FK_CampusStation_Station" Association="Self.FK_CampusStation_Station">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="CampusStation" EntitySet="CampusStation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationHistory_Location" Association="Self.FK_LocationHistory_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="LocationHistory" EntitySet="LocationHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogVisit_Contact" Association="Self.FK_LogVisit_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="LogVisitor" EntitySet="LogVisitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogVisitor_Location" Association="Self.FK_LogVisitor_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="LogVisitor" EntitySet="LogVisitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogVisitor_Visitor" Association="Self.FK_LogVisitor_Visitor">
             <End Role="Visitor" EntitySet="Visitor" />
+            <End Role="LogVisitor" EntitySet="LogVisitor" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorFiles_VisitorLog" Association="Self.FK_VisitorFiles_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLog" />
-            <End Role="VisitorFiles" EntitySet="VisitorFiles" />
+          <AssociationSet Name="FK_SiteRoom_Room" Association="Self.FK_SiteRoom_Room">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="CampusLocation" EntitySet="CampusLocation" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogAccessID_AccessArea" Association="Self.FK_VisitorLogAccessID_AccessArea">
-            <End Role="AccessArea" EntitySet="AccessArea" />
-            <End Role="VisitorLogAccessID" EntitySet="VisitorLogAccessID" />
+          <AssociationSet Name="FK_SiteRoom_Site" Association="Self.FK_SiteRoom_Site">
+            <End Role="Campus" EntitySet="Campus" />
+            <End Role="CampusLocation" EntitySet="CampusLocation" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogAccessID_VisitorLog" Association="Self.FK_VisitorLogAccessID_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLog" />
-            <End Role="VisitorLogAccessID" EntitySet="VisitorLogAccessID" />
+          <AssociationSet Name="FK_VisitorAsset_Asset" Association="Self.FK_VisitorAsset_Asset">
+            <End Role="Asset" EntitySet="Asset" />
+            <End Role="VisitorVisit" EntitySet="VisitorVisit" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogRoomID_Room" Association="Self.FK_VisitorLogRoomID_Room">
-            <End Role="Room" EntitySet="Room" />
-            <End Role="VisitorLogRoomID" EntitySet="VisitorLogRoomID" />
+          <AssociationSet Name="FK_VisitorAsset_Visit" Association="Self.FK_VisitorAsset_Visit">
+            <End Role="Visit" EntitySet="Visit" />
+            <End Role="VisitorVisit" EntitySet="VisitorVisit" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogRoomID_VisitorLog" Association="Self.FK_VisitorLogRoomID_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLog" />
-            <End Role="VisitorLogRoomID" EntitySet="VisitorLogRoomID" />
+          <AssociationSet Name="FK_VisitorAsset_Visitor" Association="Self.FK_VisitorAsset_Visitor">
+            <End Role="Visitor" EntitySet="Visitor" />
+            <End Role="VisitorVisit" EntitySet="VisitorVisit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorBadge_Badge" Association="Self.FK_VisitorBadge_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="VisitorBadge" EntitySet="VisitorBadge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorBadge_Visitor" Association="Self.FK_VisitorBadge_Visitor">
+            <End Role="Visitor" EntitySet="Visitor" />
+            <End Role="VisitorBadge" EntitySet="VisitorBadge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorCompany_Company" Association="Self.FK_VisitorCompany_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="VisitorCompany" EntitySet="VisitorCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorCompany_Visitor" Association="Self.FK_VisitorCompany_Visitor">
+            <End Role="Visitor" EntitySet="Visitor" />
+            <End Role="VisitorCompany" EntitySet="VisitorCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorLog_Log" Association="Self.FK_VisitorLog_Log">
+            <End Role="Log" EntitySet="Log" />
+            <End Role="LogVisitor" EntitySet="LogVisitor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VL.Data.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AccessArea">
+        <EntityType Name="Asset">
           <Key>
-            <PropertyRef Name="AccessID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="AccessID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CampusID" Type="Byte" Nullable="false" />
-          <Property Name="Access" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Campu" Relationship="Self.FK_AccessArea_Campus" FromRole="AccessArea" ToRole="Campus" />
-          <NavigationProperty Name="VisitorLogAccessIDs" Relationship="Self.FK_VisitorLogAccessID_AccessArea" FromRole="AccessArea" ToRole="VisitorLogAccessID" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AssetTypeAssets" Relationship="Self.FK_AssetTypeAsset_Asset" FromRole="Asset" ToRole="AssetTypeAsset" />
+          <NavigationProperty Name="VisitorVisits" Relationship="Self.FK_VisitorAsset_Asset" FromRole="Asset" ToRole="VisitorVisit" />
         </EntityType>
-        <EntityType Name="Campu">
+        <EntityType Name="AssetHistory">
           <Key>
-            <PropertyRef Name="CampusID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="CampusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Campus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AccessAreas" Relationship="Self.FK_AccessArea_Campus" FromRole="Campus" ToRole="AccessArea" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="EmpRef">
+        <EntityType Name="AssetType">
           <Key>
-            <PropertyRef Name="EmpID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Division" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Pager" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CellPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="Guard" Type="Boolean" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AssetTypeAssets" Relationship="Self.FK_AssetTypeAsset_AssetType" FromRole="AssetType" ToRole="AssetTypeAsset" />
         </EntityType>
-        <EntityType Name="Room">
+        <EntityType Name="AssetTypeAsset">
           <Key>
-            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="AssetTypeID" />
+            <PropertyRef Name="AssetID" />
           </Key>
-          <Property Name="RoomID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CampusID" Type="Byte" Nullable="false" />
-          <Property Name="Room1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="VisitorLogRoomIDs" Relationship="Self.FK_VisitorLogRoomID_Room" FromRole="Room" ToRole="VisitorLogRoomID" />
+          <Property Name="AssetTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Asset" Relationship="Self.FK_AssetTypeAsset_Asset" FromRole="AssetTypeAsset" ToRole="Asset" />
+          <NavigationProperty Name="AssetType" Relationship="Self.FK_AssetTypeAsset_AssetType" FromRole="AssetTypeAsset" ToRole="AssetType" />
         </EntityType>
-        <EntityType Name="SecuredArea">
+        <EntityType Name="AssetTypeAssetHistory">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SecuredArea1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetTypeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AssetID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="AssetTypeHistory">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="TenantDepartment">
+        <EntityType Name="Badge">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenantDepartment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BadgeTypeBadges" Relationship="Self.FK_BadgeTypeBadge_Badge" FromRole="Badge" ToRole="BadgeTypeBadge" />
+          <NavigationProperty Name="VisitorBadges" Relationship="Self.FK_VisitorBadge_Badge" FromRole="Badge" ToRole="VisitorBadge" />
+        </EntityType>
+        <EntityType Name="BadgeHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="BadgeType">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BadgeTypeBadges" Relationship="Self.FK_BadgeTypeBadge_BadgeType" FromRole="BadgeType" ToRole="BadgeTypeBadge" />
         </EntityType>
-        <EntityType Name="VisitorLog">
+        <EntityType Name="BadgeTypeBadge">
           <Key>
-            <PropertyRef Name="VisitID" />
+            <PropertyRef Name="BadgeTypeID" />
+            <PropertyRef Name="BadgeID" />
           </Key>
-          <Property Name="VisitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VisitorLogNo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="FY" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="StatusId" Type="Byte" />
-          <Property Name="Amendment" Type="Byte" />
-          <Property Name="AmendDateTime" Type="DateTime" Precision="0" />
-          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="OnGoing" Type="Boolean" />
-          <Property Name="Company" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CampusID" Type="Byte" Nullable="false" />
-          <Property Name="OtherRoomInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OtherAccessAreaInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PrimaryContactId" Type="Int32" />
-          <Property Name="SecondaryContactId" Type="Int32" />
-          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SpecialInstruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SubmittedById" Type="Int32" />
-          <Property Name="DistributedById" Type="Int32" />
-          <Property Name="CreatedById" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedById" Type="Int32" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_VisitorLog" FromRole="VisitorLog" ToRole="Visitor" />
-          <NavigationProperty Name="VisitorFiles" Relationship="Self.FK_VisitorFiles_VisitorLog" FromRole="VisitorLog" ToRole="VisitorFiles" />
-          <NavigationProperty Name="VisitorLogAccessIDs" Relationship="Self.FK_VisitorLogAccessID_VisitorLog" FromRole="VisitorLog" ToRole="VisitorLogAccessID" />
-          <NavigationProperty Name="VisitorLogRoomIDs" Relationship="Self.FK_VisitorLogRoomID_VisitorLog" FromRole="VisitorLog" ToRole="VisitorLogRoomID" />
-          <Property Name="Testing" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="BadgeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Badge" Relationship="Self.FK_BadgeTypeBadge_Badge" FromRole="BadgeTypeBadge" ToRole="Badge" />
+          <NavigationProperty Name="BadgeType" Relationship="Self.FK_BadgeTypeBadge_BadgeType" FromRole="BadgeTypeBadge" ToRole="BadgeType" />
         </EntityType>
-        <EntityType Name="EmployeeRole">
-          <Key>
-            <PropertyRef Name="EmployeeId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LogCounter">
-          <Key>
-            <PropertyRef Name="FY" />
-            <PropertyRef Name="LogNoCounter" />
-            <PropertyRef Name="LogCounterID" />
-          </Key>
-          <Property Name="FY" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="LogNoCounter" Type="Int32" Nullable="false" />
-          <Property Name="LogCounterID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleName" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Visitor">
-          <Key>
-            <PropertyRef Name="VisitID" />
-          </Key>
-          <Property Name="VisitID" Type="Int32" Nullable="false" />
-          <Property Name="VisitorNo" Type="Byte" />
-          <Property Name="Visitor1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="SecuredAreaId" Type="Int32" />
-          <Property Name="TenantDepartmentId" Type="Int32" />
-          <Property Name="TypeId" Type="Int32" />
-          <NavigationProperty Name="VisitorLog" Relationship="Self.FK_Visitor_VisitorLog" FromRole="Visitor" ToRole="VisitorLog" />
-        </EntityType>
-        <EntityType Name="VisitorCheckInOut">
-          <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="Visitor" />
-            <PropertyRef Name="VisitDate" />
-            <PropertyRef Name="CheckInTime" />
-          </Key>
-          <Property Name="VisitID" Type="Int32" Nullable="false" />
-          <Property Name="Visitor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="VisitDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CheckInTime" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CheckOutTime" Type="DateTime" Precision="0" />
-          <Property Name="EquipmentInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BadgeNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="VisitorDetail">
-          <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="VisitorNo" />
-            <PropertyRef Name="VisitDate" />
-          </Key>
-          <Property Name="VisitID" Type="Int32" Nullable="false" />
-          <Property Name="VisitorNo" Type="Byte" Nullable="false" />
-          <Property Name="VisitDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CheckInTime" Type="DateTime" Precision="0" />
-          <Property Name="CheckOutTime" Type="DateTime" Precision="0" />
-          <Property Name="EquipmentInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BadgeNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="VisitorFile">
+        <EntityType Name="BadgeTypeBadgeHistory">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BadgeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="ModifedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BadgeTypeHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BadgeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Campus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CampusStations" Relationship="Self.FK_CampusStation_Campus" FromRole="Campus" ToRole="CampusStation" />
+          <NavigationProperty Name="CampusLocations" Relationship="Self.FK_SiteRoom_Site" FromRole="Campus" ToRole="CampusLocation" />
+        </EntityType>
+        <EntityType Name="CampusHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampusID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CampusLocation">
+          <Key>
+            <PropertyRef Name="CampusID" />
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="CampusID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Campu" Relationship="Self.FK_SiteRoom_Site" FromRole="CampusLocation" ToRole="Campus" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_SiteRoom_Room" FromRole="CampusLocation" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="CampusLocationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CampusID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CampusStation">
+          <Key>
+            <PropertyRef Name="CampusID" />
+            <PropertyRef Name="StationID" />
+          </Key>
+          <Property Name="CampusID" Type="Int32" Nullable="false" />
+          <Property Name="StationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Campu" Relationship="Self.FK_CampusStation_Campus" FromRole="CampusStation" ToRole="Campus" />
+          <NavigationProperty Name="Station" Relationship="Self.FK_CampusStation_Station" FromRole="CampusStation" ToRole="Station" />
+        </EntityType>
+        <EntityType Name="CampusStationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampusID" Type="Int32" Nullable="false" />
+          <Property Name="StationID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="VisitorCompanies" Relationship="Self.FK_VisitorCompany_Company" FromRole="Company" ToRole="VisitorCompany" />
+        </EntityType>
+        <EntityType Name="CompanyHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LogVisitors" Relationship="Self.FK_LogVisit_Contact" FromRole="Contact" ToRole="LogVisitor" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CampusLocations" Relationship="Self.FK_SiteRoom_Room" FromRole="Location" ToRole="CampusLocation" />
+          <NavigationProperty Name="LocationHistories" Relationship="Self.FK_LocationHistory_Location" FromRole="Location" ToRole="LocationHistory" />
+          <NavigationProperty Name="LogVisitors" Relationship="Self.FK_LogVisitor_Location" FromRole="Location" ToRole="LogVisitor" />
+        </EntityType>
+        <EntityType Name="LocationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_LocationHistory_Location" FromRole="LocationHistory" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialInstructions" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LogVisitors" Relationship="Self.FK_VisitorLog_Log" FromRole="Log" ToRole="LogVisitor" />
+        </EntityType>
+        <EntityType Name="LogVisitor">
+          <Key>
+            <PropertyRef Name="LogID" />
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="ContactID" />
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" />
+          <Property Name="VisitorID" Type="Int32" Nullable="false" />
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_LogVisit_Contact" FromRole="LogVisitor" ToRole="Contact" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_LogVisitor_Location" FromRole="LogVisitor" ToRole="Location" />
+          <NavigationProperty Name="Log" Relationship="Self.FK_VisitorLog_Log" FromRole="LogVisitor" ToRole="Log" />
+          <NavigationProperty Name="Visitor" Relationship="Self.FK_LogVisitor_Visitor" FromRole="LogVisitor" ToRole="Visitor" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CampusStations" Relationship="Self.FK_CampusStation_Station" FromRole="Station" ToRole="CampusStation" />
+        </EntityType>
+        <EntityType Name="StationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduledCheckInTime" Type="DateTime" Precision="3" />
+          <Property Name="ScheduledCheckOutTime" Type="DateTime" Precision="3" />
+          <Property Name="ActualCheckInTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActualCheckOutTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="VisitorVisits" Relationship="Self.FK_VisitorAsset_Visit" FromRole="Visit" ToRole="VisitorVisit" />
+        </EntityType>
+        <EntityType Name="VisitHistory">
+          <Key>
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VisitID" Type="Int32" Nullable="false" />
-          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="VisitorLog" Relationship="Self.FK_VisitorFiles_VisitorLog" FromRole="VisitorFiles" ToRole="VisitorLog" />
+          <Property Name="ScheduledCheckInTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ScheduledCheckOutTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActualCheckInTime" Type="DateTime" Precision="3" />
+          <Property Name="ActualCheckOutTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="VisitorLogAccessID">
+        <EntityType Name="Visitor">
           <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="AccessID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="VisitID" Type="Int32" Nullable="false" />
-          <Property Name="AccessID" Type="Int16" Nullable="false" />
-          <Property Name="OtherAccess" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AccessArea" Relationship="Self.FK_VisitorLogAccessID_AccessArea" FromRole="VisitorLogAccessID" ToRole="AccessArea" />
-          <NavigationProperty Name="VisitorLog" Relationship="Self.FK_VisitorLogAccessID_VisitorLog" FromRole="VisitorLogAccessID" ToRole="VisitorLog" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="Int32" Nullable="false" />
+          <Property Name="PersonIDCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LogVisitors" Relationship="Self.FK_LogVisitor_Visitor" FromRole="Visitor" ToRole="LogVisitor" />
+          <NavigationProperty Name="VisitorVisits" Relationship="Self.FK_VisitorAsset_Visitor" FromRole="Visitor" ToRole="VisitorVisit" />
+          <NavigationProperty Name="VisitorBadges" Relationship="Self.FK_VisitorBadge_Visitor" FromRole="Visitor" ToRole="VisitorBadge" />
+          <NavigationProperty Name="VisitorCompanies" Relationship="Self.FK_VisitorCompany_Visitor" FromRole="Visitor" ToRole="VisitorCompany" />
         </EntityType>
-        <EntityType Name="VisitorLogRoomID">
+        <EntityType Name="VisitorBadge">
           <Key>
-            <PropertyRef Name="VisitID" />
-            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="BadgeID" />
           </Key>
-          <Property Name="VisitID" Type="Int32" Nullable="false" />
-          <Property Name="RoomID" Type="Int16" Nullable="false" />
-          <Property Name="OtherRoom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Room" Relationship="Self.FK_VisitorLogRoomID_Room" FromRole="VisitorLogRoomID" ToRole="Room" />
-          <NavigationProperty Name="VisitorLog" Relationship="Self.FK_VisitorLogRoomID_VisitorLog" FromRole="VisitorLogRoomID" ToRole="VisitorLog" />
+          <Property Name="VisitorID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Badge" Relationship="Self.FK_VisitorBadge_Badge" FromRole="VisitorBadge" ToRole="Badge" />
+          <NavigationProperty Name="Visitor" Relationship="Self.FK_VisitorBadge_Visitor" FromRole="VisitorBadge" ToRole="Visitor" />
         </EntityType>
-        <Association Name="FK_AccessArea_Campus">
-          <End Role="Campus" Type="Self.Campu" Multiplicity="1" />
-          <End Role="AccessArea" Type="Self.AccessArea" Multiplicity="*" />
+        <EntityType Name="VisitorCompany">
+          <Key>
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="VisitorID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_VisitorCompany_Company" FromRole="VisitorCompany" ToRole="Company" />
+          <NavigationProperty Name="Visitor" Relationship="Self.FK_VisitorCompany_Visitor" FromRole="VisitorCompany" ToRole="Visitor" />
+        </EntityType>
+        <EntityType Name="VisitorHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitorID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VisitorVisit">
+          <Key>
+            <PropertyRef Name="VisitorID" />
+            <PropertyRef Name="VisitID" />
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="VisitorID" Type="Int32" Nullable="false" />
+          <Property Name="VisitID" Type="Int32" Nullable="false" />
+          <Property Name="AssetID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Asset" Relationship="Self.FK_VisitorAsset_Asset" FromRole="VisitorVisit" ToRole="Asset" />
+          <NavigationProperty Name="Visit" Relationship="Self.FK_VisitorAsset_Visit" FromRole="VisitorVisit" ToRole="Visit" />
+          <NavigationProperty Name="Visitor" Relationship="Self.FK_VisitorAsset_Visitor" FromRole="VisitorVisit" ToRole="Visitor" />
+        </EntityType>
+        <EntityType Name="VisitVisitorHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisitID" Type="Int32" Nullable="false" />
+          <Property Name="VisitorID" Type="Int32" Nullable="false" />
+          <Property Name="ContactUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_AssetTypeAsset_Asset">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+          <End Role="AssetTypeAsset" Type="Self.AssetTypeAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AssetTypeAsset">
+              <PropertyRef Name="AssetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorAsset_Asset">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorVisit">
+              <PropertyRef Name="AssetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssetTypeAsset_AssetType">
+          <End Role="AssetType" Type="Self.AssetType" Multiplicity="1" />
+          <End Role="AssetTypeAsset" Type="Self.AssetTypeAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssetType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AssetTypeAsset">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgeTypeBadge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="BadgeTypeBadge" Type="Self.BadgeTypeBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BadgeTypeBadge">
+              <PropertyRef Name="BadgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorBadge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="VisitorBadge" Type="Self.VisitorBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorBadge">
+              <PropertyRef Name="BadgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgeTypeBadge_BadgeType">
+          <End Role="BadgeType" Type="Self.BadgeType" Multiplicity="1" />
+          <End Role="BadgeTypeBadge" Type="Self.BadgeTypeBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BadgeType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BadgeTypeBadge">
+              <PropertyRef Name="BadgeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampusStation_Campus">
+          <End Role="Campus" Type="VL.Data.Model.Campus" Multiplicity="1" />
+          <End Role="CampusStation" Type="Self.CampusStation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Campus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CampusStation">
               <PropertyRef Name="CampusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteRoom_Site">
+          <End Role="Campus" Type="VL.Data.Model.Campus" Multiplicity="1" />
+          <End Role="CampusLocation" Type="Self.CampusLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campus">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="AccessArea">
+            <Dependent Role="CampusLocation">
               <PropertyRef Name="CampusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogAccessID_AccessArea">
-          <End Role="AccessArea" Type="Self.AccessArea" Multiplicity="1" />
-          <End Role="VisitorLogAccessID" Type="Self.VisitorLogAccessID" Multiplicity="*" />
+        <Association Name="FK_SiteRoom_Room">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="CampusLocation" Type="Self.CampusLocation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AccessArea">
-              <PropertyRef Name="AccessID" />
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogAccessID">
-              <PropertyRef Name="AccessID" />
+            <Dependent Role="CampusLocation">
+              <PropertyRef Name="LocationID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogRoomID_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="VisitorLogRoomID" Type="Self.VisitorLogRoomID" Multiplicity="*" />
+        <Association Name="FK_CampusStation_Station">
+          <End Role="Station" Type="Self.Station" Multiplicity="1" />
+          <End Role="CampusStation" Type="Self.CampusStation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
+            <Principal Role="Station">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogRoomID">
-              <PropertyRef Name="RoomID" />
+            <Dependent Role="CampusStation">
+              <PropertyRef Name="StationID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visitor_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="0..1" />
+        <Association Name="FK_VisitorCompany_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="VisitorCompany" Type="Self.VisitorCompany" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Visitor">
+            <Dependent Role="VisitorCompany">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogVisit_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationHistory_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="LocationHistory" Type="Self.LocationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LocationHistory">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogVisitor_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorLog_Log">
+          <End Role="Log" Type="Self.Log" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Log">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="LogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogVisitor_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorAsset_Visit">
+          <End Role="Visit" Type="Self.Visit" Multiplicity="1" />
+          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorVisit">
               <PropertyRef Name="VisitID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorFiles_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="VisitorFiles" Type="Self.VisitorFile" Multiplicity="*" />
+        <Association Name="FK_VisitorAsset_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorFiles">
-              <PropertyRef Name="VisitID" />
+            <Dependent Role="VisitorVisit">
+              <PropertyRef Name="VisitorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogAccessID_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="VisitorLogAccessID" Type="Self.VisitorLogAccessID" Multiplicity="*" />
+        <Association Name="FK_VisitorBadge_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="VisitorBadge" Type="Self.VisitorBadge" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogAccessID">
-              <PropertyRef Name="VisitID" />
+            <Dependent Role="VisitorBadge">
+              <PropertyRef Name="VisitorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VisitorLogRoomID_VisitorLog">
-          <End Role="VisitorLog" Type="Self.VisitorLog" Multiplicity="1" />
-          <End Role="VisitorLogRoomID" Type="Self.VisitorLogRoomID" Multiplicity="*" />
+        <Association Name="FK_VisitorCompany_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
+          <End Role="VisitorCompany" Type="Self.VisitorCompany" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="VisitorLog">
-              <PropertyRef Name="VisitID" />
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="VisitorLogRoomID">
-              <PropertyRef Name="VisitID" />
+            <Dependent Role="VisitorCompany">
+              <PropertyRef Name="VisitorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VisitorLogContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AccessAreas" EntityType="Self.AccessArea" />
-          <EntitySet Name="Campus" EntityType="Self.Campu" />
-          <EntitySet Name="EmpRefs" EntityType="Self.EmpRef" />
-          <EntitySet Name="Rooms" EntityType="Self.Room" />
-          <EntitySet Name="SecuredAreas" EntityType="Self.SecuredArea" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="TenantDepartments" EntityType="Self.TenantDepartment" />
-          <EntitySet Name="BadgeTypes" EntityType="VL.Data.Model.BadgeType" />
-          <EntitySet Name="VisitorLogs" EntityType="Self.VisitorLog" />
-          <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRole" />
-          <EntitySet Name="LogCounters" EntityType="Self.LogCounter" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
+        <EntityContainer Name="VisitorLogContext" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Assets" EntityType="Self.Asset" />
+          <EntitySet Name="AssetHistories" EntityType="Self.AssetHistory" />
+          <EntitySet Name="AssetTypes" EntityType="Self.AssetType" />
+          <EntitySet Name="AssetTypeAssets" EntityType="Self.AssetTypeAsset" />
+          <EntitySet Name="AssetTypeAssetHistories" EntityType="Self.AssetTypeAssetHistory" />
+          <EntitySet Name="AssetTypeHistories" EntityType="Self.AssetTypeHistory" />
+          <EntitySet Name="Badges" EntityType="Self.Badge" />
+          <EntitySet Name="BadgeHistories" EntityType="Self.BadgeHistory" />
+          <EntitySet Name="BadgeTypes" EntityType="Self.BadgeType" />
+          <EntitySet Name="BadgeTypeBadges" EntityType="Self.BadgeTypeBadge" />
+          <EntitySet Name="BadgeTypeBadgeHistories" EntityType="Self.BadgeTypeBadgeHistory" />
+          <EntitySet Name="BadgeTypeHistories" EntityType="Self.BadgeTypeHistory" />
+          <EntitySet Name="Campus1" EntityType="VL.Data.Model.Campus" />
+          <EntitySet Name="CampusHistories" EntityType="Self.CampusHistory" />
+          <EntitySet Name="CampusLocations" EntityType="Self.CampusLocation" />
+          <EntitySet Name="CampusLocationHistories" EntityType="Self.CampusLocationHistory" />
+          <EntitySet Name="CampusStations" EntityType="Self.CampusStation" />
+          <EntitySet Name="CampusStationHistories" EntityType="Self.CampusStationHistory" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="CompanyHistories" EntityType="Self.CompanyHistory" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="LocationHistories" EntityType="Self.LocationHistory" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="LogVisitors" EntityType="Self.LogVisitor" />
+          <EntitySet Name="Stations" EntityType="Self.Station" />
+          <EntitySet Name="StationHistories" EntityType="Self.StationHistory" />
+          <EntitySet Name="Visits" EntityType="Self.Visit" />
+          <EntitySet Name="VisitHistories" EntityType="Self.VisitHistory" />
           <EntitySet Name="Visitors" EntityType="Self.Visitor" />
-          <EntitySet Name="VisitorCheckInOuts" EntityType="Self.VisitorCheckInOut" />
-          <EntitySet Name="VisitorDetails" EntityType="Self.VisitorDetail" />
-          <EntitySet Name="VisitorFiles" EntityType="Self.VisitorFile" />
-          <EntitySet Name="VisitorLogAccessIDs" EntityType="Self.VisitorLogAccessID" />
-          <EntitySet Name="VisitorLogRoomIDs" EntityType="Self.VisitorLogRoomID" />
-          <AssociationSet Name="FK_AccessArea_Campus" Association="Self.FK_AccessArea_Campus">
-            <End Role="Campus" EntitySet="Campus" />
-            <End Role="AccessArea" EntitySet="AccessAreas" />
+          <EntitySet Name="VisitorBadges" EntityType="Self.VisitorBadge" />
+          <EntitySet Name="VisitorCompanies" EntityType="Self.VisitorCompany" />
+          <EntitySet Name="VisitorHistories" EntityType="Self.VisitorHistory" />
+          <EntitySet Name="VisitorVisits" EntityType="Self.VisitorVisit" />
+          <EntitySet Name="VisitVisitorHistories" EntityType="Self.VisitVisitorHistory" />
+          <AssociationSet Name="FK_AssetTypeAsset_Asset" Association="Self.FK_AssetTypeAsset_Asset">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="AssetTypeAsset" EntitySet="AssetTypeAssets" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogAccessID_AccessArea" Association="Self.FK_VisitorLogAccessID_AccessArea">
-            <End Role="AccessArea" EntitySet="AccessAreas" />
-            <End Role="VisitorLogAccessID" EntitySet="VisitorLogAccessIDs" />
+          <AssociationSet Name="FK_VisitorAsset_Asset" Association="Self.FK_VisitorAsset_Asset">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="VisitorVisit" EntitySet="VisitorVisits" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogRoomID_Room" Association="Self.FK_VisitorLogRoomID_Room">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="VisitorLogRoomID" EntitySet="VisitorLogRoomIDs" />
+          <AssociationSet Name="FK_AssetTypeAsset_AssetType" Association="Self.FK_AssetTypeAsset_AssetType">
+            <End Role="AssetType" EntitySet="AssetTypes" />
+            <End Role="AssetTypeAsset" EntitySet="AssetTypeAssets" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visitor_VisitorLog" Association="Self.FK_Visitor_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLogs" />
+          <AssociationSet Name="FK_BadgeTypeBadge_Badge" Association="Self.FK_BadgeTypeBadge_Badge">
+            <End Role="Badge" EntitySet="Badges" />
+            <End Role="BadgeTypeBadge" EntitySet="BadgeTypeBadges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorBadge_Badge" Association="Self.FK_VisitorBadge_Badge">
+            <End Role="Badge" EntitySet="Badges" />
+            <End Role="VisitorBadge" EntitySet="VisitorBadges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgeTypeBadge_BadgeType" Association="Self.FK_BadgeTypeBadge_BadgeType">
+            <End Role="BadgeType" EntitySet="BadgeTypes" />
+            <End Role="BadgeTypeBadge" EntitySet="BadgeTypeBadges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampusStation_Campus" Association="Self.FK_CampusStation_Campus">
+            <End Role="Campus" EntitySet="Campus1" />
+            <End Role="CampusStation" EntitySet="CampusStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteRoom_Site" Association="Self.FK_SiteRoom_Site">
+            <End Role="Campus" EntitySet="Campus1" />
+            <End Role="CampusLocation" EntitySet="CampusLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteRoom_Room" Association="Self.FK_SiteRoom_Room">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="CampusLocation" EntitySet="CampusLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampusStation_Station" Association="Self.FK_CampusStation_Station">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="CampusStation" EntitySet="CampusStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorCompany_Company" Association="Self.FK_VisitorCompany_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="VisitorCompany" EntitySet="VisitorCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogVisit_Contact" Association="Self.FK_LogVisit_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="LogVisitor" EntitySet="LogVisitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationHistory_Location" Association="Self.FK_LocationHistory_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="LocationHistory" EntitySet="LocationHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogVisitor_Location" Association="Self.FK_LogVisitor_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="LogVisitor" EntitySet="LogVisitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorLog_Log" Association="Self.FK_VisitorLog_Log">
+            <End Role="Log" EntitySet="Logs" />
+            <End Role="LogVisitor" EntitySet="LogVisitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogVisitor_Visitor" Association="Self.FK_LogVisitor_Visitor">
             <End Role="Visitor" EntitySet="Visitors" />
+            <End Role="LogVisitor" EntitySet="LogVisitors" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorFiles_VisitorLog" Association="Self.FK_VisitorFiles_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLogs" />
-            <End Role="VisitorFiles" EntitySet="VisitorFiles" />
+          <AssociationSet Name="FK_VisitorAsset_Visit" Association="Self.FK_VisitorAsset_Visit">
+            <End Role="Visit" EntitySet="Visits" />
+            <End Role="VisitorVisit" EntitySet="VisitorVisits" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogAccessID_VisitorLog" Association="Self.FK_VisitorLogAccessID_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLogs" />
-            <End Role="VisitorLogAccessID" EntitySet="VisitorLogAccessIDs" />
+          <AssociationSet Name="FK_VisitorAsset_Visitor" Association="Self.FK_VisitorAsset_Visitor">
+            <End Role="Visitor" EntitySet="Visitors" />
+            <End Role="VisitorVisit" EntitySet="VisitorVisits" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorLogRoomID_VisitorLog" Association="Self.FK_VisitorLogRoomID_VisitorLog">
-            <End Role="VisitorLog" EntitySet="VisitorLogs" />
-            <End Role="VisitorLogRoomID" EntitySet="VisitorLogRoomIDs" />
+          <AssociationSet Name="FK_VisitorBadge_Visitor" Association="Self.FK_VisitorBadge_Visitor">
+            <End Role="Visitor" EntitySet="Visitors" />
+            <End Role="VisitorBadge" EntitySet="VisitorBadges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorCompany_Visitor" Association="Self.FK_VisitorCompany_Visitor">
+            <End Role="Visitor" EntitySet="Visitors" />
+            <End Role="VisitorCompany" EntitySet="VisitorCompanies" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -768,205 +1636,460 @@ warning 6002: The table/view 'VISITORLOG.dbo.VisitorLogRoomID' does not have a p
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="VLDataModelStoreContainer" CdmEntityContainer="VisitorLogContext">
-          <EntitySetMapping Name="AccessAreas">
-            <EntityTypeMapping TypeName="VL.Data.Model.AccessArea">
-              <MappingFragment StoreEntitySet="AccessArea">
-                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
-                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
-                <ScalarProperty Name="Access" ColumnName="Access" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="VL.Data.Model.Asset">
+              <MappingFragment StoreEntitySet="Asset">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Campus">
-            <EntityTypeMapping TypeName="VL.Data.Model.Campu">
-              <MappingFragment StoreEntitySet="Campus">
-                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
-                <ScalarProperty Name="Campus" ColumnName="Campus" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
+          <EntitySetMapping Name="AssetHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.AssetHistory">
+              <MappingFragment StoreEntitySet="AssetHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmpRefs">
-            <EntityTypeMapping TypeName="VL.Data.Model.EmpRef">
-              <MappingFragment StoreEntitySet="EmpRef">
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Pager" ColumnName="Pager" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="EMail" ColumnName="EMail" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Guard" ColumnName="Guard" />
+          <EntitySetMapping Name="AssetTypes">
+            <EntityTypeMapping TypeName="VL.Data.Model.AssetType">
+              <MappingFragment StoreEntitySet="AssetType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Rooms">
-            <EntityTypeMapping TypeName="VL.Data.Model.Room">
-              <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
-                <ScalarProperty Name="Room1" ColumnName="Room" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
+          <EntitySetMapping Name="AssetTypeAssets">
+            <EntityTypeMapping TypeName="VL.Data.Model.AssetTypeAsset">
+              <MappingFragment StoreEntitySet="AssetTypeAsset">
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SecuredAreas">
-            <EntityTypeMapping TypeName="VL.Data.Model.SecuredArea">
-              <MappingFragment StoreEntitySet="SecuredArea">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SecuredArea1" ColumnName="SecuredArea" />
+          <EntitySetMapping Name="AssetTypeAssetHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.AssetTypeAssetHistory">
+              <MappingFragment StoreEntitySet="AssetTypeAssetHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="VL.Data.Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="AssetTypeHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.AssetTypeHistory">
+              <MappingFragment StoreEntitySet="AssetTypeHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TenantDepartments">
-            <EntityTypeMapping TypeName="VL.Data.Model.TenantDepartment">
-              <MappingFragment StoreEntitySet="TenantDepartment">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenantDepartment1" ColumnName="TenantDepartment" />
+          <EntitySetMapping Name="Badges">
+            <EntityTypeMapping TypeName="VL.Data.Model.Badge">
+              <MappingFragment StoreEntitySet="Badge">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BadgeHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.BadgeHistory">
+              <MappingFragment StoreEntitySet="BadgeHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BadgeTypes">
             <EntityTypeMapping TypeName="VL.Data.Model.BadgeType">
-              <MappingFragment StoreEntitySet="Type">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Type1" ColumnName="Type" />
+              <MappingFragment StoreEntitySet="BadgeType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifedDate" ColumnName="ModifedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VisitorLogs">
-            <EntityTypeMapping TypeName="VL.Data.Model.VisitorLog">
-              <MappingFragment StoreEntitySet="VisitorLog">
-                <ScalarProperty Name="Testing" ColumnName="Testing" />
-                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="VisitorLogNo" ColumnName="VisitorLogNo" />
-                <ScalarProperty Name="FY" ColumnName="FY" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Amendment" ColumnName="Amendment" />
-                <ScalarProperty Name="AmendDateTime" ColumnName="AmendDateTime" />
-                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="OnGoing" ColumnName="OnGoing" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
-                <ScalarProperty Name="OtherRoomInfo" ColumnName="OtherRoomInfo" />
-                <ScalarProperty Name="OtherAccessAreaInfo" ColumnName="OtherAccessAreaInfo" />
-                <ScalarProperty Name="PrimaryContactId" ColumnName="PrimaryContactId" />
-                <ScalarProperty Name="SecondaryContactId" ColumnName="SecondaryContactId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="SpecialInstruction" ColumnName="SpecialInstruction" />
-                <ScalarProperty Name="SubmittedById" ColumnName="SubmittedById" />
-                <ScalarProperty Name="DistributedById" ColumnName="DistributedById" />
-                <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <EntitySetMapping Name="BadgeTypeBadges">
+            <EntityTypeMapping TypeName="VL.Data.Model.BadgeTypeBadge">
+              <MappingFragment StoreEntitySet="BadgeTypeBadge">
+                <ScalarProperty Name="BadgeTypeID" ColumnName="BadgeTypeID" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedById" ColumnName="ModifiedById" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmployeeRoles">
-            <EntityTypeMapping TypeName="VL.Data.Model.EmployeeRole">
-              <MappingFragment StoreEntitySet="EmployeeRole">
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <EntitySetMapping Name="BadgeTypeBadgeHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.BadgeTypeBadgeHistory">
+              <MappingFragment StoreEntitySet="BadgeTypeBadgeHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BadgeTypeID" ColumnName="BadgeTypeID" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="ModifedByUserID" ColumnName="ModifedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LogCounters">
-            <EntityTypeMapping TypeName="VL.Data.Model.LogCounter">
-              <MappingFragment StoreEntitySet="LogCounter">
-                <ScalarProperty Name="FY" ColumnName="FY" />
-                <ScalarProperty Name="LogNoCounter" ColumnName="LogNoCounter" />
-                <ScalarProperty Name="LogCounterID" ColumnName="LogCounterID" />
+          <EntitySetMapping Name="BadgeTypeHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.BadgeTypeHistory">
+              <MappingFragment StoreEntitySet="BadgeTypeHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BadgeTypeID" ColumnName="BadgeTypeID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="VL.Data.Model.Role">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <EntitySetMapping Name="Campus1">
+            <EntityTypeMapping TypeName="VL.Data.Model.Campus">
+              <MappingFragment StoreEntitySet="Campus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.CampusHistory">
+              <MappingFragment StoreEntitySet="CampusHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusLocations">
+            <EntityTypeMapping TypeName="VL.Data.Model.CampusLocation">
+              <MappingFragment StoreEntitySet="CampusLocation">
+                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusLocationHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.CampusLocationHistory">
+              <MappingFragment StoreEntitySet="CampusLocationHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusStations">
+            <EntityTypeMapping TypeName="VL.Data.Model.CampusStation">
+              <MappingFragment StoreEntitySet="CampusStation">
+                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusStationHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.CampusStationHistory">
+              <MappingFragment StoreEntitySet="CampusStationHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="VL.Data.Model.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.CompanyHistory">
+              <MappingFragment StoreEntitySet="CompanyHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="VL.Data.Model.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactUserID" ColumnName="ContactUserID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="VL.Data.Model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.LocationHistory">
+              <MappingFragment StoreEntitySet="LocationHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="VL.Data.Model.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="SpecialInstructions" ColumnName="SpecialInstructions" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogVisitors">
+            <EntityTypeMapping TypeName="VL.Data.Model.LogVisitor">
+              <MappingFragment StoreEntitySet="LogVisitor">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stations">
+            <EntityTypeMapping TypeName="VL.Data.Model.Station">
+              <MappingFragment StoreEntitySet="Station">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StationHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.StationHistory">
+              <MappingFragment StoreEntitySet="StationHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StationID" ColumnName="StationID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visits">
+            <EntityTypeMapping TypeName="VL.Data.Model.Visit">
+              <MappingFragment StoreEntitySet="Visit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ScheduledCheckInTime" ColumnName="ScheduledCheckInTime" />
+                <ScalarProperty Name="ScheduledCheckOutTime" ColumnName="ScheduledCheckOutTime" />
+                <ScalarProperty Name="ActualCheckInTime" ColumnName="ActualCheckInTime" />
+                <ScalarProperty Name="ActualCheckOutTime" ColumnName="ActualCheckOutTime" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.VisitHistory">
+              <MappingFragment StoreEntitySet="VisitHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
+                <ScalarProperty Name="ScheduledCheckInTime" ColumnName="ScheduledCheckInTime" />
+                <ScalarProperty Name="ScheduledCheckOutTime" ColumnName="ScheduledCheckOutTime" />
+                <ScalarProperty Name="ActualCheckInTime" ColumnName="ActualCheckInTime" />
+                <ScalarProperty Name="ActualCheckOutTime" ColumnName="ActualCheckOutTime" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Visitors">
             <EntityTypeMapping TypeName="VL.Data.Model.Visitor">
               <MappingFragment StoreEntitySet="Visitor">
-                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="VisitorNo" ColumnName="VisitorNo" />
-                <ScalarProperty Name="Visitor1" ColumnName="Visitor" />
-                <ScalarProperty Name="SecuredAreaId" ColumnName="SecuredAreaId" />
-                <ScalarProperty Name="TenantDepartmentId" ColumnName="TenantDepartmentId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="PersonIDCardNumber" ColumnName="PersonIDCardNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VisitorCheckInOuts">
-            <EntityTypeMapping TypeName="VL.Data.Model.VisitorCheckInOut">
-              <MappingFragment StoreEntitySet="VisitorCheckInOut">
-                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="Visitor" ColumnName="Visitor" />
-                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
-                <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
-                <ScalarProperty Name="CheckOutTime" ColumnName="CheckOutTime" />
-                <ScalarProperty Name="EquipmentInfo" ColumnName="EquipmentInfo" />
-                <ScalarProperty Name="BadgeNo" ColumnName="BadgeNo" />
+          <EntitySetMapping Name="VisitorBadges">
+            <EntityTypeMapping TypeName="VL.Data.Model.VisitorBadge">
+              <MappingFragment StoreEntitySet="VisitorBadge">
+                <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VisitorDetails">
-            <EntityTypeMapping TypeName="VL.Data.Model.VisitorDetail">
-              <MappingFragment StoreEntitySet="VisitorDetail">
-                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="VisitorNo" ColumnName="VisitorNo" />
-                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
-                <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
-                <ScalarProperty Name="CheckOutTime" ColumnName="CheckOutTime" />
-                <ScalarProperty Name="EquipmentInfo" ColumnName="EquipmentInfo" />
-                <ScalarProperty Name="BadgeNo" ColumnName="BadgeNo" />
+          <EntitySetMapping Name="VisitorCompanies">
+            <EntityTypeMapping TypeName="VL.Data.Model.VisitorCompany">
+              <MappingFragment StoreEntitySet="VisitorCompany">
+                <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VisitorFiles">
-            <EntityTypeMapping TypeName="VL.Data.Model.VisitorFile">
-              <MappingFragment StoreEntitySet="VisitorFiles">
+          <EntitySetMapping Name="VisitorHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.VisitorHistory">
+              <MappingFragment StoreEntitySet="VisitorHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitorVisits">
+            <EntityTypeMapping TypeName="VL.Data.Model.VisitorVisit">
+              <MappingFragment StoreEntitySet="VisitorVisit">
+                <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitVisitorHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.VisitVisitorHistory">
+              <MappingFragment StoreEntitySet="VisitVisitorHistory">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VisitorLogAccessIDs">
-            <EntityTypeMapping TypeName="VL.Data.Model.VisitorLogAccessID">
-              <MappingFragment StoreEntitySet="VisitorLogAccessID">
-                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
-                <ScalarProperty Name="OtherAccess" ColumnName="OtherAccess" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VisitorLogRoomIDs">
-            <EntityTypeMapping TypeName="VL.Data.Model.VisitorLogRoomID">
-              <MappingFragment StoreEntitySet="VisitorLogRoomID">
-                <ScalarProperty Name="VisitID" ColumnName="VisitID" />
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="OtherRoom" ColumnName="OtherRoom" />
+                <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="ContactUserID" ColumnName="ContactUserID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

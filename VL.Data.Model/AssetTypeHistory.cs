@@ -12,9 +12,14 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class TenantDepartment
+    public partial class AssetTypeHistory
     {
-        public int Id { get; set; }
-        public string TenantDepartment1 { get; set; }
+        public int ID { get; set; }
+        public int AssetTypeID { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public System.DateTime AuditDate { get; set; }
     }
 }

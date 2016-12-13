@@ -12,14 +12,16 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class VisitorDetail
+    public partial class CampusStation
     {
-        public int VisitID { get; set; }
-        public byte VisitorNo { get; set; }
-        public System.DateTime VisitDate { get; set; }
-        public Nullable<System.DateTime> CheckInTime { get; set; }
-        public Nullable<System.DateTime> CheckOutTime { get; set; }
-        public string EquipmentInfo { get; set; }
-        public string BadgeNo { get; set; }
+        public int CampusID { get; set; }
+        public int StationID { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+    
+        public virtual Campus Campu { get; set; }
+        public virtual Station Station { get; set; }
     }
 }

@@ -4,23 +4,28 @@ namespace VL.Data.Model
 {
     public interface IUnitOfWork
     {
+
         #region Properties
-        GenericRepository<AccessArea> AccessAreaRepository { get; }
-        GenericRepository<EmployeeRole> EmployeeRoleRepository { get; }
-        GenericRepository<EmpRef> EmpRefRepository { get; }
-        GenericRepository<LogCounter> LogCounterRepository { get; }
-        GenericRepository<Role> RoleRepository { get; }
-        GenericRepository<Room> RoomRepository { get; }
-        GenericRepository<SecuredArea> SecuredAreaRepository { get; }
-        GenericRepository<TenantDepartment> TenantDepartmentRepository { get; }
+
+        GenericRepository<Asset> AssetRepository { get; }
+        GenericRepository<AssetHistory> AssetHistoryRepository { get; }
+        GenericRepository<AssetType> AssetTypeRepository { get; }
+        GenericRepository<AssetTypeHistory> AssetTypeHistoryRepository { get; }
+        GenericRepository<Badge> BadgeRepository { get; }
+        GenericRepository<BadgeHistory> BadgeHistoryRepository { get; }
         GenericRepository<BadgeType> BadgeTypeRepository { get; }
+        GenericRepository<BadgeTypeHistory> BadgeTypeHistoryRepository { get; }
+        GenericRepository<Campus> CampusRepository { get; }
+        GenericRepository<CampusHistory> CampusHistoryRepository { get; }
+        GenericRepository<Company> CompanyRepository { get; }
+        GenericRepository<CompanyHistory> CompanyHistoryRepository { get; }
+        GenericRepository<Location> LocationRepository { get; }
+        GenericRepository<LocationHistory> LocationHistoryRepository { get; }
+        GenericRepository<Log> LogRepository { get; }
+        GenericRepository<Station> StationRepository { get; }
+        GenericRepository<StationHistory> StationHistoryRepository { get; }
+        GenericRepository<Visit> VisitRepository { get; }
         GenericRepository<Visitor> VisitorRepository { get; }
-        GenericRepository<VisitorCheckInOut> VisitorCheckInOutRepository { get; }
-        GenericRepository<VisitorDetail> VisitorDetailRepository { get; }
-        GenericRepository<VisitorFile> VisitorFileRepository { get; }
-        GenericRepository<VisitorLog> VisitorLogRepository { get; }
-        GenericRepository<VisitorLogAccessID> VisitorLogAccessIDRepository { get; }
-        GenericRepository<VisitorLogRoomID> VisitorLogRoomIDRepository  { get; }
         #endregion
 
         /// <summary>

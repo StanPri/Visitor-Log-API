@@ -12,9 +12,15 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class StationHistory
     {
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
+        public int ID { get; set; }
+        public int StationID { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public bool IsActive { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public System.DateTime AuditDate { get; set; }
     }
 }

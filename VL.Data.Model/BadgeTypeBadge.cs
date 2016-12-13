@@ -12,12 +12,16 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class VisitorFile
+    public partial class BadgeTypeBadge
     {
-        public int ID { get; set; }
-        public int VisitID { get; set; }
-        public string FileName { get; set; }
+        public int BadgeTypeID { get; set; }
+        public int BadgeID { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
-        public virtual VisitorLog VisitorLog { get; set; }
+        public virtual Badge Badge { get; set; }
+        public virtual BadgeType BadgeType { get; set; }
     }
 }

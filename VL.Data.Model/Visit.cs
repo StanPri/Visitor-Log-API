@@ -12,20 +12,25 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Room
+    public partial class Visit
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Room()
+        public Visit()
         {
-            this.VisitorLogRoomIDs = new HashSet<VisitorLogRoomID>();
+            this.VisitorVisits = new HashSet<VisitorVisit>();
         }
     
-        public short RoomID { get; set; }
-        public byte CampusID { get; set; }
-        public string Room1 { get; set; }
-        public bool Active { get; set; }
+        public int ID { get; set; }
+        public Nullable<System.DateTime> ScheduledCheckInTime { get; set; }
+        public Nullable<System.DateTime> ScheduledCheckOutTime { get; set; }
+        public System.DateTime ActualCheckInTime { get; set; }
+        public System.DateTime ActualCheckOutTime { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorLogRoomID> VisitorLogRoomIDs { get; set; }
+        public virtual ICollection<VisitorVisit> VisitorVisits { get; set; }
     }
 }

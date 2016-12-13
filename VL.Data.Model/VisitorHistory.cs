@@ -12,10 +12,14 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LogCounter
+    public partial class VisitorHistory
     {
-        public string FY { get; set; }
-        public int LogNoCounter { get; set; }
-        public byte LogCounterID { get; set; }
+        public int ID { get; set; }
+        public int VisitorID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public System.DateTime AuditDate { get; set; }
     }
 }

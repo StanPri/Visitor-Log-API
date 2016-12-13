@@ -12,12 +12,12 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BadgeType
+    public partial class Station
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BadgeType()
+        public Station()
         {
-            this.BadgeTypeBadges = new HashSet<BadgeTypeBadge>();
+            this.CampusStations = new HashSet<CampusStation>();
         }
     
         public int ID { get; set; }
@@ -26,9 +26,10 @@ namespace VL.Data.Model
         public string CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedByUserID { get; set; }
-        public System.DateTime ModifedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BadgeTypeBadge> BadgeTypeBadges { get; set; }
+        public virtual ICollection<CampusStation> CampusStations { get; set; }
     }
 }

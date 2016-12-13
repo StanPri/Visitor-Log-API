@@ -12,13 +12,13 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class VisitorLogAccessID
+    public partial class AssetTypeAssetHistory
     {
-        public int VisitID { get; set; }
-        public short AccessID { get; set; }
-        public string OtherAccess { get; set; }
-    
-        public virtual AccessArea AccessArea { get; set; }
-        public virtual VisitorLog VisitorLog { get; set; }
+        public int ID { get; set; }
+        public string AssetTypeID { get; set; }
+        public string AssetID { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public string ModifiedDate { get; set; }
+        public System.DateTime AuditDate { get; set; }
     }
 }
