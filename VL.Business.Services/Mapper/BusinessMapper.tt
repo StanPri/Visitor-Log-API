@@ -34,28 +34,28 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
 
 /// <summary>
-/// DTO Mapper for <see cref="<#=entity.Name#>"/> and <see cref="<#=entity.Name#>Entity"/>.
+/// DTO Mapper for <see cref="<#=entity.Name#>"/> and <see cref="<#=entity.Name#>DTO"/>.
 /// </summary>
 <#=codeStringGenerator.EntityClassOpening(entity)#>
 {
     /// <summary>
     /// Invoked when <see cref="ToDTO"/> operation is about to return.
     /// </summary>
-    /// <param name="dto"><see cref="<#=entity.Name#>Entity"/> converted from <see cref="<#=entity.Name#>"/>.</param>
-    static partial void OnDTO(this <#=entity.Name#> entity, <#=entity.Name#>Entity dto);
+    /// <param name="dto"><see cref="<#=entity.Name#>DTO"/> converted from <see cref="<#=entity.Name#>"/>.</param>
+    static partial void OnDTO(this <#=entity.Name#> entity, <#=entity.Name#>DTO dto);
    
     /// <summary>
     /// Invoked when <see cref="ToEntity"/> operation is about to return.
     /// </summary>
-    /// <param name="entity"><see cref="<#=entity.Name#>"/> converted from <see cref="<#=entity.Name#>Entity"/>.</param>
-    static partial void OnEntity(this <#=entity.Name#>Entity dto, <#=entity.Name#> entity);
+    /// <param name="entity"><see cref="<#=entity.Name#>"/> converted from <see cref="<#=entity.Name#>DTO"/>.</param>
+    static partial void OnEntity(this <#=entity.Name#>DTO dto, <#=entity.Name#> entity);
 
 
     /// <summary>
-    /// Converts this instance of <see cref="<#=entity.Name#>Entity"/> to an instance of <see cref="<#=entity.Name#>"/>.
+    /// Converts this instance of <see cref="<#=entity.Name#>DTO"/> to an instance of <see cref="<#=entity.Name#>"/>.
     /// </summary>
-    /// <param name="dto"><see cref="<#=entity.Name#>Entity"/> to convert.</param>
-    public static <#=entity.Name#> ToEntity(this <#=entity.Name#>Entity dto)
+    /// <param name="dto"><see cref="<#=entity.Name#>DTO"/> to convert.</param>
+    public static <#=entity.Name#> ToEntity(this <#=entity.Name#>DTO dto)
     {
         if (dto == null) return null;
 
@@ -74,14 +74,14 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     }
 
     /// <summary>
-    /// Converts this instance of <see cref="<#=entity.Name#>"/> to an instance of <see cref="<#=entity.Name#>Entity"/>.
+    /// Converts this instance of <see cref="<#=entity.Name#>"/> to an instance of <see cref="<#=entity.Name#>DTO"/>.
     /// </summary>
     /// <param name="entity"><see cref="<#=entity.Name#>"/> to convert.</param>
-    public static <#=entity.Name#>Entity ToDTO(this <#=entity.Name#> entity)
+    public static <#=entity.Name#>DTO ToDTO(this <#=entity.Name#> entity)
     {
         if (entity == null) return null;
 
-        var dto = new <#=entity.Name#>Entity();
+        var dto = new <#=entity.Name#>DTO();
         <#
         foreach (var edmProperty in simpleProperties)
         {
@@ -96,11 +96,11 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     }
 
     /// <summary>
-    /// Converts each instance of <see cref="<#=entity.Name#>Entity"/> to an instance of <see cref="<#=entity.Name#>"/>.
+    /// Converts each instance of <see cref="<#=entity.Name#>DTO"/> to an instance of <see cref="<#=entity.Name#>"/>.
     /// </summary>
     /// <param name="dtos"></param>
     /// <returns></returns>
-    public static List<<#=entity.Name#>> ToEntities(this IEnumerable<<#=entity.Name#>Entity> dtos)
+    public static List<<#=entity.Name#>> ToEntities(this IEnumerable<<#=entity.Name#>DTO> dtos)
     {
         if (dtos == null) return null;
 
@@ -108,11 +108,11 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     }
 
     /// <summary>
-    /// Converts each instance of <see cref="<#=entity.Name#>"/> to an instance of <see cref="<#=entity.Name#>Entity"/>.
+    /// Converts each instance of <see cref="<#=entity.Name#>"/> to an instance of <see cref="<#=entity.Name#>DTO"/>.
     /// </summary>
     /// <param name="entities"></param>
     /// <returns></returns>
-    public static List<<#=entity.Name#>Entity> ToDTOs(this IEnumerable<<#=entity.Name#>> entities)
+    public static List<<#=entity.Name#>DTO> ToDTOs(this IEnumerable<<#=entity.Name#>> entities)
     {
         if (entities == null) return null;
 

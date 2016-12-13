@@ -19,73 +19,77 @@ namespace VL.Business.Services.Mapper
     using VL.Data.Model;
     
     /// <summary>
-    /// DTO Mapper for <see cref="BadgeType"/> and <see cref="BadgeTypeDTO"/>.
+    /// DTO Mapper for <see cref="Visit"/> and <see cref="VisitDTO"/>.
     /// </summary>
-    static public partial class BadgeTypeMapper
+    static public partial class VisitMapper
     {
         /// <summary>
         /// Invoked when <see cref="ToDTO"/> operation is about to return.
         /// </summary>
-        /// <param name="dto"><see cref="BadgeTypeDTO"/> converted from <see cref="BadgeType"/>.</param>
-        static partial void OnDTO(this BadgeType entity, BadgeTypeDTO dto);
+        /// <param name="dto"><see cref="VisitDTO"/> converted from <see cref="Visit"/>.</param>
+        static partial void OnDTO(this Visit entity, VisitDTO dto);
        
         /// <summary>
         /// Invoked when <see cref="ToEntity"/> operation is about to return.
         /// </summary>
-        /// <param name="entity"><see cref="BadgeType"/> converted from <see cref="BadgeTypeDTO"/>.</param>
-        static partial void OnEntity(this BadgeTypeDTO dto, BadgeType entity);
+        /// <param name="entity"><see cref="Visit"/> converted from <see cref="VisitDTO"/>.</param>
+        static partial void OnEntity(this VisitDTO dto, Visit entity);
     
     
         /// <summary>
-        /// Converts this instance of <see cref="BadgeTypeDTO"/> to an instance of <see cref="BadgeType"/>.
+        /// Converts this instance of <see cref="VisitDTO"/> to an instance of <see cref="Visit"/>.
         /// </summary>
-        /// <param name="dto"><see cref="BadgeTypeDTO"/> to convert.</param>
-        public static BadgeType ToEntity(this BadgeTypeDTO dto)
+        /// <param name="dto"><see cref="VisitDTO"/> to convert.</param>
+        public static Visit ToEntity(this VisitDTO dto)
         {
             if (dto == null) return null;
     
-            var entity = new BadgeType();
+            var entity = new Visit();
                  
             entity.ID = dto.ID;     
-            entity.Code = dto.Code;     
-            entity.Name = dto.Name;     
+            entity.ScheduledCheckInTime = dto.ScheduledCheckInTime;     
+            entity.ScheduledCheckOutTime = dto.ScheduledCheckOutTime;     
+            entity.ActualCheckInTime = dto.ActualCheckInTime;     
+            entity.ActualCheckOutTime = dto.ActualCheckOutTime;     
             entity.CreatedByUserID = dto.CreatedByUserID;     
             entity.CreatedDate = dto.CreatedDate;     
             entity.ModifiedByUserID = dto.ModifiedByUserID;     
-            entity.ModifedDate = dto.ModifedDate;        
+            entity.ModifiedDate = dto.ModifiedDate;        
             dto.OnEntity(entity);
     
             return entity;
         }
     
         /// <summary>
-        /// Converts this instance of <see cref="BadgeType"/> to an instance of <see cref="BadgeTypeDTO"/>.
+        /// Converts this instance of <see cref="Visit"/> to an instance of <see cref="VisitDTO"/>.
         /// </summary>
-        /// <param name="entity"><see cref="BadgeType"/> to convert.</param>
-        public static BadgeTypeDTO ToDTO(this BadgeType entity)
+        /// <param name="entity"><see cref="Visit"/> to convert.</param>
+        public static VisitDTO ToDTO(this Visit entity)
         {
             if (entity == null) return null;
     
-            var dto = new BadgeTypeDTO();
+            var dto = new VisitDTO();
                  
             dto.ID = entity.ID;     
-            dto.Code = entity.Code;     
-            dto.Name = entity.Name;     
+            dto.ScheduledCheckInTime = entity.ScheduledCheckInTime;     
+            dto.ScheduledCheckOutTime = entity.ScheduledCheckOutTime;     
+            dto.ActualCheckInTime = entity.ActualCheckInTime;     
+            dto.ActualCheckOutTime = entity.ActualCheckOutTime;     
             dto.CreatedByUserID = entity.CreatedByUserID;     
             dto.CreatedDate = entity.CreatedDate;     
             dto.ModifiedByUserID = entity.ModifiedByUserID;     
-            dto.ModifedDate = entity.ModifedDate;
+            dto.ModifiedDate = entity.ModifiedDate;
             entity.OnDTO(dto);
     
             return dto;
         }
     
         /// <summary>
-        /// Converts each instance of <see cref="BadgeTypeDTO"/> to an instance of <see cref="BadgeType"/>.
+        /// Converts each instance of <see cref="VisitDTO"/> to an instance of <see cref="Visit"/>.
         /// </summary>
         /// <param name="dtos"></param>
         /// <returns></returns>
-        public static List<BadgeType> ToEntities(this IEnumerable<BadgeTypeDTO> dtos)
+        public static List<Visit> ToEntities(this IEnumerable<VisitDTO> dtos)
         {
             if (dtos == null) return null;
     
@@ -93,11 +97,11 @@ namespace VL.Business.Services.Mapper
         }
     
         /// <summary>
-        /// Converts each instance of <see cref="BadgeType"/> to an instance of <see cref="BadgeTypeDTO"/>.
+        /// Converts each instance of <see cref="Visit"/> to an instance of <see cref="VisitDTO"/>.
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public static List<BadgeTypeDTO> ToDTOs(this IEnumerable<BadgeType> entities)
+        public static List<VisitDTO> ToDTOs(this IEnumerable<Visit> entities)
         {
             if (entities == null) return null;
     

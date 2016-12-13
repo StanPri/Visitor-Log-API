@@ -50,9 +50,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyResolver.cs" />
-    <Compile Include="Implementation\VisitorLogService.cs" />
-    <Compile Include="Interface\IVisitorLogService.cs" />
-    <Compile Include="Mapper\AccessAreaMapper.cs">
+    <Compile Include="Implementation\CampusService.cs" />
+    <Compile Include="Interface\ICampusService.cs" />
+    <Compile Include="Mapper\AssetHistoryMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\AssetMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\AssetTypeAssetHistoryMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\AssetTypeAssetMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\AssetTypeHistoryMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\AssetTypeMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BadgeHistoryMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BadgeMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BadgeTypeBadgeHistoryMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BadgeTypeBadgeMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\BadgeTypeHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Mapper\BadgeTypeMapper.cs">
@@ -63,52 +93,73 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\CampuMapper.cs">
+    <Compile Include="Mapper\CampusHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\EmployeeRoleMapper.cs">
+    <Compile Include="Mapper\CampusLocationHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\EmpRefMapper.cs">
+    <Compile Include="Mapper\CampusLocationMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\LogCounterMapper.cs">
+    <Compile Include="Mapper\CampusMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\RoleMapper.cs">
+    <Compile Include="Mapper\CampusStationHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\RoomMapper.cs">
+    <Compile Include="Mapper\CampusStationMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\SecuredAreaMapper.cs">
+    <Compile Include="Mapper\CompanyHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\sysdiagramMapper.cs">
+    <Compile Include="Mapper\CompanyMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\TenantDepartmentMapper.cs">
+    <Compile Include="Mapper\ContactMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorCheckInOutMapper.cs">
+    <Compile Include="Mapper\LocationHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorDetailMapper.cs">
+    <Compile Include="Mapper\LocationMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorFileMapper.cs">
+    <Compile Include="Mapper\LogMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorLogAccessIDMapper.cs">
+    <Compile Include="Mapper\LogVisitorMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorLogMapper.cs">
+    <Compile Include="Mapper\StationHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorLogRoomIDMapper.cs">
+    <Compile Include="Mapper\StationMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitHistoryMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorBadgeMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorCompanyMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Mapper\VisitorMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitorVisitMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\VisitVisitorHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

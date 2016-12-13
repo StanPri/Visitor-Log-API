@@ -10,7 +10,7 @@ namespace VL.Business.Services
     {
         public void SetUp(IRegisterComponent registerComponent)
         {
-            registerComponent.RegisterType<IVisitorLogService, VisitorLogService>();
+            registerComponent.RegisterType<ICampusService, CampusService>();
         }
     }
 }

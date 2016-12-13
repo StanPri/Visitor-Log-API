@@ -125,7 +125,7 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\VisitorLogController.cs" />
+    <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Filters\WinAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

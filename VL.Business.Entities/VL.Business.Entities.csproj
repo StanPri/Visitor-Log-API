@@ -48,10 +48,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessAreaEntity.cs">
+    <Compile Include="AssetDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="BadgeTypeEntity.cs">
+    <Compile Include="AssetHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssetTypeAssetDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssetTypeAssetHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssetTypeDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssetTypeHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BadgeDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BadgeHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BadgeTypeBadgeDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BadgeTypeBadgeHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BadgeTypeDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BadgeTypeHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessEntities.cs">
@@ -59,53 +89,74 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CampuEntity.cs">
+    <Compile Include="CampusDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeRoleEntity.cs">
+    <Compile Include="CampusHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="EmpRefEntity.cs">
+    <Compile Include="CampusLocationDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogCounterEntity.cs">
+    <Compile Include="CampusLocationHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampusStationDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CampusStationHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationHistoryDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDTO.cs">
+      <DependentUpon>BusinessEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogVisitorDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleEntity.cs">
+    <Compile Include="StationDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="RoomEntity.cs">
+    <Compile Include="StationHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="SecuredAreaEntity.cs">
+    <Compile Include="VisitDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagramEntity.cs">
+    <Compile Include="VisitHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TenantDepartmentEntity.cs">
+    <Compile Include="VisitorBadgeDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="VisitorCheckInOutEntity.cs">
+    <Compile Include="VisitorCompanyDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="VisitorDetailEntity.cs">
+    <Compile Include="VisitorDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="VisitorEntity.cs">
+    <Compile Include="VisitorHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="VisitorFileEntity.cs">
+    <Compile Include="VisitorVisitDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="VisitorLogAccessIDEntity.cs">
-      <DependentUpon>BusinessEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VisitorLogEntity.cs">
-      <DependentUpon>BusinessEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VisitorLogRoomIDEntity.cs">
+    <Compile Include="VisitVisitorHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>

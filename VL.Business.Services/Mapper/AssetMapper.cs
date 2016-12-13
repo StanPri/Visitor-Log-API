@@ -19,69 +19,71 @@ namespace VL.Business.Services.Mapper
     using VL.Data.Model;
     
     /// <summary>
-    /// DTO Mapper for <see cref="Visitor"/> and <see cref="VisitorDTO"/>.
+    /// DTO Mapper for <see cref="Asset"/> and <see cref="AssetDTO"/>.
     /// </summary>
-    static public partial class VisitorMapper
+    static public partial class AssetMapper
     {
         /// <summary>
         /// Invoked when <see cref="ToDTO"/> operation is about to return.
         /// </summary>
-        /// <param name="dto"><see cref="VisitorDTO"/> converted from <see cref="Visitor"/>.</param>
-        static partial void OnDTO(this Visitor entity, VisitorDTO dto);
+        /// <param name="dto"><see cref="AssetDTO"/> converted from <see cref="Asset"/>.</param>
+        static partial void OnDTO(this Asset entity, AssetDTO dto);
        
         /// <summary>
         /// Invoked when <see cref="ToEntity"/> operation is about to return.
         /// </summary>
-        /// <param name="entity"><see cref="Visitor"/> converted from <see cref="VisitorDTO"/>.</param>
-        static partial void OnEntity(this VisitorDTO dto, Visitor entity);
+        /// <param name="entity"><see cref="Asset"/> converted from <see cref="AssetDTO"/>.</param>
+        static partial void OnEntity(this AssetDTO dto, Asset entity);
     
     
         /// <summary>
-        /// Converts this instance of <see cref="VisitorDTO"/> to an instance of <see cref="Visitor"/>.
+        /// Converts this instance of <see cref="AssetDTO"/> to an instance of <see cref="Asset"/>.
         /// </summary>
-        /// <param name="dto"><see cref="VisitorDTO"/> to convert.</param>
-        public static Visitor ToEntity(this VisitorDTO dto)
+        /// <param name="dto"><see cref="AssetDTO"/> to convert.</param>
+        public static Asset ToEntity(this AssetDTO dto)
         {
             if (dto == null) return null;
     
-            var entity = new Visitor();
+            var entity = new Asset();
                  
             entity.ID = dto.ID;     
-            entity.FirstName = dto.FirstName;     
-            entity.LastName = dto.LastName;     
+            entity.Name = dto.Name;     
             entity.CreatedByUserID = dto.CreatedByUserID;     
-            entity.PersonIDCardNumber = dto.PersonIDCardNumber;        
+            entity.CreateDate = dto.CreateDate;     
+            entity.ModifiedByUserID = dto.ModifiedByUserID;     
+            entity.ModifiedDate = dto.ModifiedDate;        
             dto.OnEntity(entity);
     
             return entity;
         }
     
         /// <summary>
-        /// Converts this instance of <see cref="Visitor"/> to an instance of <see cref="VisitorDTO"/>.
+        /// Converts this instance of <see cref="Asset"/> to an instance of <see cref="AssetDTO"/>.
         /// </summary>
-        /// <param name="entity"><see cref="Visitor"/> to convert.</param>
-        public static VisitorDTO ToDTO(this Visitor entity)
+        /// <param name="entity"><see cref="Asset"/> to convert.</param>
+        public static AssetDTO ToDTO(this Asset entity)
         {
             if (entity == null) return null;
     
-            var dto = new VisitorDTO();
+            var dto = new AssetDTO();
                  
             dto.ID = entity.ID;     
-            dto.FirstName = entity.FirstName;     
-            dto.LastName = entity.LastName;     
+            dto.Name = entity.Name;     
             dto.CreatedByUserID = entity.CreatedByUserID;     
-            dto.PersonIDCardNumber = entity.PersonIDCardNumber;
+            dto.CreateDate = entity.CreateDate;     
+            dto.ModifiedByUserID = entity.ModifiedByUserID;     
+            dto.ModifiedDate = entity.ModifiedDate;
             entity.OnDTO(dto);
     
             return dto;
         }
     
         /// <summary>
-        /// Converts each instance of <see cref="VisitorDTO"/> to an instance of <see cref="Visitor"/>.
+        /// Converts each instance of <see cref="AssetDTO"/> to an instance of <see cref="Asset"/>.
         /// </summary>
         /// <param name="dtos"></param>
         /// <returns></returns>
-        public static List<Visitor> ToEntities(this IEnumerable<VisitorDTO> dtos)
+        public static List<Asset> ToEntities(this IEnumerable<AssetDTO> dtos)
         {
             if (dtos == null) return null;
     
@@ -89,11 +91,11 @@ namespace VL.Business.Services.Mapper
         }
     
         /// <summary>
-        /// Converts each instance of <see cref="Visitor"/> to an instance of <see cref="VisitorDTO"/>.
+        /// Converts each instance of <see cref="Asset"/> to an instance of <see cref="AssetDTO"/>.
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public static List<VisitorDTO> ToDTOs(this IEnumerable<Visitor> entities)
+        public static List<AssetDTO> ToDTOs(this IEnumerable<Asset> entities)
         {
             if (entities == null) return null;
     

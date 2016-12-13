@@ -19,69 +19,75 @@ namespace VL.Business.Services.Mapper
     using VL.Data.Model;
     
     /// <summary>
-    /// DTO Mapper for <see cref="Visitor"/> and <see cref="VisitorDTO"/>.
+    /// DTO Mapper for <see cref="Contact"/> and <see cref="ContactDTO"/>.
     /// </summary>
-    static public partial class VisitorMapper
+    static public partial class ContactMapper
     {
         /// <summary>
         /// Invoked when <see cref="ToDTO"/> operation is about to return.
         /// </summary>
-        /// <param name="dto"><see cref="VisitorDTO"/> converted from <see cref="Visitor"/>.</param>
-        static partial void OnDTO(this Visitor entity, VisitorDTO dto);
+        /// <param name="dto"><see cref="ContactDTO"/> converted from <see cref="Contact"/>.</param>
+        static partial void OnDTO(this Contact entity, ContactDTO dto);
        
         /// <summary>
         /// Invoked when <see cref="ToEntity"/> operation is about to return.
         /// </summary>
-        /// <param name="entity"><see cref="Visitor"/> converted from <see cref="VisitorDTO"/>.</param>
-        static partial void OnEntity(this VisitorDTO dto, Visitor entity);
+        /// <param name="entity"><see cref="Contact"/> converted from <see cref="ContactDTO"/>.</param>
+        static partial void OnEntity(this ContactDTO dto, Contact entity);
     
     
         /// <summary>
-        /// Converts this instance of <see cref="VisitorDTO"/> to an instance of <see cref="Visitor"/>.
+        /// Converts this instance of <see cref="ContactDTO"/> to an instance of <see cref="Contact"/>.
         /// </summary>
-        /// <param name="dto"><see cref="VisitorDTO"/> to convert.</param>
-        public static Visitor ToEntity(this VisitorDTO dto)
+        /// <param name="dto"><see cref="ContactDTO"/> to convert.</param>
+        public static Contact ToEntity(this ContactDTO dto)
         {
             if (dto == null) return null;
     
-            var entity = new Visitor();
+            var entity = new Contact();
                  
             entity.ID = dto.ID;     
-            entity.FirstName = dto.FirstName;     
-            entity.LastName = dto.LastName;     
+            entity.ContactUserID = dto.ContactUserID;     
+            entity.Phone = dto.Phone;     
+            entity.Mobile = dto.Mobile;     
             entity.CreatedByUserID = dto.CreatedByUserID;     
-            entity.PersonIDCardNumber = dto.PersonIDCardNumber;        
+            entity.CreatedDate = dto.CreatedDate;     
+            entity.ModifiedByUserID = dto.ModifiedByUserID;     
+            entity.ModifiedDate = dto.ModifiedDate;        
             dto.OnEntity(entity);
     
             return entity;
         }
     
         /// <summary>
-        /// Converts this instance of <see cref="Visitor"/> to an instance of <see cref="VisitorDTO"/>.
+        /// Converts this instance of <see cref="Contact"/> to an instance of <see cref="ContactDTO"/>.
         /// </summary>
-        /// <param name="entity"><see cref="Visitor"/> to convert.</param>
-        public static VisitorDTO ToDTO(this Visitor entity)
+        /// <param name="entity"><see cref="Contact"/> to convert.</param>
+        public static ContactDTO ToDTO(this Contact entity)
         {
             if (entity == null) return null;
     
-            var dto = new VisitorDTO();
+            var dto = new ContactDTO();
                  
             dto.ID = entity.ID;     
-            dto.FirstName = entity.FirstName;     
-            dto.LastName = entity.LastName;     
+            dto.ContactUserID = entity.ContactUserID;     
+            dto.Phone = entity.Phone;     
+            dto.Mobile = entity.Mobile;     
             dto.CreatedByUserID = entity.CreatedByUserID;     
-            dto.PersonIDCardNumber = entity.PersonIDCardNumber;
+            dto.CreatedDate = entity.CreatedDate;     
+            dto.ModifiedByUserID = entity.ModifiedByUserID;     
+            dto.ModifiedDate = entity.ModifiedDate;
             entity.OnDTO(dto);
     
             return dto;
         }
     
         /// <summary>
-        /// Converts each instance of <see cref="VisitorDTO"/> to an instance of <see cref="Visitor"/>.
+        /// Converts each instance of <see cref="ContactDTO"/> to an instance of <see cref="Contact"/>.
         /// </summary>
         /// <param name="dtos"></param>
         /// <returns></returns>
-        public static List<Visitor> ToEntities(this IEnumerable<VisitorDTO> dtos)
+        public static List<Contact> ToEntities(this IEnumerable<ContactDTO> dtos)
         {
             if (dtos == null) return null;
     
@@ -89,11 +95,11 @@ namespace VL.Business.Services.Mapper
         }
     
         /// <summary>
-        /// Converts each instance of <see cref="Visitor"/> to an instance of <see cref="VisitorDTO"/>.
+        /// Converts each instance of <see cref="Contact"/> to an instance of <see cref="ContactDTO"/>.
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public static List<VisitorDTO> ToDTOs(this IEnumerable<Visitor> entities)
+        public static List<ContactDTO> ToDTOs(this IEnumerable<Contact> entities)
         {
             if (entities == null) return null;
     
