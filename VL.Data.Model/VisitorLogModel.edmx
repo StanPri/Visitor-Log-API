@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VL.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VL.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asset">
           <Key>
             <PropertyRef Name="ID" />
@@ -264,6 +264,10 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Room" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
@@ -795,8 +799,7 @@
             <End Role="LogVisitor" EntitySet="LogVisitor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VL.Data.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1084,6 +1087,10 @@
           <NavigationProperty Name="CampusLocations" Relationship="Self.FK_SiteRoom_Room" FromRole="Location" ToRole="CampusLocation" />
           <NavigationProperty Name="LocationHistories" Relationship="Self.FK_LocationHistory_Location" FromRole="Location" ToRole="LocationHistory" />
           <NavigationProperty Name="LogVisitors" Relationship="Self.FK_LogVisitor_Location" FromRole="Location" ToRole="LogVisitor" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="LocationHistory">
           <Key>
@@ -1909,6 +1916,10 @@
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="VL.Data.Model.Location">
               <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />

@@ -5,7 +5,7 @@
 //     Manual changes to this file may cause unexpected behavior in your application.
 //     Manual changes to this file will be overwritten if the code is regenerated.
 //
-//  Author: Johnny Vu
+//  Author: Henry Rodriguez
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -45,6 +45,18 @@ namespace VL.Business.Entities
     
         [DataMember()]
         public System.DateTime ModifiedDate { get; set; }
+    
+        [DataMember()]
+        public int Floor { get; set; }
+    
+        [DataMember()]
+        public string Room { get; set; }
+    
+        [DataMember()]
+        public string Phone { get; set; }
+    
+        [DataMember()]
+        public bool IsActive { get; set; }
     
         #region [Navigation Properties]
     

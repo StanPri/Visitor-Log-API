@@ -5,7 +5,7 @@
 //     Manual changes to this file may cause unexpected behavior in your application.
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // 
-//  Author: Johnny Vu
+//  Author: Henry Rodriguez
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -51,7 +51,11 @@ namespace VL.Business.Services.Mapper
             entity.CreatedByUserID = dto.CreatedByUserID;     
             entity.CreatedDate = dto.CreatedDate;     
             entity.ModifiedByUserID = dto.ModifiedByUserID;     
-            entity.ModifiedDate = dto.ModifiedDate;        
+            entity.ModifiedDate = dto.ModifiedDate;     
+            entity.Floor = dto.Floor;     
+            entity.Room = dto.Room;     
+            entity.Phone = dto.Phone;     
+            entity.IsActive = dto.IsActive;        
             dto.OnEntity(entity);
     
             return entity;
@@ -72,7 +76,11 @@ namespace VL.Business.Services.Mapper
             dto.CreatedByUserID = entity.CreatedByUserID;     
             dto.CreatedDate = entity.CreatedDate;     
             dto.ModifiedByUserID = entity.ModifiedByUserID;     
-            dto.ModifiedDate = entity.ModifiedDate;
+            dto.ModifiedDate = entity.ModifiedDate;     
+            dto.Floor = entity.Floor;     
+            dto.Room = entity.Room;     
+            dto.Phone = entity.Phone;     
+            dto.IsActive = entity.IsActive;
             entity.OnDTO(dto);
     
             return dto;

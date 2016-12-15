@@ -140,7 +140,7 @@ public void WriteHeader(CodeStringGenerator codeStringGenerator, EntityFramework
 // <#=CodeGenerationTools.GetResourceString("Template_GeneratedCodeCommentLine2")#>
 // <#=CodeGenerationTools.GetResourceString("Template_GeneratedCodeCommentLine3")#>
 // 
-//  Author: Johnny Vu
+//  Author: Henry Rodriguez
 // </auto-generated>
 //------------------------------------------------------------------------------
 <#=codeStringGenerator.UsingDirectives(inHeader: true)#>

@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -89,6 +90,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validation\CampusValidator.cs" />
     <Compile Include="CampusDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
