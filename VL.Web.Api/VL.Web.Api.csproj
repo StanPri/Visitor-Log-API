@@ -141,9 +141,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ITSD.BPAS.Resolver\ITSD.BPAS.Resolver.csproj">
       <Project>{b66d9b21-b96d-43d1-a212-2c8f5b8a5150}</Project>
@@ -157,9 +155,6 @@
       <Project>{8c5a2de0-c451-4033-bf59-03b71ec91342}</Project>
       <Name>VL.Business.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
