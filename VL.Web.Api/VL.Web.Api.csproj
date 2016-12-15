@@ -155,6 +155,10 @@
       <Project>{8c5a2de0-c451-4033-bf59-03b71ec91342}</Project>
       <Name>VL.Business.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VL.Web.Common\VL.Web.Common.csproj">
+      <Project>{73496d99-356a-428a-91c9-cdf7580d8d64}</Project>
+      <Name>VL.Web.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

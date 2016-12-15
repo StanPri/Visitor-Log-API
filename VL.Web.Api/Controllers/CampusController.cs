@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using VL.Business.Entities;
 using VL.Business.Services.Interface;
-//using VL.Web.Common.Validation;
+using VL.Web.Common.Validation;
 
 namespace VL.Web.Api.Controllers
 {
@@ -48,7 +48,8 @@ namespace VL.Web.Api.Controllers
             return NotFound();
         }
 
-        //[ValidateModel]
+        [HttpPost]
+        [ValidateModel]
         public HttpResponseMessage CreateCampus([FromBody]CampusDTO campusDTO )
         {
             int newID = _campusService.CreateCampus(campusDTO);
@@ -57,7 +58,6 @@ namespace VL.Web.Api.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.Created);
             response.Headers.Location = new System.Uri(uri);
             return response;
-
         }
 
     }
