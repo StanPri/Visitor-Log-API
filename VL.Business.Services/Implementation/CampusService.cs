@@ -59,9 +59,10 @@ namespace VL.Business.Services.Implementation
         {
             using(var scope = new TransactionScope())
             {
-                //Get data object
+                //Get DTO and assign default properties
                 var c = new Campus();
                 c = campusDTO.ToEntity();
+                c.CreatedDate = c.ModifiedDate = System.DateTime.Now;
 
                 //Insert data object
                 _unitOfWork.CampusRepository.Insert(c);

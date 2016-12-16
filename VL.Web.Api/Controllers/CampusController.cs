@@ -49,6 +49,7 @@ namespace VL.Web.Api.Controllers
         }
 
         [HttpPost]
+        [Route("")]
         [ValidateModel]
         public HttpResponseMessage CreateCampus([FromBody]CampusDTO campusDTO )
         {
