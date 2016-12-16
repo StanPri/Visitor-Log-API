@@ -8,8 +8,8 @@ namespace VL.Business.Services.Interface
         CampusDTO GetCampusByID(int campusID);
         IEnumerable<CampusDTO> GetAllCampuses();
         int CreateCampus(CampusDTO campusDTO);
-        bool UpdateCampus(int visitorLogID, CampusDTO campusDTO);
-        bool DeleteCampus(int visitorLogID);
+        bool UpdateCampus(int campusID, CampusDTO campusDTO);
+        bool DeleteCampus(int campusID);
 
     }
 }

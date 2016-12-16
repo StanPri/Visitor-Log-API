@@ -8,7 +8,10 @@ namespace VL.Web.Api
     {
         public static void Register(HttpConfiguration config)
         {
-
+            //Register CacheCow
+            var cacheCow = new CacheCow.Server.CachingHandler(config, "");
+            config.MessageHandlers.Add(cacheCow);            
+            
             //Enable CORS
             //http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
 

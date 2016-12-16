@@ -29,10 +29,7 @@ namespace VL.Business.Services.Implementation
         public CampusDTO GetCampusByID(int campusID)
         {
             var campus = _unitOfWork.CampusRepository.GetByID(campusID);
-            if(campus != null)
-            {
-                return campus.ToDTO();
-            }
+            if(campus != null) return campus.ToDTO();
             return null;
         }
 
@@ -43,10 +40,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<CampusDTO> GetAllCampuses()
         {
             var campuses = _unitOfWork.CampusRepository.GetAll();
-            if (campuses.Any())
-            {
-                return campuses.ToDTOs();
-            }
+            if (campuses.Any()) return campuses.ToDTOs();
             return null;
         }
 

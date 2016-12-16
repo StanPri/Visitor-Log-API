@@ -11,6 +11,7 @@ namespace VL.Business.Services
         public void SetUp(IRegisterComponent registerComponent)
         {
             registerComponent.RegisterType<ICampusService, CampusService>();
+            registerComponent.RegisterType<ILocationService, LocationService>();
         }
     }
 }

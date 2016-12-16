@@ -16,7 +16,6 @@ namespace VL.Data.Model
         #endregion
 
         #region Private member variables...
-
         private readonly VisitorLogContext _context = null;
         private GenericRepository<Asset> _assetRepository;
         private GenericRepository<AssetHistory> _assetHistoryRepository;
@@ -37,12 +36,9 @@ namespace VL.Data.Model
         private GenericRepository<StationHistory> _stationHistoryRepository;
         private GenericRepository<Visit> _visitRepository;
         private GenericRepository<Visitor> _visitorRepository;
-
         #endregion
 
         #region Public Repository Creation properties...
-
-
         public GenericRepository<Asset> AssetRepository
         {
             get
@@ -214,7 +210,6 @@ namespace VL.Data.Model
                 return _visitorRepository;
             }
         }
-
         #endregion
 
         #region Public member methods...
