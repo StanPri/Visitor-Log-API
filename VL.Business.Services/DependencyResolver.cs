@@ -10,7 +10,10 @@ namespace VL.Business.Services
     {
         public void SetUp(IRegisterComponent registerComponent)
         {
+            registerComponent.RegisterType<IAssetService, AssetService>();
+            registerComponent.RegisterType<IBadgeService, BadgeService>();
             registerComponent.RegisterType<ICampusService, CampusService>();
+            registerComponent.RegisterType<ICompanyService, CompanyService>();
             registerComponent.RegisterType<ILocationService, LocationService>();
         }
     }

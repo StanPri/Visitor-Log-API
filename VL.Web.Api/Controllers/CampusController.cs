@@ -28,8 +28,7 @@ namespace VL.Web.Api.Controllers
         public IHttpActionResult CampusByID(int id)
         {
             var campus = _campusService.GetCampusByID(id);
-            if (campus != null)
-                return Ok(campus);
+            if (campus != null) return Ok(campus);
             return NotFound();
         }
 
@@ -42,8 +41,7 @@ namespace VL.Web.Api.Controllers
             if (campuses != null)
             {
                 var campusDTOs = campuses as List<CampusDTO> ?? campuses.ToList();
-                if (campusDTOs.Any())
-                    return Ok(campuses);
+                if (campusDTOs.Any()) return Ok(campuses);
             }
             return NotFound();
         }
@@ -60,6 +58,5 @@ namespace VL.Web.Api.Controllers
             response.Headers.Location = new System.Uri(uri);
             return response;
         }
-
     }
 }

@@ -138,7 +138,10 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AssetController.cs" />
+    <Compile Include="Controllers\BadgeController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Filters\WinAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">

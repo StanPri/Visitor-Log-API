@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Implementation\AssetService.cs" />
+    <Compile Include="Implementation\BadgeService.cs" />
     <Compile Include="Implementation\CampusService.cs" />
+    <Compile Include="Implementation\CompanyService.cs" />
     <Compile Include="Implementation\LocationService.cs" />
     <Compile Include="Interface\IAssetService.cs" />
     <Compile Include="Interface\IBadgeService.cs" />
