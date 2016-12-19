@@ -90,7 +90,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Partials\Campus.cs" />
+    <Compile Include="Validators\CampusValidator.cs" />
     <Compile Include="CampusDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
@@ -130,7 +130,7 @@
     <Compile Include="LogVisitorDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Partials\Location.cs" />
+    <Compile Include="Validators\LocationValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StationDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
