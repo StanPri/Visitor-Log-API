@@ -52,8 +52,15 @@
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="Implementation\CampusService.cs" />
     <Compile Include="Implementation\LocationService.cs" />
+    <Compile Include="Interface\IAssetService.cs" />
+    <Compile Include="Interface\IBadgeService.cs" />
     <Compile Include="Interface\ICampusService.cs" />
+    <Compile Include="Interface\ICompanyService.cs" />
+    <Compile Include="Interface\IContactService.cs" />
     <Compile Include="Interface\ILocationService.cs" />
+    <Compile Include="Interface\ILogService.cs" />
+    <Compile Include="Interface\IVisitService.cs" />
+    <Compile Include="Interface\IVisitorService.cs" />
     <Compile Include="Mapper\AssetHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>

@@ -29,6 +29,7 @@ namespace VL.Web.Api.Controllers
             return NotFound();
         }
 
+        //POST: /locations
         [HttpPost]
         [Route("")]
         [ValidateModel]
@@ -41,7 +42,7 @@ namespace VL.Web.Api.Controllers
             return response;
         }
         
-        // GET: locations
+        //GET: /locations
         [HttpGet]
         [Route("")]
         public IHttpActionResult AllLocations()
@@ -55,6 +56,7 @@ namespace VL.Web.Api.Controllers
             return NotFound();
         }
 
+        //GET: /campuses/5/locations
         [HttpGet]
         [Route("~/campuses/{campusID:int}/locations", Name = "")]
         public IHttpActionResult LocationsByCampusID(int campusID)
