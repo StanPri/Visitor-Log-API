@@ -14,10 +14,14 @@ namespace VL.Web.Api.Controllers
     {
         private readonly IAssetService _assetService;
 
+        #region Constructor
         public AssetController(IAssetService assetService)
         {
             _assetService = assetService;
         }
+        #endregion
+
+        #region Asset
 
         // GET: assets
         [HttpGet]
@@ -42,6 +46,34 @@ namespace VL.Web.Api.Controllers
             if (asset != null) return Ok(asset);
             return NotFound();
         }
+        #endregion
+
+        #region AssetType
+        // GET: assettypes
+        [HttpGet]
+        [Route("~/assettypes")]
+        public IHttpActionResult AllAssetTypes()
+        {
+            var assets = _assetService.GetAllAssetTypes();
+            if (assets != null)
+            {
+                var assetsDTOs = assets as List<AssetTypeDTO> ?? assets.ToList();
+                if (assetsDTOs.Any()) return Ok(assetsDTOs);
+            }
+            return NotFound();
+        }
+
+        // GET: assettypes/5
+        [HttpGet]
+        [Route("~/assettypes/{id:int}", Name = "AssetTypeByIDRoute")]
+        public IHttpActionResult AssetTypeByID(int id)
+        {
+            var asset = _assetService.GetAssetTypeByID(id);
+            if (asset != null) return Ok(asset);
+            return NotFound();
+        }
+
+        #endregion
 
     }
 }
