@@ -19,6 +19,8 @@ namespace VL.Web.Api.Controllers
             _badgeService = badgeService;
         }
 
+        #region Badge
+
         // GET: badges
         [HttpGet]
         [Route("")]
@@ -42,5 +44,42 @@ namespace VL.Web.Api.Controllers
             if (badge != null) return Ok(badge);
             return NotFound();
         }
+
+        #endregion
+
+        #region BadgeHistory
+
+        #endregion
+
+        #region BadgeType
+        // GET: badgetypes
+        [HttpGet]
+        [Route("~/badgetypes")]
+        public IHttpActionResult AllBadgeTypes()
+        {
+            var badgeTypes = _badgeService.GetAllBadgeTypes();
+            if (badgeTypes != null)
+            {
+                var badgeTypeDTOs = badgeTypes as List<BadgeTypeDTO> ?? badgeTypes.ToList();
+                if (badgeTypeDTOs.Any()) return Ok(badgeTypeDTOs);
+            }
+            return NotFound();
+        }
+
+        // GET: badgetype/5
+        [HttpGet]
+        [Route("~/badgetypes/{id:int}", Name = "BadgeTypeByIDRoute")]
+        public IHttpActionResult BadgeTypeByID(int id)
+        {
+            var badgeType = _badgeService.GetBadgeTypeByID(id);
+            if (badgeType != null) return Ok(badgeType);
+            return NotFound();
+        }
+
+        #endregion
+
+        #region BadgeTypeHistory
+
+        #endregion
     }
 }

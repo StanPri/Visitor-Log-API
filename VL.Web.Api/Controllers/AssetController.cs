@@ -48,6 +48,10 @@ namespace VL.Web.Api.Controllers
         }
         #endregion
 
+        #region AssetHistory
+
+        #endregion
+
         #region AssetType
         // GET: assettypes
         [HttpGet]
@@ -72,6 +76,10 @@ namespace VL.Web.Api.Controllers
             if (asset != null) return Ok(asset);
             return NotFound();
         }
+
+        #endregion
+
+        #region AssetTypeHistory
 
         #endregion
 
