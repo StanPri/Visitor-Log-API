@@ -6,9 +6,10 @@ namespace VL.Business.Services.Interface
     public interface IVisitorService
     {
         VisitorDTO GetVisitorByID(int visitorID);
-        IEnumerable<CampusDTO> GetAllVisitors();
+        IEnumerable<VisitorDTO> GetAllVisitors();
+
         int CreateVisitor(VisitorDTO visitorDTO);
-        bool UpdateVisitor(int visitorID, VisitorDTO  visitorDTO);
+        bool UpdateVisitor(int visitorID, VisitorDTO visitorDTO);
         bool DeleteVisitor(int visitorID);
     }
 }

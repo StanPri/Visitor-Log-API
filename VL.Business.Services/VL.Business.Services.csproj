@@ -54,7 +54,12 @@
     <Compile Include="Implementation\BadgeService.cs" />
     <Compile Include="Implementation\CampusService.cs" />
     <Compile Include="Implementation\CompanyService.cs" />
+    <Compile Include="Implementation\ContactService.cs" />
     <Compile Include="Implementation\LocationService.cs" />
+    <Compile Include="Implementation\LogService.cs" />
+    <Compile Include="Implementation\StationService.cs" />
+    <Compile Include="Implementation\VisitorService.cs" />
+    <Compile Include="Implementation\VisitService.cs" />
     <Compile Include="Interface\IAssetService.cs" />
     <Compile Include="Interface\IBadgeService.cs" />
     <Compile Include="Interface\ICampusService.cs" />
@@ -62,6 +67,7 @@
     <Compile Include="Interface\IContactService.cs" />
     <Compile Include="Interface\ILocationService.cs" />
     <Compile Include="Interface\ILogService.cs" />
+    <Compile Include="Interface\IStationService.cs" />
     <Compile Include="Interface\IVisitService.cs" />
     <Compile Include="Interface\IVisitorService.cs" />
     <Compile Include="Mapper\AssetHistoryMapper.cs">

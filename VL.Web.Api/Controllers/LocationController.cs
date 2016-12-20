@@ -51,7 +51,7 @@ namespace VL.Web.Api.Controllers
             if (locations != null)
             {
                 var locationDTOs = locations as List<LocationDTO> ?? locations.ToList();
-                if (locationDTOs.Any()) return Ok(locations);
+                if (locationDTOs.Any()) return Ok(locationDTOs);
             }
             return NotFound();
         }
@@ -65,7 +65,7 @@ namespace VL.Web.Api.Controllers
             if(locations != null)
             {
                 var locationModels = locations as List<LocationDTO> ?? locations.ToList();
-                if (locations.Any()) return Ok(locationModels);
+                if (locationModels.Any()) return Ok(locationModels);
             }
             return NotFound();
         }

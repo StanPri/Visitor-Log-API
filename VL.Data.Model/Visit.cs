@@ -21,10 +21,10 @@ namespace VL.Data.Model
         }
     
         public int ID { get; set; }
-        public Nullable<System.DateTime> ScheduledCheckInTime { get; set; }
-        public Nullable<System.DateTime> ScheduledCheckOutTime { get; set; }
-        public System.DateTime ActualCheckInTime { get; set; }
-        public System.DateTime ActualCheckOutTime { get; set; }
+        public System.DateTime ScheduledCheckInTime { get; set; }
+        public System.DateTime ScheduledCheckOutTime { get; set; }
+        public Nullable<System.DateTime> ActualCheckInTime { get; set; }
+        public Nullable<System.DateTime> ActualCheckOutTime { get; set; }
         public string CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedByUserID { get; set; }

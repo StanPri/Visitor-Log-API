@@ -41,7 +41,7 @@ namespace VL.Web.Api.Controllers
             if (campuses != null)
             {
                 var campusDTOs = campuses as List<CampusDTO> ?? campuses.ToList();
-                if (campusDTOs.Any()) return Ok(campuses);
+                if (campusDTOs.Any()) return Ok(campusDTOs);
             }
             return NotFound();
         }

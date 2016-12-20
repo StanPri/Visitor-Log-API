@@ -3,7 +3,7 @@ using VL.Business.Entities;
 
 namespace VL.Business.Services.Interface
 {
-    interface IVisitService
+    public interface IVisitService
     {
         VisitDTO GetVisitByID(int visitID);
         IEnumerable<VisitDTO> GetAllVisits();

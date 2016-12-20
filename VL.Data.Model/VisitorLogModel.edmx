@@ -231,7 +231,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -345,10 +345,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ScheduledCheckInTime" Type="datetime" />
-          <Property Name="ScheduledCheckOutTime" Type="datetime" />
-          <Property Name="ActualCheckInTime" Type="datetime" Nullable="false" />
-          <Property Name="ActualCheckOutTime" Type="datetime" Nullable="false" />
+          <Property Name="ScheduledCheckInTime" Type="datetime" Nullable="false" />
+          <Property Name="ScheduledCheckOutTime" Type="datetime" Nullable="false" />
+          <Property Name="ActualCheckInTime" Type="datetime" />
+          <Property Name="ActualCheckOutTime" Type="datetime" />
           <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
@@ -375,8 +375,11 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="CreatedByUserID" Type="int" Nullable="false" />
           <Property Name="PersonIDCardNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="VisitorBadge">
           <Key>
@@ -1045,7 +1048,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="VisitorCompanies" Relationship="Self.FK_VisitorCompany_Company" FromRole="Company" ToRole="VisitorCompany" />
@@ -1137,7 +1140,7 @@
           <NavigationProperty Name="Contact" Relationship="Self.FK_LogVisit_Contact" FromRole="LogVisitor" ToRole="Contact" />
           <NavigationProperty Name="Location" Relationship="Self.FK_LogVisitor_Location" FromRole="LogVisitor" ToRole="Location" />
           <NavigationProperty Name="Log" Relationship="Self.FK_VisitorLog_Log" FromRole="LogVisitor" ToRole="Log" />
-          <NavigationProperty Name="Visitor" Relationship="Self.FK_LogVisitor_Visitor" FromRole="LogVisitor" ToRole="Visitor" />
+          <NavigationProperty Name="Visitor" Relationship="VL.Data.Model.FK_LogVisitor_Visitor" FromRole="LogVisitor" ToRole="Visitor" />
         </EntityType>
         <EntityType Name="Station">
           <Key>
@@ -1171,10 +1174,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ScheduledCheckInTime" Type="DateTime" Precision="3" />
-          <Property Name="ScheduledCheckOutTime" Type="DateTime" Precision="3" />
-          <Property Name="ActualCheckInTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ActualCheckOutTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ScheduledCheckInTime" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="ScheduledCheckOutTime" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="ActualCheckInTime" Type="DateTime" Precision="3" />
+          <Property Name="ActualCheckOutTime" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1195,20 +1198,6 @@
           <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="Visitor">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreatedByUserID" Type="Int32" Nullable="false" />
-          <Property Name="PersonIDCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LogVisitors" Relationship="Self.FK_LogVisitor_Visitor" FromRole="Visitor" ToRole="LogVisitor" />
-          <NavigationProperty Name="VisitorVisits" Relationship="Self.FK_VisitorAsset_Visitor" FromRole="Visitor" ToRole="VisitorVisit" />
-          <NavigationProperty Name="VisitorBadges" Relationship="Self.FK_VisitorBadge_Visitor" FromRole="Visitor" ToRole="VisitorBadge" />
-          <NavigationProperty Name="VisitorCompanies" Relationship="Self.FK_VisitorCompany_Visitor" FromRole="Visitor" ToRole="VisitorCompany" />
-        </EntityType>
         <EntityType Name="VisitorBadge">
           <Key>
             <PropertyRef Name="VisitorID" />
@@ -1221,7 +1210,7 @@
           <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Badge" Relationship="Self.FK_VisitorBadge_Badge" FromRole="VisitorBadge" ToRole="Badge" />
-          <NavigationProperty Name="Visitor" Relationship="Self.FK_VisitorBadge_Visitor" FromRole="VisitorBadge" ToRole="Visitor" />
+          <NavigationProperty Name="Visitor" Relationship="VL.Data.Model.FK_VisitorBadge_Visitor" FromRole="VisitorBadge" ToRole="Visitor" />
         </EntityType>
         <EntityType Name="VisitorCompany">
           <Key>
@@ -1235,7 +1224,7 @@
           <Property Name="ModifiedByUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_VisitorCompany_Company" FromRole="VisitorCompany" ToRole="Company" />
-          <NavigationProperty Name="Visitor" Relationship="Self.FK_VisitorCompany_Visitor" FromRole="VisitorCompany" ToRole="Visitor" />
+          <NavigationProperty Name="Visitor" Relationship="VL.Data.Model.FK_VisitorCompany_Visitor" FromRole="VisitorCompany" ToRole="Visitor" />
         </EntityType>
         <EntityType Name="VisitorHistory">
           <Key>
@@ -1265,7 +1254,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Asset" Relationship="Self.FK_VisitorAsset_Asset" FromRole="VisitorVisit" ToRole="Asset" />
           <NavigationProperty Name="Visit" Relationship="Self.FK_VisitorAsset_Visit" FromRole="VisitorVisit" ToRole="Visit" />
-          <NavigationProperty Name="Visitor" Relationship="Self.FK_VisitorAsset_Visitor" FromRole="VisitorVisit" ToRole="Visitor" />
+          <NavigationProperty Name="Visitor" Relationship="VL.Data.Model.FK_VisitorAsset_Visitor" FromRole="VisitorVisit" ToRole="Visitor" />
         </EntityType>
         <EntityType Name="VisitVisitorHistory">
           <Key>
@@ -1460,18 +1449,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LogVisitor_Visitor">
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
-          <End Role="LogVisitor" Type="Self.LogVisitor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="LogVisitor">
-              <PropertyRef Name="VisitorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_VisitorAsset_Visit">
           <End Role="Visit" Type="Self.Visit" Multiplicity="1" />
           <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
@@ -1481,42 +1458,6 @@
             </Principal>
             <Dependent Role="VisitorVisit">
               <PropertyRef Name="VisitID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VisitorAsset_Visitor">
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
-          <End Role="VisitorVisit" Type="Self.VisitorVisit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="VisitorVisit">
-              <PropertyRef Name="VisitorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VisitorBadge_Visitor">
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
-          <End Role="VisitorBadge" Type="Self.VisitorBadge" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="VisitorBadge">
-              <PropertyRef Name="VisitorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VisitorCompany_Visitor">
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="1" />
-          <End Role="VisitorCompany" Type="Self.VisitorCompany" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="VisitorCompany">
-              <PropertyRef Name="VisitorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1550,7 +1491,6 @@
           <EntitySet Name="StationHistories" EntityType="Self.StationHistory" />
           <EntitySet Name="Visits" EntityType="Self.Visit" />
           <EntitySet Name="VisitHistories" EntityType="Self.VisitHistory" />
-          <EntitySet Name="Visitors" EntityType="Self.Visitor" />
           <EntitySet Name="VisitorBadges" EntityType="Self.VisitorBadge" />
           <EntitySet Name="VisitorCompanies" EntityType="Self.VisitorCompany" />
           <EntitySet Name="VisitorHistories" EntityType="Self.VisitorHistory" />
@@ -1616,27 +1556,93 @@
             <End Role="Log" EntitySet="Logs" />
             <End Role="LogVisitor" EntitySet="LogVisitors" />
           </AssociationSet>
-          <AssociationSet Name="FK_LogVisitor_Visitor" Association="Self.FK_LogVisitor_Visitor">
-            <End Role="Visitor" EntitySet="Visitors" />
-            <End Role="LogVisitor" EntitySet="LogVisitors" />
-          </AssociationSet>
           <AssociationSet Name="FK_VisitorAsset_Visit" Association="Self.FK_VisitorAsset_Visit">
             <End Role="Visit" EntitySet="Visits" />
             <End Role="VisitorVisit" EntitySet="VisitorVisits" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorAsset_Visitor" Association="Self.FK_VisitorAsset_Visitor">
+          <EntitySet Name="Visitors" EntityType="VL.Data.Model.Visitor" />
+          <AssociationSet Name="FK_LogVisitor_Visitor" Association="VL.Data.Model.FK_LogVisitor_Visitor">
+            <End Role="Visitor" EntitySet="Visitors" />
+            <End Role="LogVisitor" EntitySet="LogVisitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitorAsset_Visitor" Association="VL.Data.Model.FK_VisitorAsset_Visitor">
             <End Role="Visitor" EntitySet="Visitors" />
             <End Role="VisitorVisit" EntitySet="VisitorVisits" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorBadge_Visitor" Association="Self.FK_VisitorBadge_Visitor">
+          <AssociationSet Name="FK_VisitorBadge_Visitor" Association="VL.Data.Model.FK_VisitorBadge_Visitor">
             <End Role="Visitor" EntitySet="Visitors" />
             <End Role="VisitorBadge" EntitySet="VisitorBadges" />
           </AssociationSet>
-          <AssociationSet Name="FK_VisitorCompany_Visitor" Association="Self.FK_VisitorCompany_Visitor">
+          <AssociationSet Name="FK_VisitorCompany_Visitor" Association="VL.Data.Model.FK_VisitorCompany_Visitor">
             <End Role="Visitor" EntitySet="Visitors" />
             <End Role="VisitorCompany" EntitySet="VisitorCompanies" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="Visitor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PersonIDCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LogVisitors" Relationship="VL.Data.Model.FK_LogVisitor_Visitor" FromRole="Visitor" ToRole="LogVisitor" />
+          <NavigationProperty Name="VisitorVisits" Relationship="VL.Data.Model.FK_VisitorAsset_Visitor" FromRole="Visitor" ToRole="VisitorVisit" />
+          <NavigationProperty Name="VisitorBadges" Relationship="VL.Data.Model.FK_VisitorBadge_Visitor" FromRole="Visitor" ToRole="VisitorBadge" />
+          <NavigationProperty Name="VisitorCompanies" Relationship="VL.Data.Model.FK_VisitorCompany_Visitor" FromRole="Visitor" ToRole="VisitorCompany" />
+        </EntityType>
+        <Association Name="FK_LogVisitor_Visitor">
+          <End Type="VL.Data.Model.Visitor" Role="Visitor" Multiplicity="1" />
+          <End Type="VL.Data.Model.LogVisitor" Role="LogVisitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogVisitor">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorAsset_Visitor">
+          <End Type="VL.Data.Model.Visitor" Role="Visitor" Multiplicity="1" />
+          <End Type="VL.Data.Model.VisitorVisit" Role="VisitorVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorVisit">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorBadge_Visitor">
+          <End Type="VL.Data.Model.Visitor" Role="Visitor" Multiplicity="1" />
+          <End Type="VL.Data.Model.VisitorBadge" Role="VisitorBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorBadge">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitorCompany_Visitor">
+          <End Type="VL.Data.Model.Visitor" Role="Visitor" Multiplicity="1" />
+          <End Type="VL.Data.Model.VisitorCompany" Role="VisitorCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitorCompany">
+              <PropertyRef Name="VisitorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2028,17 +2034,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Visitors">
-            <EntityTypeMapping TypeName="VL.Data.Model.Visitor">
-              <MappingFragment StoreEntitySet="Visitor">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
-                <ScalarProperty Name="PersonIDCardNumber" ColumnName="PersonIDCardNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VisitorBadges">
             <EntityTypeMapping TypeName="VL.Data.Model.VisitorBadge">
               <MappingFragment StoreEntitySet="VisitorBadge">
@@ -2101,6 +2096,20 @@
                 <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visitors">
+            <EntityTypeMapping TypeName="VL.Data.Model.Visitor">
+              <MappingFragment StoreEntitySet="Visitor">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="PersonIDCardNumber" ColumnName="PersonIDCardNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

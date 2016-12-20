@@ -49,8 +49,11 @@ namespace VL.Business.Services.Mapper
             entity.ID = dto.ID;     
             entity.FirstName = dto.FirstName;     
             entity.LastName = dto.LastName;     
+            entity.PersonIDCardNumber = dto.PersonIDCardNumber;     
             entity.CreatedByUserID = dto.CreatedByUserID;     
-            entity.PersonIDCardNumber = dto.PersonIDCardNumber;        
+            entity.CreatedDate = dto.CreatedDate;     
+            entity.ModifiedByUserID = dto.ModifiedByUserID;     
+            entity.ModifiedDate = dto.ModifiedDate;        
             dto.OnEntity(entity);
     
             return entity;
@@ -69,8 +72,11 @@ namespace VL.Business.Services.Mapper
             dto.ID = entity.ID;     
             dto.FirstName = entity.FirstName;     
             dto.LastName = entity.LastName;     
+            dto.PersonIDCardNumber = entity.PersonIDCardNumber;     
             dto.CreatedByUserID = entity.CreatedByUserID;     
-            dto.PersonIDCardNumber = entity.PersonIDCardNumber;
+            dto.CreatedDate = entity.CreatedDate;     
+            dto.ModifiedByUserID = entity.ModifiedByUserID;     
+            dto.ModifiedDate = entity.ModifiedDate;
             entity.OnDTO(dto);
     
             return dto;

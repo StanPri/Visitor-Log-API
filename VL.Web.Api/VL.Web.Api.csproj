@@ -142,7 +142,12 @@
     <Compile Include="Controllers\BadgeController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\StationController.cs" />
+    <Compile Include="Controllers\VisitController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Filters\WinAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -7,7 +7,7 @@ namespace VL.Business.Services.Interface
     public interface IContactService
     {
         ContactDTO GetContactByID(int contactID);
-        IEnumerable<ContactDTO> GetAllContactss();
+        IEnumerable<ContactDTO> GetAllContacts();
         int CreateContact(ContactDTO contactDTO);
         bool UpdateContact(int contactID, ContactDTO contactDTO);
         bool DeleteContact(int contactID);

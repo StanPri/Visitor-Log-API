@@ -27,8 +27,8 @@ namespace VL.Web.Api.Controllers
             var companies = _companyService.GetAllCompanies();
             if (companies != null)
             {
-                var companDTOs = companies as List<CompanyDTO> ?? companies.ToList();
-                if (companDTOs.Any()) return Ok(companies);
+                var companyDTOs = companies as List<CompanyDTO> ?? companies.ToList();
+                if (companyDTOs.Any()) return Ok(companyDTOs);
             }
             return NotFound();
         }

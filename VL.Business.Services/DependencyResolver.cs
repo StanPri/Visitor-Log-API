@@ -14,7 +14,12 @@ namespace VL.Business.Services
             registerComponent.RegisterType<IBadgeService, BadgeService>();
             registerComponent.RegisterType<ICampusService, CampusService>();
             registerComponent.RegisterType<ICompanyService, CompanyService>();
+            registerComponent.RegisterType<IContactService, ContactService>();
             registerComponent.RegisterType<ILocationService, LocationService>();
+            registerComponent.RegisterType<ILogService, LogService>();
+            registerComponent.RegisterType<IStationService, StationService>();
+            registerComponent.RegisterType<IVisitorService, VisitorService>();
+            registerComponent.RegisterType<IVisitService, VisitService>();
         }
     }
 }

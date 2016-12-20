@@ -55,11 +55,11 @@ namespace VL.Data.Model
         public virtual DbSet<StationHistory> StationHistories { get; set; }
         public virtual DbSet<Visit> Visits { get; set; }
         public virtual DbSet<VisitHistory> VisitHistories { get; set; }
-        public virtual DbSet<Visitor> Visitors { get; set; }
         public virtual DbSet<VisitorBadge> VisitorBadges { get; set; }
         public virtual DbSet<VisitorCompany> VisitorCompanies { get; set; }
         public virtual DbSet<VisitorHistory> VisitorHistories { get; set; }
         public virtual DbSet<VisitorVisit> VisitorVisits { get; set; }
         public virtual DbSet<VisitVisitorHistory> VisitVisitorHistories { get; set; }
+        public virtual DbSet<Visitor> Visitors { get; set; }
     }
 }

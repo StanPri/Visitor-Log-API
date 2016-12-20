@@ -28,7 +28,7 @@ namespace VL.Web.Api.Controllers
             if (assets != null)
             {
                 var assetsDTOs = assets as List<AssetDTO> ?? assets.ToList();
-                if (assetsDTOs.Any()) return Ok(assets);
+                if (assetsDTOs.Any()) return Ok(assetsDTOs);
             }
             return NotFound();
         }

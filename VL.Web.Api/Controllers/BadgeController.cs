@@ -28,7 +28,7 @@ namespace VL.Web.Api.Controllers
             if (badges != null)
             {
                 var badgeDTOs = badges as List<BadgeDTO> ?? badges.ToList();
-                if (badgeDTOs.Any()) return Ok(badges);
+                if (badgeDTOs.Any()) return Ok(badgeDTOs);
             }
             return NotFound();
         }

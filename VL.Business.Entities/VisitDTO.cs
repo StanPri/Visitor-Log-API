@@ -30,16 +30,16 @@ namespace VL.Business.Entities
         public int ID { get; set; }
     
         [DataMember()]
-        public Nullable<System.DateTime> ScheduledCheckInTime { get; set; }
+        public System.DateTime ScheduledCheckInTime { get; set; }
     
         [DataMember()]
-        public Nullable<System.DateTime> ScheduledCheckOutTime { get; set; }
+        public System.DateTime ScheduledCheckOutTime { get; set; }
     
         [DataMember()]
-        public System.DateTime ActualCheckInTime { get; set; }
+        public Nullable<System.DateTime> ActualCheckInTime { get; set; }
     
         [DataMember()]
-        public System.DateTime ActualCheckOutTime { get; set; }
+        public Nullable<System.DateTime> ActualCheckOutTime { get; set; }
     
         [DataMember()]
         public string CreatedByUserID { get; set; }

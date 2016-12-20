@@ -2,13 +2,15 @@
     [ID]               INT          IDENTITY (1, 1) NOT NULL,
     [Code]             VARCHAR (50) NOT NULL,
     [Name]             VARCHAR (50) NOT NULL,
-    [CreatedByUserID]  VARCHAR (50) NOT NULL,
+    [CreatedByUserID]  VARCHAR (50) CONSTRAINT [DF_Station_CreatedByUserID] DEFAULT ('_admin') NOT NULL,
     [CreatedDate]      DATETIME     CONSTRAINT [DF_Station_CreatedDate] DEFAULT (getdate()) NOT NULL,
-    [ModifiedByUserID] VARCHAR (50) NOT NULL,
+    [ModifiedByUserID] VARCHAR (50) CONSTRAINT [DF_Station_ModifiedByUserID] DEFAULT ('_admin') NOT NULL,
     [ModifiedDate]     DATETIME     CONSTRAINT [DF_Station_ModifiedDate] DEFAULT (getdate()) NOT NULL,
     [IsActive]         BIT          CONSTRAINT [DF_Station_IsActive] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Station] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
 
 
 GO

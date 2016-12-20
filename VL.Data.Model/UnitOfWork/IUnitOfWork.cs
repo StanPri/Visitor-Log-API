@@ -18,6 +18,7 @@ namespace VL.Data.Model
         GenericRepository<Campus> CampusRepository { get; }
         GenericRepository<CampusHistory> CampusHistoryRepository { get; }
         GenericRepository<Company> CompanyRepository { get; }
+        GenericRepository<Contact> ContactRepository { get; }
         GenericRepository<CompanyHistory> CompanyHistoryRepository { get; }
         GenericRepository<Location> LocationRepository { get; }
         GenericRepository<LocationHistory> LocationHistoryRepository { get; }

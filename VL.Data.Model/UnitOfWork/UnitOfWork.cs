@@ -29,6 +29,7 @@ namespace VL.Data.Model
         private GenericRepository<CampusHistory> _campusHistoryRepository;
         private GenericRepository<Company> _companyRepository;
         private GenericRepository<CompanyHistory> _companyHistoryRepository;
+        private GenericRepository<Contact> _contactRepository;
         private GenericRepository<Location> _locationRepository;
         private GenericRepository<LocationHistory> _locationHistoryRepository;
         private GenericRepository<Log> _logRepository;
@@ -145,6 +146,15 @@ namespace VL.Data.Model
                 if (this._companyHistoryRepository == null)
                     this._companyHistoryRepository = new GenericRepository<CompanyHistory>(_context);
                 return _companyHistoryRepository;
+            }
+        }
+        public GenericRepository<Contact> ContactRepository
+        {
+            get
+            {
+                if (this._contactRepository == null)
+                    this._contactRepository = new GenericRepository<Contact>(_context);
+                return _contactRepository;
             }
         }
         public GenericRepository<Location> LocationRepository

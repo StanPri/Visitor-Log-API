@@ -39,10 +39,19 @@ namespace VL.Business.Entities
         public string LastName { get; set; }
     
         [DataMember()]
-        public int CreatedByUserID { get; set; }
+        public string PersonIDCardNumber { get; set; }
     
         [DataMember()]
-        public string PersonIDCardNumber { get; set; }
+        public string CreatedByUserID { get; set; }
+    
+        [DataMember()]
+        public System.DateTime CreatedDate { get; set; }
+    
+        [DataMember()]
+        public string ModifiedByUserID { get; set; }
+    
+        [DataMember()]
+        public System.DateTime ModifiedDate { get; set; }
     
         #region [Navigation Properties]
     

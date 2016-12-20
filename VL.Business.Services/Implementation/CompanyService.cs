@@ -36,7 +36,7 @@ namespace VL.Business.Services.Implementation
 
         public CompanyDTO GetCompanyByID(int companyID)
         {
-            var company = _unitOfWork.CompanyRepository.GetByID(campusID);
+            var company = _unitOfWork.CompanyRepository.GetByID(companyID);
             if (company != null) return company.ToDTO();
             return null;
         }
