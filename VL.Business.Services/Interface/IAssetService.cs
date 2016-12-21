@@ -31,7 +31,7 @@ namespace VL.Business.Services.Interface
         #endregion
 
         #region AssetTypeHistory
-        AssetTypeHistoryDTO GetAssetTypeHistoryByAssetTypeID(int assetTypeID);
+        IEnumerable<AssetTypeHistoryDTO> GetAssetTypeHistoryByAssetTypeID(int assetTypeID);
         #endregion
     }
 }

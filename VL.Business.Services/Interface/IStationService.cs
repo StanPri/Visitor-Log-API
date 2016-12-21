@@ -5,10 +5,12 @@ namespace VL.Business.Services.Interface
 {
     public interface IStationService
     {
+        #region Station
         StationDTO GetStationByID(int campusID);
         IEnumerable<StationDTO> GetAllStations();
         int CreateStation(StationDTO stationDTO);
         bool UpdateStation(int stationID, StationDTO stationDTO);
         bool DeleteStation(int stationID);
+        #endregion
     }
 }

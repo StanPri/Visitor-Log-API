@@ -20,6 +20,7 @@ namespace VL.Business.Services.Implementation
         }
         #endregion
 
+        #region Location
         public int CreateLocation(LocationDTO locationDTO)
         {
             using (var scope = new TransactionScope())
@@ -46,8 +47,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<LocationDTO> GetAllLocations()
         {
             var locations = _unitOfWork.LocationRepository.GetAll();
-            if (locations.Any()) return locations.ToDTOs();
-            return null;
+            return locations.ToDTOs();
         }
 
         public LocationDTO GetLocationByID(int locationID)
@@ -63,13 +63,13 @@ namespace VL.Business.Services.Implementation
                 .GetWithInclude(c => c.ID == campusID, "CampusLocations.Location").FirstOrDefault()
                 .CampusLocations.Where(cl => cl.CampusID == campusID)
                 .Select(x => x.Location).ToList();
-            if (locations.Any()) return locations.ToDTOs();
-            return null;
+            return locations.ToDTOs();
         }
 
         public bool UpdateLocation(int locationID, LocationDTO locationDTO)
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

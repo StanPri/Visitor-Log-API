@@ -19,6 +19,7 @@ namespace VL.Business.Services.Implementation
         }
         #endregion
 
+        #region Visit
         public int CreateVisit(VisitDTO visitDTO)
         {
             throw new NotImplementedException();
@@ -47,5 +48,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

@@ -30,8 +30,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<BadgeDTO> GetAllBadges()
         {
             var badges = _unitOfWork.BadgeRepository.GetAll();
-            if (badges.Any()) return badges.ToDTOs();
-            return null;
+            return badges.ToDTOs();
         }
         public BadgeDTO GetBadgeByID(int badgeID)
         {
@@ -50,8 +49,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<BadgeHistoryDTO> GetBadgeHistoryByBadgeID(int badgeID)
         {
             var badgeHistory = _unitOfWork.BadgeHistoryRepository.GetMany(x => x.BadgeID == badgeID).ToList();
-            if (badgeHistory.Any()) return badgeHistory.ToDTOs();
-            return null;
+            return badgeHistory.ToDTOs();
         }
 
         #endregion
@@ -81,8 +79,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<BadgeTypeDTO> GetAllBadgeTypes()
         {
             var badgeTypes = _unitOfWork.BadgeTypeRepository.GetAll();
-            if (badgeTypes.Any()) return badgeTypes.ToDTOs();
-            return null;
+            return badgeTypes.ToDTOs();
         }
         #endregion
 
@@ -91,14 +88,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
-
-
-        IEnumerable<BadgeTypeHistoryDTO> IBadgeService.GetBadgeTypeHistoryByBadgeTypeID(int badgeID)
-        {
-            throw new NotImplementedException();
-        }
-
-
         #endregion
     }
 }

@@ -12,11 +12,14 @@ namespace VL.Business.Services.Implementation
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        #region Constructor
         public CompanyService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+        #endregion
 
+        #region Company
         public int CreateCompany(CompanyDTO companyDTO)
         {
             throw new NotImplementedException();
@@ -30,8 +33,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<CompanyDTO> GetAllCompanies()
         {
             var companies = _unitOfWork.CompanyRepository.GetAll();
-            if (companies.Any()) return companies.ToDTOs();
-            return null;
+            return companies.ToDTOs();
         }
 
         public CompanyDTO GetCompanyByID(int companyID)
@@ -45,5 +47,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

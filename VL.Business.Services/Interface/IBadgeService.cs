@@ -5,7 +5,6 @@ namespace VL.Business.Services.Interface
 {
     public interface IBadgeService
     {
-
         #region Badge
         BadgeDTO GetBadgeByID(int badgeID);
         IEnumerable<BadgeDTO> GetAllBadges();
@@ -31,7 +30,5 @@ namespace VL.Business.Services.Interface
         #region BadgeTypeHistory
         IEnumerable<BadgeTypeHistoryDTO> GetBadgeTypeHistoryByBadgeTypeID(int badgeID);
         #endregion
-
-
     }
 }

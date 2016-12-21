@@ -19,6 +19,7 @@ namespace VL.Business.Services.Implementation
         }
         #endregion
 
+        #region Log
         public int CreateLog(LogDTO logDTO)
         {
             throw new NotImplementedException();
@@ -32,8 +33,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<LogDTO> GetAllLogs()
         {
             var logs = _unitOfWork.LogRepository.GetAll();
-            if (logs.Any()) return logs.ToDTOs();
-            return null;
+            return logs.ToDTOs();
         }
 
         public LogDTO GetLogByID(int logID)
@@ -47,5 +47,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

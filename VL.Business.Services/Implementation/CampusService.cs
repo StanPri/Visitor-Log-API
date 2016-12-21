@@ -21,6 +21,7 @@ namespace VL.Business.Services.Implementation
         }
         #endregion
 
+        #region Campus
         /// <summary>
         /// Fetches Campus By ID
         /// </summary>
@@ -117,5 +118,6 @@ namespace VL.Business.Services.Implementation
             }
             return success;
         }
+        #endregion
     }
 }

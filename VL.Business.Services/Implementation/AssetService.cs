@@ -44,8 +44,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<AssetDTO> GetAllAssets()
         {
             var assets = _unitOfWork.AssetRepository.GetAll();
-            if (assets.Any()) return assets.ToDTOs();
-            return null;
+            return assets.ToDTOs();
         }
         public AssetDTO GetAssetByID(int assetID)
         {
@@ -63,8 +62,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<AssetHistoryDTO> GetAssetHistoryByAssetID(int assetID)
         {
             var assetHistory = _unitOfWork.AssetHistoryRepository.GetMany(x => x.AssetID == assetID).ToList();
-            if (assetHistory.Any()) return assetHistory.ToDTOs();
-            return null;
+            return assetHistory.ToDTOs();
         }
 
         #endregion
@@ -93,8 +91,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<AssetTypeDTO> GetAllAssetTypes()
         {
             var assetTypes = _unitOfWork.AssetTypeRepository.GetAll();
-            if (assetTypes.Any()) return assetTypes.ToDTOs();
-            return null;
+            return assetTypes.ToDTOs();
         }
         public AssetTypeDTO GetAssetTypeByID(int assetTypeID)
         {
@@ -110,7 +107,7 @@ namespace VL.Business.Services.Implementation
         #endregion
 
         #region AssetTypeHistory
-        public AssetTypeHistoryDTO GetAssetTypeHistoryByAssetTypeID(int assetTypeID)
+        public IEnumerable<AssetTypeHistoryDTO> GetAssetTypeHistoryByAssetTypeID(int assetTypeID)
         {
             throw new NotImplementedException();
         }

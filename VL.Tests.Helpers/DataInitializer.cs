@@ -12,10 +12,45 @@ namespace VL.Tests.Helpers
     /// </summary>
     public class DataInitializer
     {
+        #region Assets
         /// <summary>
-        /// Dummy products
+        /// Dummy Assets
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of Static Assets</returns>
+        public static List<Asset> GetAllAssets()
+        {
+            var assets = new List<Asset>
+            {
+                new Asset() { ID = 1, Name = "Hovercraft Board Model 999", CreatedByUserID = "reed.richards", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 2, Name = "Apple iPad Air", CreatedByUserID = "billy.batson", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "clark.kent", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 3, Name = "Galaxy NotePad", CreatedByUserID = "barry.allen", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "bruce.wayne", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 4, Name = "Underwater Air Bucket", CreatedByUserID = "stanley.beamish", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "peter.parker", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 5, Name = "Acme PowerWasher 9000xl", CreatedByUserID = "dick.grayson", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "tony.starks", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 6, Name = "Super Mamba Jamba Jumbilia Processor", CreatedByUserID = "logan.howlett", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "steve.rogers", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 7, Name = "Magic Wand", CreatedByUserID = "scott.summers", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "britt.reid", ModifiedDate = new DateTime(2016, 1, 1)  },
+                new Asset() { ID = 8, Name = "Invisibility Cloak", CreatedByUserID = "kit.walker", CreateDate = new DateTime(2016, 1, 1), ModifiedByUserID = "bruce.banner", ModifiedDate = new DateTime(2016, 1, 1)  }
+            };
+            return assets;
+        }
+
+        public static List<AssetType> GetAllAssetTypes()
+        {
+            var assetTypes = new List<AssetType>
+            {
+                new AssetType() { ID = 1, Code = "LAP", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 1), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016,1,1) },
+                new AssetType() { ID = 1, Code = "PHONE", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 1), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016,1,1) },
+                new AssetType() { ID = 1, Code = "TAB", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 1), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016,1,1) }
+            };
+            return assetTypes;
+        }
+
+        #endregion
+
+        #region Campus
+        /// <summary>
+        /// Dummy Campuses
+        /// </summary>
+        /// <returns>List of Static Assets</returns>
         public static List<Campus> GetAllCampuses()
         {
             var campuses = new List<Campus>
@@ -29,6 +64,9 @@ namespace VL.Tests.Helpers
             };
             return campuses;
         }
+        #endregion
+
+
 
         ///// <summary>
         ///// Dummy tokens

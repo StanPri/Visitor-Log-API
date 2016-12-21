@@ -21,6 +21,7 @@ namespace VL.Business.Services.Implementation
 
         #endregion
 
+        #region Visitor
         public int CreateVisitor(VisitorDTO visitorDTO)
         {
             throw new NotImplementedException();
@@ -34,8 +35,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<VisitorDTO> GetAllVisitors()
         {
             var visitors = _unitOfWork.VisitorRepository.GetAll();
-            if (visitors.Any()) return visitors.ToDTOs();
-            return null;
+            return visitors.ToDTOs();
         }
 
         public VisitorDTO GetVisitorByID(int visitorID)
@@ -49,5 +49,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

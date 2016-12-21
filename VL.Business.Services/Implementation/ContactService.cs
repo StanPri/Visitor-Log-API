@@ -12,11 +12,14 @@ namespace VL.Business.Services.Implementation
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        #region Constructor
         public ContactService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+        #endregion
 
+        #region Contact
         public int CreateContact(ContactDTO contactDTO)
         {
             throw new NotImplementedException();
@@ -30,8 +33,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<ContactDTO> GetAllContacts()
         {
             var contacts = _unitOfWork.ContactRepository.GetAll();
-            if (contacts.Any()) return contacts.ToDTOs();
-            return null;
+            return contacts.ToDTOs();
         }
 
         public ContactDTO GetContactByID(int contactID)
@@ -45,5 +47,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

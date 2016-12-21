@@ -19,6 +19,7 @@ namespace VL.Business.Services.Implementation
         }
         #endregion
 
+        #region Station
         public int CreateStation(StationDTO stationDTO)
         {
             throw new NotImplementedException();
@@ -32,8 +33,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<StationDTO> GetAllStations()
         {
             var stations = _unitOfWork.StationRepository.GetAll();
-            if (stations.Any()) return stations.ToDTOs();
-            return null;
+            return stations.ToDTOs();
         }
 
         public StationDTO GetStationByID(int stationID)
@@ -47,5 +47,6 @@ namespace VL.Business.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }
