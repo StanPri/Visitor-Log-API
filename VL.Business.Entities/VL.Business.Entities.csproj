@@ -90,6 +90,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validators\AssetTypeValidator.cs" />
+    <Compile Include="Validators\AssetValidator.cs" />
     <Compile Include="Validators\CampusValidator.cs" />
     <Compile Include="CampusDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
@@ -138,6 +140,7 @@
     <Compile Include="StationHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validators\VisitValidator.cs" />
     <Compile Include="VisitDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>

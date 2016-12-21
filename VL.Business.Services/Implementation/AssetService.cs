@@ -22,7 +22,20 @@ namespace VL.Business.Services.Implementation
         #region Asset
         public int CreateAsset(AssetDTO assetDTO)
         {
-            throw new NotImplementedException();
+            using (var scope = new TransactionScope())
+            {
+                //Get DTO and assign default properties
+                var a = new Asset();
+                a = assetDTO.ToEntity();
+                a.CreateDate = a.ModifiedDate = System.DateTime.Now;
+
+                //Insert data object
+                _unitOfWork.AssetRepository.Insert(a);
+                _unitOfWork.Save();
+                scope.Complete();
+                return a.ID;
+            }
+
         }
         public bool DeleteAsset(int assetID)
         {
@@ -59,7 +72,19 @@ namespace VL.Business.Services.Implementation
         #region AssetType
         public int CreateAssetType(AssetTypeDTO assetTypeDTO)
         {
-            throw new NotImplementedException();
+            using (var scope = new TransactionScope())
+            {
+                //Get DTO and assign default properties
+                var assType = new AssetType();
+                assType = assetTypeDTO.ToEntity();
+                assType.CreatedDate = assType.ModifiedDate = System.DateTime.Now;
+
+                //Insert data object
+                _unitOfWork.AssetTypeRepository.Insert(assType);
+                _unitOfWork.Save();
+                scope.Complete();
+                return assType.ID;
+            }
         }
         public bool DeleteAssetType(int assetTypeID)
         {

@@ -46,6 +46,20 @@ namespace VL.Web.Api.Controllers
             if (asset != null) return Ok(asset);
             return NotFound();
         }
+        [HttpPost]
+        [Route("")]
+        [ValidateModel]
+        public HttpResponseMessage CreateAsset([FromBody]AssetDTO assetDTO)
+        {
+            int newID = _assetService.CreateAsset(assetDTO);
+            string uri = Url.Link("AssetByIDRoute", new { id = newID });
+            // Generate a link to the new campus and set the location header in the response.
+            var response = new HttpResponseMessage(HttpStatusCode.Created);
+            response.Headers.Location = new System.Uri(uri);
+            return response;
+        }
+
+
         #endregion
 
         #region AssetHistory
@@ -76,6 +90,20 @@ namespace VL.Web.Api.Controllers
             if (asset != null) return Ok(asset);
             return NotFound();
         }
+
+        [HttpPost]
+        [Route("~/assettypes")]
+        [ValidateModel]
+        public HttpResponseMessage CreateAssetType([FromBody]AssetTypeDTO assetTypeDTO)
+        {
+            int newID = _assetService.CreateAssetType(assetTypeDTO);
+            string uri = Url.Link("AssetTypeByIDRoute", new { id = newID });
+            // Generate a link to the new campus and set the location header in the response.
+            var response = new HttpResponseMessage(HttpStatusCode.Created);
+            response.Headers.Location = new System.Uri(uri);
+            return response;
+        }
+
 
         #endregion
 
