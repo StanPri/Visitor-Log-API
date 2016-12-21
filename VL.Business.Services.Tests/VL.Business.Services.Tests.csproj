@@ -75,7 +75,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\VL.Data.Model\AssetRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\AssetTypeRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\BadgeRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\BadgeTypeRepositoryFake.cs" />
     <Compile Include="Fakes\VL.Data.Model\CampusRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\CompanyRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\ContactRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\LocationRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\LogRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\StationRepositoryFake.cs" />
+    <Compile Include="Implementation\AssetServiceTests.cs" />
+    <Compile Include="Implementation\BadgeServiceTests.cs" />
+    <Compile Include="Implementation\CompanyServiceTests.cs" />
+    <Compile Include="Implementation\ContactServiceTests.cs" />
+    <Compile Include="Implementation\LocationServiceTests.cs" />
+    <Compile Include="Implementation\LogServiceTests.cs" />
+    <Compile Include="Implementation\StationServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementation\CampusServiceTests.cs" />
   </ItemGroup>

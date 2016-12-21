@@ -17,10 +17,14 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
     {
         private List<Campus> _allCampuses;
 
+        #region Constructor
         public CampusRepositoryFake(VisitorLogContext context)
         {
             _allCampuses = DataInitializer.GetAllCampuses();
         }
+        #endregion
+
+        #region IGenericRepository<Campus> Implementation
 
         public IEnumerable<Campus> GetAll()
         {
@@ -58,6 +62,7 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
                 _allCampuses.Remove(campToRemove);
             }
         }
+        #endregion
 
         #region Not Implemented
         //Note: The below methods are not implemented because we aren't using them in any test yet. 
