@@ -40,7 +40,12 @@ namespace VL.Business.Services.Tests.Implementation
         #endregion
 
         #region Station Tests
-        [InlineData(1,2,3,4,5,6)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(6)]
         public void WhenGettingStationByID_AssertReturnedStation(int id)
         {
             var station = _stationService.GetStationByID(id);
