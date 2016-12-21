@@ -40,8 +40,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<CampusDTO> GetAllCampuses()
         {
             var campuses = _unitOfWork.CampusRepository.GetAll();
-            if (campuses.Any()) return campuses.ToDTOs();
-            return null;
+            return campuses.ToDTOs();
         }
 
         /// <summary>

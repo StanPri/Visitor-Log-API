@@ -1,6 +1,4 @@
-﻿using Moq;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using VL.Business.Services.Implementation;
@@ -11,31 +9,23 @@ using VL.Tests.Helpers;
 using VL.Business.Services.Mapper;
 using VL.Business.Entities;
 
+using NSubstitute;
+using VL.Business.Services.Tests.Fakes.VL.Data.Model;
+using Xunit;
+
 namespace VL.Business.Services.Tests
 {
+    /// <summary>
+    /// Implements unit tests for <see cref="VL.Business.Services.Implementation.CampusService"/>
+    /// </summary>
     public class CampusServiceTests
     {
-
         #region Variables
 
         private ICampusService _campusService;
         private IUnitOfWork _unitOfWork;
-        private List<Campus> _campuses;
-        private GenericRepository<Campus> _campusRepository;
+        private CampusRepositoryFake _campusRepository;
         private VisitorLogContext _visitorLogContext;
-        #endregion
-
-        #region Test fixture setup
-
-        /// <summary>
-        /// Initial setup for tests
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Setup()
-        {
-            _campuses = SetUpCampuses();
-        }
-
         #endregion
 
         #region Setup
@@ -43,82 +33,56 @@ namespace VL.Business.Services.Tests
         /// <summary>
         /// Re-initializes test.
         /// </summary>
-        [SetUp]
-        public void ReInitializeTest()
+        public CampusServiceTests()
         {
-            _campuses = SetUpCampuses();
-            _visitorLogContext = new Mock<VisitorLogContext>().Object;
-            _campusRepository = SetUpCampusRepository();
-            var unitOfWork = new Mock<IUnitOfWork>();
-            unitOfWork.SetupGet(s => s.CampusRepository).Returns(_campusRepository);
-            _unitOfWork = unitOfWork.Object;
+            _visitorLogContext = Substitute.For<VisitorLogContext>();
+            _campusRepository = new CampusRepositoryFake(_visitorLogContext);
+            _unitOfWork = Substitute.For<IUnitOfWork>();
+            _unitOfWork.CampusRepository.Returns(_campusRepository);
             _campusService = new CampusService(_unitOfWork);
         }
 
         #endregion
 
-        #region Private member methods
+        #region Tests
 
-        /// <summary>
-        /// Setup dummy repository
-        /// </summary>
-        /// <returns></returns>
-        private GenericRepository<Campus> SetUpCampusRepository()
+        [Theory]
+        [InlineData(2)]
+        [InlineData(5)]
+        [InlineData(8)]
+        public void WhenGettingCampusById_AssertReturnedCampus(int id)
         {
-            // Initialise repository
-            var mockRepo = new Mock<GenericRepository<Campus>>(MockBehavior.Default, _visitorLogContext);
-
-            // Setup mocking behavior
-            mockRepo
-                .Setup(p => p.GetAll()).Returns(_campuses);
-            mockRepo
-                .Setup(p => p.GetByID(It.IsAny<int>()))
-                .Returns(new Func<int, Campus>(id => _campuses.Find(p => p.ID.Equals(id))));
-
-            mockRepo
-                .Setup(p => p.Insert((It.IsAny<Campus>())))
-                .Callback(new Action<Campus>(newCampus =>
-                {
-                    dynamic maxCampusID = _campuses.Last().ID;
-                    dynamic nextCampusID = maxCampusID + 1;
-                    newCampus.ID = nextCampusID;
-                    _campuses.Add(newCampus);
-                }));
-
-            mockRepo
-                .Setup(p => p.Update(It.IsAny<Campus>()))
-                .Callback(new Action<Campus>(camp =>
-                {
-                    var oldCampus = _campuses.Find(a => a.ID == camp.ID);
-                    oldCampus = camp;
-                }));
-
-            mockRepo
-                .Setup(p => p.Delete(It.IsAny<Campus>()))
-                .Callback(new Action<Campus>(camp =>
-                {
-                    var campToRemove =
-                        _campuses.Find(a => a.ID == camp.ID);
-
-                    if (campToRemove != null)
-                        _campuses.Remove(campToRemove);
-                }));
-
-            // Return mock implementation object
-            return mockRepo.Object;
+            var campus = _campusService.GetCampusByID(id);
+            Assert.Equal(id, campus.ID);
         }
 
-        /// <summary>
-        /// Setup dummy Visitor Log data
-        /// </summary>
-        /// <returns></returns>
-        private static List<Campus> SetUpCampuses()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        [InlineData(int.MinValue)]
+        [InlineData(int.MaxValue)]
+        [InlineData(9)]//Note: 8 is the highest ID in the list, so we're testing the edge case if grabbing the one after it. If that ever changes, this test is fail, so rememeber to update this 9
+        public void WhenGettingCampusWithInvalidId_AssertNullReturn(int id)
         {
-            var campusID = new int();
-            var campuses = DataInitializer.GetAllCampuses();
-            //foreach (Campus camp in campuses)
-            //    camp.VisitID = ++campusID;
-            return campuses;
+            var campus = _campusService.GetCampusByID(id);
+            Assert.Null(campus);
+        }
+
+        [Fact]
+        public void WhenGettingAllCampuses_AssertReturnedCollection()
+        {
+            var campuses = _campusService.GetAllCampuses();
+            Assert.Equal(DataInitializer.GetAllCampuses().Count, campuses.Count());
+        }
+
+        [Fact]
+        public void WhenAllCampusesCollectionEmpty_AssertReturnedCollectionEmpty()
+        {
+            //Before testing this, we need to empty what's in the repository
+            _campusRepository.GetAll().ToList().ForEach(x => _campusRepository.Delete(x));
+
+            var campuses = _campusService.GetAllCampuses();
+            Assert.Equal(0, campuses.Count());
         }
 
         #endregion
@@ -230,38 +194,5 @@ namespace VL.Business.Services.Tests
         //}
 
         #endregion
-
-        #region Tear Down
-
-        /// <summary>
-        /// Tears down each test data
-        /// </summary>
-        [TearDown]
-        public void DisposeTest()
-        {
-            _campusService = null;
-            _unitOfWork = null;
-            _campusRepository = null;
-            if (_visitorLogContext != null)
-                _visitorLogContext.Dispose();
-            _campuses = null;
-        }
-
-        #endregion
-
-        #region TestFixture TearDown.
-
-        /// <summary>
-        /// TestFixture teardown
-        /// </summary>
-        [TestFixtureTearDown]
-        public void DisposeAllObjects()
-        {
-            _campuses = null;
-        }
-
-        #endregion
-
-
     }
 }

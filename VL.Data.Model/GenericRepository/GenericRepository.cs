@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace VL.Data.Model.GenericRepository
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity>  where TEntity : class
     {
         #region Private member variables...
         internal VisitorLogContext Context;

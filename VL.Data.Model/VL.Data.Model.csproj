@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="GenericRepository\GenericRepository.cs" />
+    <Compile Include="GenericRepository\IGenericRepository.cs" />
     <Compile Include="Location.cs">
       <DependentUpon>VisitorLogModel.tt</DependentUpon>
     </Compile>

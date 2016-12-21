@@ -17,30 +17,30 @@ namespace VL.Data.Model
 
         #region Private member variables...
         private readonly VisitorLogContext _context = null;
-        private GenericRepository<Asset> _assetRepository;
-        private GenericRepository<AssetHistory> _assetHistoryRepository;
-        private GenericRepository<AssetType> _assetTypeRepository;
-        private GenericRepository<AssetTypeHistory> _assetTypeHistoryRepository;
-        private GenericRepository<Badge> _badgeRepository;
-        private GenericRepository<BadgeHistory> _badgeHistoryRepository;
-        private GenericRepository<BadgeType> _badgeTypeRepository;
-        private GenericRepository<BadgeTypeHistory> _badgeTypeHistoryRepository;
-        private GenericRepository<Campus> _campusRepository;
-        private GenericRepository<CampusHistory> _campusHistoryRepository;
-        private GenericRepository<Company> _companyRepository;
-        private GenericRepository<CompanyHistory> _companyHistoryRepository;
-        private GenericRepository<Contact> _contactRepository;
-        private GenericRepository<Location> _locationRepository;
-        private GenericRepository<LocationHistory> _locationHistoryRepository;
-        private GenericRepository<Log> _logRepository;
-        private GenericRepository<Station> _stationRepository;
-        private GenericRepository<StationHistory> _stationHistoryRepository;
-        private GenericRepository<Visit> _visitRepository;
-        private GenericRepository<Visitor> _visitorRepository;
+        private IGenericRepository<Asset> _assetRepository;
+        private IGenericRepository<AssetHistory> _assetHistoryRepository;
+        private IGenericRepository<AssetType> _assetTypeRepository;
+        private IGenericRepository<AssetTypeHistory> _assetTypeHistoryRepository;
+        private IGenericRepository<Badge> _badgeRepository;
+        private IGenericRepository<BadgeHistory> _badgeHistoryRepository;
+        private IGenericRepository<BadgeType> _badgeTypeRepository;
+        private IGenericRepository<BadgeTypeHistory> _badgeTypeHistoryRepository;
+        private IGenericRepository<Campus> _campusRepository;
+        private IGenericRepository<CampusHistory> _campusHistoryRepository;
+        private IGenericRepository<Company> _companyRepository;
+        private IGenericRepository<CompanyHistory> _companyHistoryRepository;
+        private IGenericRepository<Contact> _contactRepository;
+        private IGenericRepository<Location> _locationRepository;
+        private IGenericRepository<LocationHistory> _locationHistoryRepository;
+        private IGenericRepository<Log> _logRepository;
+        private IGenericRepository<Station> _stationRepository;
+        private IGenericRepository<StationHistory> _stationHistoryRepository;
+        private IGenericRepository<Visit> _visitRepository;
+        private IGenericRepository<Visitor> _visitorRepository;
         #endregion
 
         #region Public Repository Creation properties...
-        public GenericRepository<Asset> AssetRepository
+        public IGenericRepository<Asset> AssetRepository
         {
             get
             {
@@ -49,7 +49,7 @@ namespace VL.Data.Model
                 return _assetRepository;
             }
         }
-        public GenericRepository<AssetHistory> AssetHistoryRepository
+        public IGenericRepository<AssetHistory> AssetHistoryRepository
         {
             get
             {
@@ -58,7 +58,7 @@ namespace VL.Data.Model
                 return _assetHistoryRepository;
             }
         }
-        public GenericRepository<AssetType> AssetTypeRepository
+        public IGenericRepository<AssetType> AssetTypeRepository
         {
             get
             {
@@ -67,7 +67,7 @@ namespace VL.Data.Model
                 return _assetTypeRepository;
             }
         }
-        public GenericRepository<AssetTypeHistory> AssetTypeHistoryRepository
+        public IGenericRepository<AssetTypeHistory> AssetTypeHistoryRepository
         {
             get
             {
@@ -76,7 +76,7 @@ namespace VL.Data.Model
                 return _assetTypeHistoryRepository;
             }
         }
-        public GenericRepository<Badge> BadgeRepository
+        public IGenericRepository<Badge> BadgeRepository
         {
             get
             {
@@ -85,7 +85,7 @@ namespace VL.Data.Model
                 return _badgeRepository;
             }
         }
-        public GenericRepository<BadgeHistory> BadgeHistoryRepository
+        public IGenericRepository<BadgeHistory> BadgeHistoryRepository
         {
             get
             {
@@ -94,7 +94,7 @@ namespace VL.Data.Model
                 return _badgeHistoryRepository;
             }
         }
-        public GenericRepository<BadgeType> BadgeTypeRepository
+        public IGenericRepository<BadgeType> BadgeTypeRepository
         {
             get
             {
@@ -103,7 +103,7 @@ namespace VL.Data.Model
                 return _badgeTypeRepository;
             }
         }
-        public GenericRepository<BadgeTypeHistory> BadgeTypeHistoryRepository
+        public IGenericRepository<BadgeTypeHistory> BadgeTypeHistoryRepository
         {
             get
             {
@@ -112,7 +112,7 @@ namespace VL.Data.Model
                 return _badgeTypeHistoryRepository;
             }
         }
-        public GenericRepository<Campus> CampusRepository
+        public IGenericRepository<Campus> CampusRepository
         {
             get
             {
@@ -121,7 +121,7 @@ namespace VL.Data.Model
                 return _campusRepository;
             }
         }
-        public GenericRepository<CampusHistory> CampusHistoryRepository
+        public IGenericRepository<CampusHistory> CampusHistoryRepository
         {
             get
             {
@@ -130,7 +130,7 @@ namespace VL.Data.Model
                 return _campusHistoryRepository;
             }
         }
-        public GenericRepository<Company> CompanyRepository
+        public IGenericRepository<Company> CompanyRepository
         {
             get
             {
@@ -139,7 +139,7 @@ namespace VL.Data.Model
                 return _companyRepository;
             }
         }
-        public GenericRepository<CompanyHistory> CompanyHistoryRepository
+        public IGenericRepository<CompanyHistory> CompanyHistoryRepository
         {
             get
             {
@@ -148,7 +148,7 @@ namespace VL.Data.Model
                 return _companyHistoryRepository;
             }
         }
-        public GenericRepository<Contact> ContactRepository
+        public IGenericRepository<Contact> ContactRepository
         {
             get
             {
@@ -157,7 +157,7 @@ namespace VL.Data.Model
                 return _contactRepository;
             }
         }
-        public GenericRepository<Location> LocationRepository
+        public IGenericRepository<Location> LocationRepository
         {
             get
             {
@@ -166,7 +166,7 @@ namespace VL.Data.Model
                 return _locationRepository;
             }
         }
-        public GenericRepository<LocationHistory> LocationHistoryRepository
+        public IGenericRepository<LocationHistory> LocationHistoryRepository
         {
             get
             {
@@ -175,7 +175,7 @@ namespace VL.Data.Model
                 return _locationHistoryRepository;
             }
         }
-        public GenericRepository<Log> LogRepository
+        public IGenericRepository<Log> LogRepository
         {
             get
             {
@@ -184,7 +184,7 @@ namespace VL.Data.Model
                 return _logRepository;
             }
         }
-        public GenericRepository<Station> StationRepository
+        public IGenericRepository<Station> StationRepository
         {
             get
             {
@@ -193,7 +193,7 @@ namespace VL.Data.Model
                 return _stationRepository;
             }
         }
-        public GenericRepository<StationHistory> StationHistoryRepository
+        public IGenericRepository<StationHistory> StationHistoryRepository
         {
             get
             {
@@ -202,7 +202,7 @@ namespace VL.Data.Model
                 return _stationHistoryRepository;
             }
         }
-        public GenericRepository<Visit> VisitRepository
+        public IGenericRepository<Visit> VisitRepository
         {
             get
             {
@@ -211,7 +211,7 @@ namespace VL.Data.Model
                 return _visitRepository;
             }
         }
-        public GenericRepository<Visitor> VisitorRepository
+        public IGenericRepository<Visitor> VisitorRepository
         {
             get
             {

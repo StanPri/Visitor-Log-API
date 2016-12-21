@@ -7,26 +7,26 @@ namespace VL.Data.Model
 
         #region Properties
 
-        GenericRepository<Asset> AssetRepository { get; }
-        GenericRepository<AssetHistory> AssetHistoryRepository { get; }
-        GenericRepository<AssetType> AssetTypeRepository { get; }
-        GenericRepository<AssetTypeHistory> AssetTypeHistoryRepository { get; }
-        GenericRepository<Badge> BadgeRepository { get; }
-        GenericRepository<BadgeHistory> BadgeHistoryRepository { get; }
-        GenericRepository<BadgeType> BadgeTypeRepository { get; }
-        GenericRepository<BadgeTypeHistory> BadgeTypeHistoryRepository { get; }
-        GenericRepository<Campus> CampusRepository { get; }
-        GenericRepository<CampusHistory> CampusHistoryRepository { get; }
-        GenericRepository<Company> CompanyRepository { get; }
-        GenericRepository<Contact> ContactRepository { get; }
-        GenericRepository<CompanyHistory> CompanyHistoryRepository { get; }
-        GenericRepository<Location> LocationRepository { get; }
-        GenericRepository<LocationHistory> LocationHistoryRepository { get; }
-        GenericRepository<Log> LogRepository { get; }
-        GenericRepository<Station> StationRepository { get; }
-        GenericRepository<StationHistory> StationHistoryRepository { get; }
-        GenericRepository<Visit> VisitRepository { get; }
-        GenericRepository<Visitor> VisitorRepository { get; }
+        IGenericRepository<Asset> AssetRepository { get; }
+        IGenericRepository<AssetHistory> AssetHistoryRepository { get; }
+        IGenericRepository<AssetType> AssetTypeRepository { get; }
+        IGenericRepository<AssetTypeHistory> AssetTypeHistoryRepository { get; }
+        IGenericRepository<Badge> BadgeRepository { get; }
+        IGenericRepository<BadgeHistory> BadgeHistoryRepository { get; }
+        IGenericRepository<BadgeType> BadgeTypeRepository { get; }
+        IGenericRepository<BadgeTypeHistory> BadgeTypeHistoryRepository { get; }
+        IGenericRepository<Campus> CampusRepository { get; }
+        IGenericRepository<CampusHistory> CampusHistoryRepository { get; }
+        IGenericRepository<Company> CompanyRepository { get; }
+        IGenericRepository<Contact> ContactRepository { get; }
+        IGenericRepository<CompanyHistory> CompanyHistoryRepository { get; }
+        IGenericRepository<Location> LocationRepository { get; }
+        IGenericRepository<LocationHistory> LocationHistoryRepository { get; }
+        IGenericRepository<Log> LogRepository { get; }
+        IGenericRepository<Station> StationRepository { get; }
+        IGenericRepository<StationHistory> StationHistoryRepository { get; }
+        IGenericRepository<Visit> VisitRepository { get; }
+        IGenericRepository<Visitor> VisitorRepository { get; }
         #endregion
 
         /// <summary>
