@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using VL.Business.Entities;
 using VL.Business.Services.Interface;
 using VL.Web.Common.Validation;
@@ -25,6 +26,7 @@ namespace VL.Web.Api.Controllers
         // GET: campuses/5
         [HttpGet]
         [Route("{id:int}", Name = "CampusByIDRoute")]
+        [ResponseType(typeof(CampusDTO))]
         public IHttpActionResult CampusByID(int id)
         {
             var campus = _campusService.GetCampusByID(id);
@@ -35,13 +37,14 @@ namespace VL.Web.Api.Controllers
         // GET: campuses
         [HttpGet]
         [Route("")]
+        [ResponseType(typeof(IEnumerable<CampusDTO>))]
         public IHttpActionResult AllCampuses()
         {
             var campuses = _campusService.GetAllCampuses();
             if (campuses != null)
             {
-                var campusDTOs = campuses as List<CampusDTO> ?? campuses.ToList();
-                if (campusDTOs.Any()) return Ok(campusDTOs);
+                var campusDTOs = campuses as IEnumerable<CampusDTO> ?? campuses.ToList();
+                return Ok(campusDTOs);
             }
             return NotFound();
         }
