@@ -182,6 +182,23 @@ namespace VL.Tests.Helpers
 
         }
         #endregion
+
+        #region Visit
+        public static List<Visit> GetAllVisits()
+        {
+            var visits = new List<Visit>()
+            {
+                new Visit() { ID = 1, ScheduledCheckInTime = new DateTime(2016, 1, 8), ScheduledCheckOutTime = new DateTime(2016, 1, 8), ActualCheckInTime = null, ActualCheckOutTime = null, CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8)  },
+                new Visit() { ID = 2, ScheduledCheckInTime = new DateTime(2016, 1, 8), ScheduledCheckOutTime = new DateTime(2016, 1, 8), ActualCheckInTime = null, ActualCheckOutTime = null, CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8)  },
+                new Visit() { ID = 3, ScheduledCheckInTime = new DateTime(2016, 1, 8), ScheduledCheckOutTime = new DateTime(2016, 1, 8), ActualCheckInTime = null, ActualCheckOutTime = null, CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8)  },
+                new Visit() { ID = 4, ScheduledCheckInTime = new DateTime(2016, 1, 8), ScheduledCheckOutTime = new DateTime(2016, 1, 8), ActualCheckInTime = null, ActualCheckOutTime = null, CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8)  },
+                new Visit() { ID = 5, ScheduledCheckInTime = new DateTime(2016, 1, 8), ScheduledCheckOutTime = new DateTime(2016, 1, 8), ActualCheckInTime = null, ActualCheckOutTime = null, CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8)  },
+                new Visit() { ID = 6, ScheduledCheckInTime = new DateTime(2016, 1, 8), ScheduledCheckOutTime = new DateTime(2016, 1, 8), ActualCheckInTime = null, ActualCheckOutTime = null, CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8)  }
+            };
+            return visits;
+        }
+        #endregion
+
         ///// <summary>
         ///// Dummy tokens
         ///// </summary>

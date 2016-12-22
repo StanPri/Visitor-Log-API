@@ -33,8 +33,7 @@ namespace VL.Business.Services.Implementation
         public IEnumerable<VisitDTO> GetAllVisits()
         {
             var visits = _unitOfWork.VisitRepository.GetAll();
-            if (visits.Any()) return visits.ToDTOs();
-            return null;
+            return visits.ToDTOs();
         }
 
         public VisitDTO GetVisitByID(int visitID)

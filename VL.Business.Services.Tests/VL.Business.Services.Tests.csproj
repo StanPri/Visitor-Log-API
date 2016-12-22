@@ -81,6 +81,7 @@
     <Compile Include="Fakes\VL.Data.Model\LocationRepositoryFake.cs" />
     <Compile Include="Fakes\VL.Data.Model\LogRepositoryFake.cs" />
     <Compile Include="Fakes\VL.Data.Model\StationRepositoryFake.cs" />
+    <Compile Include="Fakes\VL.Data.Model\VisitRepositoryFake.cs" />
     <Compile Include="Implementation\AssetServiceTests.cs" />
     <Compile Include="Implementation\BadgeServiceTests.cs" />
     <Compile Include="Implementation\CompanyServiceTests.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Implementation\LocationServiceTests.cs" />
     <Compile Include="Implementation\LogServiceTests.cs" />
     <Compile Include="Implementation\StationServiceTests.cs" />
+    <Compile Include="Implementation\VisitServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementation\CampusServiceTests.cs" />
   </ItemGroup>
