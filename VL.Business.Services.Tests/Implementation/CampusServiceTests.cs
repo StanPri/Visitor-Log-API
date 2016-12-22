@@ -85,113 +85,43 @@ namespace VL.Business.Services.Tests
             Assert.Equal(0, campuses.Count());
         }
 
+        [Fact]
+        public void WhenCreatingCampus_AssertCampusAdded()
+        {
+            int lastCampusId = GetLastCampusId();
+            var newCampus = new CampusDTO { Name = "New Test Campus"};
+            var newCampusId = _campusService.CreateCampus(newCampus);
+            Assert.Equal(lastCampusId + 1, newCampusId);
+        }
+        
+        [Fact]
+        public void WhenCreatingInvalidCampus_AssertExceptionThrown()
+        {
+            CampusDTO newCampus = null;
+            Assert.Throws<NullReferenceException>(() => _campusService.CreateCampus(newCampus));
+        }
+
+        [Fact]
+        public void kjnksjndkjsnd()
+        {
+            var originalCampus = new CampusDTO { Name = "Original Campus" };
+
+            //_campus
+            //var updatedCampus = new CampusDTO { Name = "New Campus" };
+            //_campusService.UpdateCampus(100, updatedCampus);
+        }
+
         #endregion
 
-        #region Unit Tests - Commented Out
+        #region Utilities
 
-        ///// <summary>
-        ///// Service should return all the visitor logs
-        ///// </summary>
-        //[Test]
-        //public void GetAllVisitorLogsTest()
-        //{
-        //    var visitorlogs = _campusService.GetAllCampuses();
-        //    if (visitorlogs != null)
-        //    {
-        //        var visitorLogList =
-        //            visitorlogs.Select(
-        //                visitorLogEntity =>
-        //                new VisitorLog { VisitID = visitorLogEntity.VisitID, Company = visitorLogEntity.Company }).
-        //                ToList();
-        //        var comparer = new VisitorLogComparer();
-        //        CollectionAssert.AreEqual(
-        //            visitorLogList.OrderBy(vl => vl, comparer),
-        //            _campuses.OrderBy(vl => vl, comparer), comparer);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Service should return null
-        ///// </summary>
-        //[Test]
-        //public void GetAllVisitorLogsTestForNull()
-        //{
-        //    _campuses.Clear();
-        //    var visitorlogs = _campusService.GetAllCampuses();
-        //    Assert.Null(visitorlogs);
-        //    SetUpCampuses();
-        //}
-
-        ///// <summary>
-        ///// Service should return visitor log if correct id is supplied
-        ///// </summary>
-        //[Test]
-        //public void GetVisitorLogByRightIdTest()
-        //{
-        //    var mobileVisitorLog = _campusService.GetVisitorLogByID(2);
-        //    if (mobileVisitorLog != null)
-        //    {
-        //        var visitorLogModel = mobileVisitorLog.ToEntity();
-        //        AssertObjects.PropertyValuesAreEquals(visitorLogModel, _campuses.Find(a => a.Company.Contains("COSCOTest")));
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Service should return null
-        ///// </summary>
-        //[Test]
-        //public void GetVisitorLogByWrongIdTest()
-        //{
-        //    var product = _campusService.GetVisitorLogByID(0);
-        //    Assert.Null(product);
-        //}
-
-        ///// <summary>
-        ///// Add new visitor log test
-        ///// </summary>
-        //[Test]
-        //public void AddNewVisitorLogTest()
-        //{
-        //    var newVisitorLog = new VisitorLogEntity()
-        //    {
-        //        Company = "Android Phone"
-        //    };
-
-        //    var maxVisitorLogIDBeforeAdd = _campuses.Max(a => a.VisitID);
-        //    newVisitorLog.VisitID = maxVisitorLogIDBeforeAdd + 1;
-        //    _campusService.CreateVisitorLog(newVisitorLog);
-        //    var addedvisitorlog = new VisitorLog() { Company = newVisitorLog.Company, VisitID = newVisitorLog.VisitID };
-        //    AssertObjects.PropertyValuesAreEquals(addedvisitorlog, _campuses.Last());
-        //    Assert.That(maxVisitorLogIDBeforeAdd + 1, Is.EqualTo(_campuses.Last().VisitID));
-        //}
-
-        ///// <summary>
-        ///// Update Visitor Log test
-        ///// </summary>
-        //[Test]
-        //public void UpdateVisitorLogTest()
-        //{
-        //    var firstVisitorLog = _campuses.First();
-        //    firstVisitorLog.Company = "Laptop updated";
-        //    var updatedVisitorLog = new VisitorLogEntity() { Company = firstVisitorLog.Company, VisitID = firstVisitorLog.VisitID };
-        //    _campusService.UpdateVisitorLog(firstVisitorLog.VisitID, updatedVisitorLog);
-        //    Assert.That(firstVisitorLog.VisitID, Is.EqualTo(1)); // hasn't changed
-        //    Assert.That(firstVisitorLog.Company, Is.EqualTo("Laptop updated")); // Product name changed
-        //}
-
-        ///// <summary>
-        ///// Delete Visitor Log test
-        ///// </summary>
-        //[Test]
-        //public void DeleteVisitorLogTest()
-        //{
-        //    int maxID = _campuses.Max(a => a.VisitID); // Before removal
-        //    var lastProduct = _campuses.Last();
-
-        //    // Remove last Product
-        //    _campusService.DeleteVisitorLog(lastProduct.VisitID);
-        //    Assert.That(maxID, Is.GreaterThan(_campuses.Max(a => a.VisitID))); // Max id reduced by 1
-        //}
+        private int GetLastCampusId()
+        {
+            return _campusService.GetAllCampuses()
+                                    .Select(x => x.ID)
+                                    .OrderBy(x => x)
+                                    .Last();
+        }
 
         #endregion
     }
