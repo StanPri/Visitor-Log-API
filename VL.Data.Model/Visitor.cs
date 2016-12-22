@@ -17,10 +17,8 @@ namespace VL.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Visitor()
         {
+            this.LogVisits = new HashSet<LogVisit>();
             this.LogVisitors = new HashSet<LogVisitor>();
-            this.VisitorVisits = new HashSet<VisitorVisit>();
-            this.VisitorBadges = new HashSet<VisitorBadge>();
-            this.VisitorCompanies = new HashSet<VisitorCompany>();
         }
     
         public int ID { get; set; }
@@ -33,12 +31,8 @@ namespace VL.Data.Model
         public System.DateTime ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LogVisit> LogVisits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LogVisitor> LogVisitors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorVisit> VisitorVisits { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorBadge> VisitorBadges { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorCompany> VisitorCompanies { get; set; }
     }
 }

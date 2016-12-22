@@ -50,6 +50,7 @@ namespace VL.Business.Services.Mapper
             entity.VisitorID = dto.VisitorID;     
             entity.ContactID = dto.ContactID;     
             entity.LocationID = dto.LocationID;     
+            entity.CompanyID = dto.CompanyID;     
             entity.CreatedByUserID = dto.CreatedByUserID;     
             entity.CreatedDate = dto.CreatedDate;     
             entity.ModifiedByUserID = dto.ModifiedByUserID;     
@@ -73,6 +74,7 @@ namespace VL.Business.Services.Mapper
             dto.VisitorID = entity.VisitorID;     
             dto.ContactID = entity.ContactID;     
             dto.LocationID = entity.LocationID;     
+            dto.CompanyID = entity.CompanyID;     
             dto.CreatedByUserID = entity.CreatedByUserID;     
             dto.CreatedDate = entity.CreatedDate;     
             dto.ModifiedByUserID = entity.ModifiedByUserID;     

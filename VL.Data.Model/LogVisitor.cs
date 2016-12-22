@@ -18,11 +18,13 @@ namespace VL.Data.Model
         public int VisitorID { get; set; }
         public int ContactID { get; set; }
         public int LocationID { get; set; }
+        public int CompanyID { get; set; }
         public int CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public int ModifiedByUserID { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     
+        public virtual Company Company { get; set; }
         public virtual Contact Contact { get; set; }
         public virtual Location Location { get; set; }
         public virtual Log Log { get; set; }

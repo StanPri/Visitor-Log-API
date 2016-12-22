@@ -147,6 +147,9 @@
     <Compile Include="Mapper\LogMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
+    <Compile Include="Mapper\LogVisitMapper.cs">
+      <DependentUpon>BusinessMapper.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mapper\LogVisitorMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
@@ -162,22 +165,10 @@
     <Compile Include="Mapper\VisitMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
-    <Compile Include="Mapper\VisitorBadgeMapper.cs">
-      <DependentUpon>BusinessMapper.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mapper\VisitorCompanyMapper.cs">
-      <DependentUpon>BusinessMapper.tt</DependentUpon>
-    </Compile>
     <Compile Include="Mapper\VisitorHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Mapper\VisitorMapper.cs">
-      <DependentUpon>BusinessMapper.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mapper\VisitorVisitMapper.cs">
-      <DependentUpon>BusinessMapper.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mapper\VisitVisitorHistoryMapper.cs">
       <DependentUpon>BusinessMapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

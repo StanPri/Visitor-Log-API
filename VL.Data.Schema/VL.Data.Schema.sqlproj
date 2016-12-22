@@ -71,16 +71,11 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\VisitorHistory.sql" />
-    <Build Include="dbo\Tables\VisitorBadge.sql" />
     <Build Include="dbo\Tables\Visitor.sql" />
     <Build Include="dbo\Tables\VisitHistory.sql" />
     <Build Include="dbo\Tables\Visit.sql" />
-    <Build Include="dbo\Tables\UserRole.sql" />
     <Build Include="dbo\Tables\StationHistory.sql" />
     <Build Include="dbo\Tables\Station.sql" />
-    <Build Include="dbo\Tables\RolePermission.sql" />
-    <Build Include="dbo\Tables\Role.sql" />
-    <Build Include="dbo\Tables\Permission.sql" />
     <Build Include="dbo\Tables\Log.sql" />
     <Build Include="dbo\Tables\LocationHistory.sql" />
     <Build Include="dbo\Tables\Location.sql" />
@@ -99,9 +94,6 @@
     <Build Include="dbo\Tables\AssetType.sql" />
     <Build Include="dbo\Tables\AssetHistory.sql" />
     <Build Include="dbo\Tables\Asset.sql" />
-    <Build Include="dbo\Tables\VisitVisitorHistory.sql" />
-    <Build Include="dbo\Tables\VisitorVisit.sql" />
-    <Build Include="dbo\Tables\VisitorCompany.sql" />
     <Build Include="dbo\Tables\LogVisitor.sql" />
     <Build Include="dbo\Tables\Contact.sql" />
     <Build Include="dbo\Tables\CompanyHistory.sql" />
@@ -109,6 +101,7 @@
     <Build Include="dbo\Tables\BadgeTypeBadge.sql" />
     <Build Include="dbo\Tables\AssetTypeAssetHistory.sql" />
     <Build Include="dbo\Tables\AssetTypeAsset.sql" />
+    <Build Include="dbo\Tables\LogVisit.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\_Script.PostDeployment.sql" />

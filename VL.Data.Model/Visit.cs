@@ -17,7 +17,7 @@ namespace VL.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Visit()
         {
-            this.VisitorVisits = new HashSet<VisitorVisit>();
+            this.LogVisits = new HashSet<LogVisit>();
         }
     
         public int ID { get; set; }
@@ -31,6 +31,6 @@ namespace VL.Data.Model
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorVisit> VisitorVisits { get; set; }
+        public virtual ICollection<LogVisit> LogVisits { get; set; }
     }
 }

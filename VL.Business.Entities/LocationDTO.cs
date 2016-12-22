@@ -35,18 +35,6 @@ namespace VL.Business.Entities
         public string Name { get; set; }
     
         [DataMember()]
-        public string CreatedByUserID { get; set; }
-    
-        [DataMember()]
-        public System.DateTime CreatedDate { get; set; }
-    
-        [DataMember()]
-        public string ModifiedByUserID { get; set; }
-    
-        [DataMember()]
-        public System.DateTime ModifiedDate { get; set; }
-    
-        [DataMember()]
         public int Floor { get; set; }
     
         [DataMember()]
@@ -57,6 +45,18 @@ namespace VL.Business.Entities
     
         [DataMember()]
         public bool IsActive { get; set; }
+    
+        [DataMember()]
+        public string CreatedByUserID { get; set; }
+    
+        [DataMember()]
+        public System.DateTime CreatedDate { get; set; }
+    
+        [DataMember()]
+        public string ModifiedByUserID { get; set; }
+    
+        [DataMember()]
+        public System.DateTime ModifiedDate { get; set; }
     
         #region [Navigation Properties]
     

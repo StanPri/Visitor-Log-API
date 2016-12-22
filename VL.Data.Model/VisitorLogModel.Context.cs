@@ -50,16 +50,13 @@ namespace VL.Data.Model
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<LocationHistory> LocationHistories { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
+        public virtual DbSet<LogVisit> LogVisits { get; set; }
         public virtual DbSet<LogVisitor> LogVisitors { get; set; }
         public virtual DbSet<Station> Stations { get; set; }
         public virtual DbSet<StationHistory> StationHistories { get; set; }
         public virtual DbSet<Visit> Visits { get; set; }
         public virtual DbSet<VisitHistory> VisitHistories { get; set; }
-        public virtual DbSet<VisitorBadge> VisitorBadges { get; set; }
-        public virtual DbSet<VisitorCompany> VisitorCompanies { get; set; }
-        public virtual DbSet<VisitorHistory> VisitorHistories { get; set; }
-        public virtual DbSet<VisitorVisit> VisitorVisits { get; set; }
-        public virtual DbSet<VisitVisitorHistory> VisitVisitorHistories { get; set; }
         public virtual DbSet<Visitor> Visitors { get; set; }
+        public virtual DbSet<VisitorHistory> VisitorHistories { get; set; }
     }
 }

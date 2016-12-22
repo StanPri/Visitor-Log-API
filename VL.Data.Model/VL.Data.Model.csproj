@@ -133,6 +133,9 @@
     <Compile Include="Log.cs">
       <DependentUpon>VisitorLogModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="LogVisit.cs">
+      <DependentUpon>VisitorLogModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LogVisitor.cs">
       <DependentUpon>VisitorLogModel.tt</DependentUpon>
     </Compile>
@@ -154,12 +157,6 @@
     <Compile Include="Visitor.cs">
       <DependentUpon>VisitorLogModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="VisitorBadge.cs">
-      <DependentUpon>VisitorLogModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VisitorCompany.cs">
-      <DependentUpon>VisitorLogModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="VisitorHistory.cs">
       <DependentUpon>VisitorLogModel.tt</DependentUpon>
     </Compile>
@@ -177,12 +174,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VisitorLogModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="VisitorVisit.cs">
-      <DependentUpon>VisitorLogModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VisitVisitorHistory.cs">
-      <DependentUpon>VisitorLogModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

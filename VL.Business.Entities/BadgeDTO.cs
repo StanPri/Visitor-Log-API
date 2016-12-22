@@ -23,7 +23,7 @@ namespace VL.Business.Entities
         public BadgeDTO()
         {
             this.BadgeTypeBadges = new List<BadgeTypeBadgeDTO>();
-            this.VisitorBadges = new List<VisitorBadgeDTO>();
+            this.LogVisits = new List<LogVisitDTO>();
         }
     
     
@@ -54,7 +54,7 @@ namespace VL.Business.Entities
         public List<BadgeTypeBadgeDTO> BadgeTypeBadges { get; set; }
     
         [DataMember()]
-        public List<VisitorBadgeDTO> VisitorBadges { get; set; }
+        public List<LogVisitDTO> LogVisits { get; set; }
                 
         #endregion [Navigation Properties]
     

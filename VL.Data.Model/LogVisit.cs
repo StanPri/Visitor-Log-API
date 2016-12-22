@@ -12,18 +12,17 @@ namespace VL.Data.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class VisitorVisit
+    public partial class LogVisit
     {
-        public int VisitorID { get; set; }
+        public int LogID { get; set; }
         public int VisitID { get; set; }
+        public int VisitorID { get; set; }
+        public int BadgeID { get; set; }
         public int AssetID { get; set; }
-        public string Comment { get; set; }
-        public string CreatedByUserID { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public string ModifiedByUserID { get; set; }
-        public System.DateTime ModifiedDate { get; set; }
     
         public virtual Asset Asset { get; set; }
+        public virtual Badge Badge { get; set; }
+        public virtual Log Log { get; set; }
         public virtual Visit Visit { get; set; }
         public virtual Visitor Visitor { get; set; }
     }

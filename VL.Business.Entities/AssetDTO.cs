@@ -23,7 +23,7 @@ namespace VL.Business.Entities
         public AssetDTO()
         {
             this.AssetTypeAssets = new List<AssetTypeAssetDTO>();
-            this.VisitorVisits = new List<VisitorVisitDTO>();
+            this.LogVisits = new List<LogVisitDTO>();
         }
     
     
@@ -51,7 +51,7 @@ namespace VL.Business.Entities
         public List<AssetTypeAssetDTO> AssetTypeAssets { get; set; }
     
         [DataMember()]
-        public List<VisitorVisitDTO> VisitorVisits { get; set; }
+        public List<LogVisitDTO> LogVisits { get; set; }
                 
         #endregion [Navigation Properties]
     

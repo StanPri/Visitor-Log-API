@@ -17,31 +17,37 @@ namespace VL.Business.Entities
     
     
     [DataContract(IsReference=true)]
-    public partial class VisitorCompanyDTO
+    public partial class LogVisitDTO
     {
+    
+        [DataMember()]
+        public int LogID { get; set; }
+    
+        [DataMember()]
+        public int VisitID { get; set; }
     
         [DataMember()]
         public int VisitorID { get; set; }
     
         [DataMember()]
-        public int CompanyID { get; set; }
+        public int BadgeID { get; set; }
     
         [DataMember()]
-        public string CreatedByUserID { get; set; }
-    
-        [DataMember()]
-        public System.DateTime CreatedDate { get; set; }
-    
-        [DataMember()]
-        public string ModifiedByUserID { get; set; }
-    
-        [DataMember()]
-        public System.DateTime ModifiedDate { get; set; }
+        public int AssetID { get; set; }
     
         #region [Navigation Properties]
     
         [DataMember()]
-        public CompanyDTO Company { get; set; }
+        public AssetDTO Asset { get; set; }
+    
+        [DataMember()]
+        public BadgeDTO Badge { get; set; }
+    
+        [DataMember()]
+        public LogDTO Log { get; set; }
+    
+        [DataMember()]
+        public VisitDTO Visit { get; set; }
     
         [DataMember()]
         public VisitorDTO Visitor { get; set; }

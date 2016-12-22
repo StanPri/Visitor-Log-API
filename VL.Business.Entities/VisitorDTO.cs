@@ -22,10 +22,8 @@ namespace VL.Business.Entities
         
         public VisitorDTO()
         {
+            this.LogVisits = new List<LogVisitDTO>();
             this.LogVisitors = new List<LogVisitorDTO>();
-            this.VisitorVisits = new List<VisitorVisitDTO>();
-            this.VisitorBadges = new List<VisitorBadgeDTO>();
-            this.VisitorCompanies = new List<VisitorCompanyDTO>();
         }
     
     
@@ -56,16 +54,10 @@ namespace VL.Business.Entities
         #region [Navigation Properties]
     
         [DataMember()]
+        public List<LogVisitDTO> LogVisits { get; set; }
+    
+        [DataMember()]
         public List<LogVisitorDTO> LogVisitors { get; set; }
-    
-        [DataMember()]
-        public List<VisitorVisitDTO> VisitorVisits { get; set; }
-    
-        [DataMember()]
-        public List<VisitorBadgeDTO> VisitorBadges { get; set; }
-    
-        [DataMember()]
-        public List<VisitorCompanyDTO> VisitorCompanies { get; set; }
                 
         #endregion [Navigation Properties]
     

@@ -33,6 +33,9 @@ namespace VL.Business.Entities
         public int LocationID { get; set; }
     
         [DataMember()]
+        public int CompanyID { get; set; }
+    
+        [DataMember()]
         public int CreatedByUserID { get; set; }
     
         [DataMember()]
@@ -45,6 +48,9 @@ namespace VL.Business.Entities
         public System.DateTime ModifiedDate { get; set; }
     
         #region [Navigation Properties]
+    
+        [DataMember()]
+        public CompanyDTO Company { get; set; }
     
         [DataMember()]
         public ContactDTO Contact { get; set; }

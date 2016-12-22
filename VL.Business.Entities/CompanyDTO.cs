@@ -22,7 +22,7 @@ namespace VL.Business.Entities
         
         public CompanyDTO()
         {
-            this.VisitorCompanies = new List<VisitorCompanyDTO>();
+            this.LogVisitors = new List<LogVisitorDTO>();
         }
     
     
@@ -47,7 +47,7 @@ namespace VL.Business.Entities
         #region [Navigation Properties]
     
         [DataMember()]
-        public List<VisitorCompanyDTO> VisitorCompanies { get; set; }
+        public List<LogVisitorDTO> LogVisitors { get; set; }
                 
         #endregion [Navigation Properties]
     

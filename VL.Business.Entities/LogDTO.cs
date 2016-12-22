@@ -22,6 +22,7 @@ namespace VL.Business.Entities
         
         public LogDTO()
         {
+            this.LogVisits = new List<LogVisitDTO>();
             this.LogVisitors = new List<LogVisitorDTO>();
         }
     
@@ -54,6 +55,9 @@ namespace VL.Business.Entities
         public System.DateTime ModifiedDate { get; set; }
     
         #region [Navigation Properties]
+    
+        [DataMember()]
+        public List<LogVisitDTO> LogVisits { get; set; }
     
         [DataMember()]
         public List<LogVisitorDTO> LogVisitors { get; set; }

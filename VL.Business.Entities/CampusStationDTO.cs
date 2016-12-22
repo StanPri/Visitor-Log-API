@@ -41,7 +41,7 @@ namespace VL.Business.Entities
         #region [Navigation Properties]
     
         [DataMember()]
-        public CampusDTO Campu { get; set; }
+        public CampusDTO Campus { get; set; }
     
         [DataMember()]
         public StationDTO Station { get; set; }

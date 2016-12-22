@@ -18,7 +18,7 @@ namespace VL.Data.Model
         public Badge()
         {
             this.BadgeTypeBadges = new HashSet<BadgeTypeBadge>();
-            this.VisitorBadges = new HashSet<VisitorBadge>();
+            this.LogVisits = new HashSet<LogVisit>();
         }
     
         public int ID { get; set; }
@@ -32,6 +32,6 @@ namespace VL.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BadgeTypeBadge> BadgeTypeBadges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorBadge> VisitorBadges { get; set; }
+        public virtual ICollection<LogVisit> LogVisits { get; set; }
     }
 }

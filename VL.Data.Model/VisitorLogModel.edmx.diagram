@@ -5,62 +5,58 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ecb06fb3b6654c55b2d1d9af830bb451" Name="Diagram1">
-        <EntityTypeShape EntityType="VL.Data.Model.Asset" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.AssetHistory" Width="1.5" PointX="5.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.AssetType" Width="1.5" PointX="0.75" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.AssetTypeAsset" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.AssetTypeAssetHistory" Width="1.5" PointX="5.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.AssetTypeHistory" Width="1.5" PointX="7.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Badge" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.BadgeHistory" Width="1.5" PointX="9.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.BadgeType" Width="1.5" PointX="3.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.BadgeTypeBadge" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.BadgeTypeBadgeHistory" Width="1.5" PointX="11.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.BadgeTypeHistory" Width="1.5" PointX="13.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Campus" Width="1.5" PointX="8.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.CampusHistory" Width="1.5" PointX="13.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.CampusLocation" Width="1.5" PointX="11" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.CampusLocationHistory" Width="1.5" PointX="13.75" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.CampusStation" Width="1.5" PointX="11" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.CampusStationHistory" Width="1.5" PointX="11.75" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Company" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.CompanyHistory" Width="1.5" PointX="13.75" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Contact" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Location" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.LocationHistory" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Log" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.LogVisitor" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Station" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.StationHistory" Width="1.5" PointX="5.75" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.Visit" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.VisitHistory" Width="1.5" PointX="7.75" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.VisitorBadge" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.VisitorCompany" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.VisitorHistory" Width="1.5" PointX="15.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.VisitorVisit" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VL.Data.Model.VisitVisitorHistory" Width="1.5" PointX="15.75" PointY="6.875" IsExpanded="true" />
-        <AssociationConnector Association="VL.Data.Model.FK_AssetTypeAsset_Asset" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorAsset_Asset" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_AssetTypeAsset_AssetType" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_BadgeTypeBadge_Badge" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorBadge_Badge" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_BadgeTypeBadge_BadgeType" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_CampusStation_Campus" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_SiteRoom_Site" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_SiteRoom_Room" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_CampusStation_Station" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorCompany_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Contact" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_LocationHistory_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_LogVisitor_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorLog_Log" ManuallyRouted="false" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorAsset_Visit" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="VL.Data.Model.Visitor" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="VL.Data.Model.Asset" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VL.Data.Model.AssetHistory" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.AssetType" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VL.Data.Model.AssetTypeAsset" Width="1.5" PointX="11" PointY="4.75" />
+        <EntityTypeShape EntityType="VL.Data.Model.AssetTypeAssetHistory" Width="1.5" PointX="5.75" PointY="10.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.AssetTypeHistory" Width="1.5" PointX="2.75" PointY="11.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Badge" Width="1.5" PointX="8.75" PointY="10" />
+        <EntityTypeShape EntityType="VL.Data.Model.BadgeHistory" Width="1.5" PointX="5.75" PointY="13.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.BadgeType" Width="1.5" PointX="8.75" PointY="18.125" />
+        <EntityTypeShape EntityType="VL.Data.Model.BadgeTypeBadge" Width="1.5" PointX="11" PointY="8.125" />
+        <EntityTypeShape EntityType="VL.Data.Model.BadgeTypeBadgeHistory" Width="1.5" PointX="13.75" PointY="2.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.BadgeTypeHistory" Width="1.5" PointX="13.75" PointY="5.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Campus" Width="1.5" PointX="3.75" PointY="1.25" />
+        <EntityTypeShape EntityType="VL.Data.Model.CampusHistory" Width="1.5" PointX="13.75" PointY="9.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.CampusLocation" Width="1.5" PointX="6" PointY="6.875" />
+        <EntityTypeShape EntityType="VL.Data.Model.CampusLocationHistory" Width="1.5" PointX="10.75" PointY="15.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.CampusStation" Width="1.5" PointX="6" PointY="1.875" />
+        <EntityTypeShape EntityType="VL.Data.Model.CampusStationHistory" Width="1.5" PointX="13.75" PointY="14.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Company" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.CompanyHistory" Width="1.5" PointX="15.75" PointY="2.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Contact" Width="1.5" PointX="0.75" PointY="22.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Location" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="VL.Data.Model.LocationHistory" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="VL.Data.Model.Log" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="VL.Data.Model.LogVisit" Width="1.5" PointX="11" PointY="11.75" />
+        <EntityTypeShape EntityType="VL.Data.Model.LogVisitor" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="VL.Data.Model.Station" Width="1.5" PointX="3.75" PointY="18.625" />
+        <EntityTypeShape EntityType="VL.Data.Model.StationHistory" Width="1.5" PointX="15.75" PointY="5.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Visit" Width="1.5" PointX="8.75" PointY="13.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitHistory" Width="1.5" PointX="5.75" PointY="17.5" />
+        <EntityTypeShape EntityType="VL.Data.Model.Visitor" Width="1.5" PointX="0.75" PointY="11.875" />
+        <EntityTypeShape EntityType="VL.Data.Model.VisitorHistory" Width="1.5" PointX="15.75" PointY="9.5" />
+        <AssociationConnector Association="VL.Data.Model.FK_AssetTypeAsset_Asset" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Asset" />
+        <AssociationConnector Association="VL.Data.Model.FK_AssetTypeAsset_AssetType" />
+        <AssociationConnector Association="VL.Data.Model.FK_BadgeTypeBadge_Badge" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Badge" />
+        <AssociationConnector Association="VL.Data.Model.FK_BadgeTypeBadge_BadgeType" />
+        <AssociationConnector Association="VL.Data.Model.FK_CampusStation_Campus" />
+        <AssociationConnector Association="VL.Data.Model.FK_SiteRoom_Site" />
+        <AssociationConnector Association="VL.Data.Model.FK_SiteRoom_Room" />
+        <AssociationConnector Association="VL.Data.Model.FK_CampusStation_Station" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisitor_Company" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Contact" />
+        <AssociationConnector Association="VL.Data.Model.FK_LocationHistory_Location" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisitor_Location" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Log" />
+        <AssociationConnector Association="VL.Data.Model.FK_VisitorLog_Log" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Visit" />
+        <AssociationConnector Association="VL.Data.Model.FK_LogVisit_Visitor" />
         <AssociationConnector Association="VL.Data.Model.FK_LogVisitor_Visitor" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorAsset_Visitor" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorBadge_Visitor" />
-        <AssociationConnector Association="VL.Data.Model.FK_VisitorCompany_Visitor" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
