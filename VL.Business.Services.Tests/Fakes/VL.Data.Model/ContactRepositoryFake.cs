@@ -29,7 +29,6 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         {
             return _allContacts;
         }
-
         public Contact GetByID(object id)
         {
             return _allContacts.Find(c => c.ID.Equals(id));
@@ -41,10 +40,9 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             entity.ID = nextContactID;
             _allContacts.Add(entity);
         }
-
         public void Update(Contact entityToUpdate)
         {
-            var oldContact = _allContacts.Find(a => a.ID == entityToUpdate.ID);
+            var oldContact = _allContacts.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldContact != null)
             {
                 _allContacts.Remove(oldContact);
@@ -53,23 +51,23 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         }
         public void Delete(Contact entityToDelete)
         {
-            var contactToRemove = _allContacts.Find(a => a.ID == entityToDelete.ID);
+            var contactToRemove = _allContacts.Find(a => a.ID.Equals(entityToDelete.ID));
             if (contactToRemove != null)
             {
                 _allContacts.Remove(contactToRemove);
             }
         }
-
+        public void Delete(object id)
+        {
+            var contactToRemove = _allContacts.Find(a => a.ID.Equals(id));
+            if (contactToRemove != null)
+                _allContacts.Remove(contactToRemove);
+        }
         #endregion
 
         #region Not Implemented
 
         public void Delete(Func<Contact, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

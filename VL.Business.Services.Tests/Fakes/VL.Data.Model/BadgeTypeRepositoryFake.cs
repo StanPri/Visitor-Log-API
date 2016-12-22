@@ -45,7 +45,7 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         }
         public void Update(BadgeType entityToUpdate)
         {
-            var oldBadgeType = _allBadgeTypes.Find(a => a.ID == entityToUpdate.ID);
+            var oldBadgeType = _allBadgeTypes.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldBadgeType != null)
             {
                 _allBadgeTypes.Remove(oldBadgeType);
@@ -54,11 +54,17 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         }
         public void Delete(BadgeType entityToDelete)
         {
-            var badgeTypeToRemove = _allBadgeTypes.Find(a => a.ID == entityToDelete.ID);
+            var badgeTypeToRemove = _allBadgeTypes.Find(a => a.ID.Equals(entityToDelete.ID));
             if (badgeTypeToRemove != null)
             {
                 _allBadgeTypes.Remove(badgeTypeToRemove);
             }
+        }
+        public void Delete(object id)
+        {
+            var badgeTypeToRemove = _allBadgeTypes.Find(a => a.ID.Equals(id));
+            if (badgeTypeToRemove != null)
+                _allBadgeTypes.Remove(badgeTypeToRemove);
         }
 
         #endregion
@@ -66,11 +72,6 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         #region Not Implemented
 
         public void Delete(Func<BadgeType, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

@@ -46,7 +46,7 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
 
         public void Update(Campus entityToUpdate)
         {
-            var oldCampus = _allCampuses.Find(a => a.ID == entityToUpdate.ID);
+            var oldCampus = _allCampuses.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldCampus != null)
             {
                 _allCampuses.Remove(oldCampus);
@@ -56,22 +56,25 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
 
         public void Delete(Campus entityToDelete)
         {
-            var campToRemove = _allCampuses.Find(a => a.ID == entityToDelete.ID);
+            var campToRemove = _allCampuses.Find(a => a.ID.Equals(entityToDelete.ID));
             if (campToRemove != null)
             {
                 _allCampuses.Remove(campToRemove);
             }
         }
+
+        public void Delete(object id)
+        {
+            var campusToRemove = _allCampuses.Find(a => a.ID.Equals(id));
+            if (campusToRemove != null)
+                _allCampuses.Remove(campusToRemove);
+        }
+
         #endregion
 
         #region Not Implemented
         //Note: The below methods are not implemented because we aren't using them in any test yet. 
         //  Once one needs to be used, implement it
-
-        public void Delete(object id)
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<Campus> Get()
         {

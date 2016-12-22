@@ -27,12 +27,10 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         {
             return _allLocations;
         }
-
         public Location GetByID(object id)
         {
             return _allLocations.Find(l => l.ID.Equals(id));
         }
-
         public void Insert(Location entity)
         {
             var maxLocID = _allLocations.Last().ID;
@@ -40,37 +38,35 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             entity.ID = nextLocID;
             _allLocations.Add(entity);
         }
-
         public void Update(Location entityToUpdate)
         {
-            var oldLocation = _allLocations.Find(a => a.ID == entityToUpdate.ID);
+            var oldLocation = _allLocations.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldLocation != null)
             {
                 _allLocations.Remove(oldLocation);
                 _allLocations.Add(entityToUpdate);
             }
         }
-
         public void Delete(Location entityToDelete)
         {
-            var locToRemove = _allLocations.Find(a => a.ID == entityToDelete.ID);
+            var locToRemove = _allLocations.Find(a => a.ID.Equals(entityToDelete.ID));
             if (locToRemove != null)
             {
                 _allLocations.Remove(locToRemove);
             }
         }
-
+        public void Delete(object id)
+        {
+            var locationToRemove = _allLocations.Find(a => a.ID.Equals(id));
+            if (locationToRemove != null)
+                _allLocations.Remove(locationToRemove);
+        }
         #endregion
 
         #region Not Implemented
         //Note: The below methods are not implemented because we aren't using them in any test yet. 
         //  Once one needs to be used, implement it
         public void Delete(Func<Location, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

@@ -29,12 +29,10 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         {
             return _allVisits;
         }
-
         public Visit GetByID(object id)
         {
             return _allVisits.Find(v => v.ID.Equals(id));
         }
-
         public void Insert(Visit entity)
         {
             var maxVisitID = _allVisits.Last().ID;
@@ -42,24 +40,28 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             entity.ID = nextVisitID;
             _allVisits.Add(entity);
         }
-
         public void Update(Visit entityToUpdate)
         {
-            var oldVisit = _allVisits.Find(a => a.ID == entityToUpdate.ID);
+            var oldVisit = _allVisits.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldVisit != null)
             {
                 _allVisits.Remove(oldVisit);
                 _allVisits.Add(entityToUpdate);
             }
         }
-
         public void Delete(Visit entityToDelete)
         {
-            var visitToRemove = _allVisits.Find(a => a.ID == entityToDelete.ID);
+            var visitToRemove = _allVisits.Find(a => a.ID.Equals(entityToDelete.ID));
             if (visitToRemove != null)
             {
                 _allVisits.Remove(visitToRemove);
             }
+        }
+        public void Delete(object id)
+        {
+            var visitToRemove = _allVisits.Find(a => a.ID.Equals(id));
+            if (visitToRemove != null)
+                _allVisits.Remove(visitToRemove);
         }
 
         #endregion
@@ -68,11 +70,6 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         //Note: The below methods are not implemented because we aren't using them in any test yet. 
         //  Once one needs to be used, implement it
         public void Delete(Func<Visit, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

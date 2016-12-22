@@ -29,12 +29,10 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         {
             return _allBadges;
         }
-
         public Badge GetByID(object id)
         {
             return _allBadges.Find(b => b.ID.Equals(id));
         }
-
         public void Insert(Badge entity)
         {
             var maxBadgeID = _allBadges.Last().ID;
@@ -42,26 +40,29 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             entity.ID = nextBadgeID;
             _allBadges.Add(entity);
         }
-
         public void Update(Badge entityToUpdate)
         {
-            var oldBadge = _allBadges.Find(a => a.ID == entityToUpdate.ID);
+            var oldBadge = _allBadges.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldBadge != null)
             {
                 _allBadges.Remove(oldBadge);
                 _allBadges.Add(entityToUpdate);
             }
         }
-
         public void Delete(Badge entityToDelete)
         {
-            var badToRemove = _allBadges.Find(a => a.ID == entityToDelete.ID);
+            var badToRemove = _allBadges.Find(a => a.ID.Equals(entityToDelete.ID));
             if (badToRemove != null)
             {
                 _allBadges.Remove(badToRemove);
             }
         }
-
+        public void Delete(object id)
+        {
+            var badgeToRemove = _allBadges.Find(a => a.ID.Equals(id));
+            if (badgeToRemove != null)
+                _allBadges.Remove(badgeToRemove);
+        }
         #endregion
 
         #region Not Implemented
@@ -69,11 +70,6 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         //  Once one needs to be used, implement it
 
         public void Delete(Func<Badge, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

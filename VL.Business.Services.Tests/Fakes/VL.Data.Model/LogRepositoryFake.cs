@@ -29,12 +29,10 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         {
             return _allLogs;
         }
-
         public Log GetByID(object id)
         {
             return _allLogs.Find(l => l.ID.Equals(id));
         }
-
         public void Insert(Log entity)
         {
             var maxLogID = _allLogs.Last().ID;
@@ -42,36 +40,34 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             entity.ID = nextLogID;
             _allLogs.Add(entity);
         }
-
         public void Update(Log entityToUpdate)
         {
-            var oldLog = _allLogs.Find(a => a.ID == entityToUpdate.ID);
+            var oldLog = _allLogs.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldLog != null)
             {
                 _allLogs.Remove(oldLog);
                 _allLogs.Add(entityToUpdate);
             }
         }
-
         public void Delete(Log entityToDelete)
         {
-            var logToRemove = _allLogs.Find(a => a.ID == entityToDelete.ID);
+            var logToRemove = _allLogs.Find(a => a.ID.Equals(entityToDelete.ID));
             if (logToRemove != null)
             {
                 _allLogs.Remove(logToRemove);
             }
         }
-
+        public void Delete(object id)
+        {
+            var logToRemove = _allLogs.Find(a => a.ID.Equals(id));
+            if (logToRemove != null)
+                _allLogs.Remove(logToRemove);
+        }
         #endregion
 
         #region Not Implemented
 
         public void Delete(Func<Log, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

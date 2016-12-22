@@ -39,7 +39,23 @@ namespace VL.Business.Services.Implementation
         }
         public bool DeleteAsset(int assetID)
         {
-            throw new NotImplementedException();
+            var success = false;
+            if (assetID > 0)
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var asset = _unitOfWork.AssetRepository.GetByID(assetID);
+                    if (asset != null)
+                    {
+                        _unitOfWork.AssetRepository.Delete(assetID);
+                        _unitOfWork.Save();
+                        scope.Complete();
+                        success = true;
+                    }
+                }
+            }
+            return success;
+
         }
         public IEnumerable<AssetDTO> GetAllAssets()
         {
@@ -54,14 +70,34 @@ namespace VL.Business.Services.Implementation
         }
         public bool UpdateAsset(int assetID, AssetDTO assetDTO)
         {
-            throw new NotImplementedException();
+            var success = false;
+            if (assetDTO != null)
+            {
+                using (var scope = new TransactionScope())
+                {
+                    var asset = _unitOfWork.AssetRepository.GetByID(assetID);
+                    if (asset != null)
+                    {
+                        //TODO : Override properties to update and/or add transactional items
+                        
+
+                        //Update
+                        _unitOfWork.AssetRepository.Update(asset);
+                        _unitOfWork.Save();
+                        scope.Complete();
+                        success = true;
+                    }
+                }
+            }
+            return success;
+
         }
         #endregion
 
         #region AssetHistory
         public IEnumerable<AssetHistoryDTO> GetAssetHistoryByAssetID(int assetID)
         {
-            var assetHistory = _unitOfWork.AssetHistoryRepository.GetMany(x => x.AssetID == assetID).ToList();
+            var assetHistory = _unitOfWork.AssetHistoryRepository.GetMany(x => x.AssetID.Equals(assetID)).ToList();
             return assetHistory.ToDTOs();
         }
 

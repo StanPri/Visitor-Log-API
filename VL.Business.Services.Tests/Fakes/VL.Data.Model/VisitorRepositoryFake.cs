@@ -42,7 +42,7 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         }
         public void Update(Visitor entityToUpdate)
         {
-            var oldVisitor = _allVisitors.Find(a => a.ID == entityToUpdate.ID);
+            var oldVisitor = _allVisitors.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldVisitor != null)
             {
                 _allVisitors.Remove(oldVisitor);
@@ -51,7 +51,7 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         }
         public void Delete(Visitor entityToDelete)
         {
-            var visitorToRemove = _allVisitors.Find(a => a.ID == entityToDelete.ID);
+            var visitorToRemove = _allVisitors.Find(a => a.ID.Equals(entityToDelete.ID));
             if (visitorToRemove != null)
             {
                 _allVisitors.Remove(visitorToRemove);

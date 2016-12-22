@@ -29,12 +29,10 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         {
             return _allCompanies;
         }
-
         public Company GetByID(object id)
         {
             return _allCompanies.Find(c => c.ID.Equals(id));
         }
-
         public void Insert(Company entity)
         {
             var maxCompanyID = _allCompanies.Last().ID;
@@ -42,10 +40,9 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             entity.ID = nextCompanyID;
             _allCompanies.Add(entity);
         }
-
         public void Update(Company entityToUpdate)
         {
-            var oldCompany = _allCompanies.Find(a => a.ID == entityToUpdate.ID);
+            var oldCompany = _allCompanies.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldCompany != null)
             {
                 _allCompanies.Remove(oldCompany);
@@ -54,12 +51,19 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         }
         public void Delete(Company entityToDelete)
         {
-            var companyToRemove = _allCompanies.Find(a => a.ID == entityToDelete.ID);
+            var companyToRemove = _allCompanies.Find(a => a.ID.Equals(entityToDelete.ID));
             if (companyToRemove != null)
             {
                 _allCompanies.Remove(companyToRemove);
             }
         }
+        public void Delete(object id)
+        {
+            var companyToRemove = _allCompanies.Find(a => a.ID.Equals(id));
+            if (companyToRemove != null)
+                _allCompanies.Remove(companyToRemove);
+        }
+
 
         #endregion
 
@@ -68,11 +72,6 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
         //  Once one needs to be used, implement it
 
         public void Delete(Func<Company, bool> where)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(object id)
         {
             throw new NotImplementedException();
         }

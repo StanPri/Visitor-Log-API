@@ -45,7 +45,7 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
 
         public void Update(AssetType entityToUpdate)
         {
-            var oldAssetType = _allAssetTypes.Find(a => a.ID == entityToUpdate.ID);
+            var oldAssetType = _allAssetTypes.Find(a => a.ID.Equals(entityToUpdate.ID));
             if (oldAssetType != null)
             {
                 _allAssetTypes.Remove(oldAssetType);
@@ -55,12 +55,16 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
 
         public void Delete(AssetType entityToDelete)
         {
-            var assetTypeToRemove = _allAssetTypes.Find(a => a.ID == entityToDelete.ID);
-            if (assetTypeToRemove != null)
-            {
-                _allAssetTypes.Remove(assetTypeToRemove);
-            }
+            var assetTypeToRemove = _allAssetTypes.Find(a => a.ID.Equals(entityToDelete.ID));
+            if (assetTypeToRemove != null) _allAssetTypes.Remove(assetTypeToRemove);
         }
+
+        public void Delete(object id)
+        {
+            var assetTypeToRemove = _allAssetTypes.Find(at => at.ID.Equals(id));
+            if (assetTypeToRemove != null) _allAssetTypes.Remove(assetTypeToRemove);
+        }
+
         #endregion
 
         #region Not Implemented
@@ -72,10 +76,6 @@ namespace VL.Business.Services.Tests.Fakes.VL.Data.Model
             throw new NotImplementedException();
         }
 
-        public void Delete(object id)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Exists(object primaryKey)
         {
