@@ -199,6 +199,23 @@ namespace VL.Tests.Helpers
         }
         #endregion
 
+        #region Visitor
+        public static List<Visitor> GetAllVisitors()
+        {
+            var visitors = new List<Visitor>()
+            {
+                new Visitor() { ID = 1, FirstName = "Ronald", LastName = "McDonald", PersonIDCardNumber = "A123456789", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+                new Visitor() { ID = 2, FirstName = "Bruce", LastName = "Lee", PersonIDCardNumber = "A987456321", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+                new Visitor() { ID = 3, FirstName = "Howard", LastName = "Hughes", PersonIDCardNumber = "A147852369", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+                new Visitor() { ID = 4, FirstName = "Seymore", LastName = "Butts", PersonIDCardNumber = "A365478952", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+                new Visitor() { ID = 5, FirstName = "Dave", LastName = "Jones", PersonIDCardNumber = "A258741369", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+                new Visitor() { ID = 6, FirstName = "John", LastName = "Smith", PersonIDCardNumber = "A456753258", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+                new Visitor() { ID = 7, FirstName = "Jane", LastName = "Doe", PersonIDCardNumber = "A777555333", CreatedByUserID = "_admin", CreatedDate = new DateTime(2016, 1, 8), ModifiedByUserID = "_admin", ModifiedDate = new DateTime(2016, 1, 8) },
+            };
+            return visitors;
+        }
+        #endregion
+
         ///// <summary>
         ///// Dummy tokens
         ///// </summary>
