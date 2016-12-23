@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using VL.Web.Api.ValidationHandlers;
 
 namespace VL.Web.Api
 {
@@ -25,6 +26,7 @@ namespace VL.Web.Api
             var appXmlType = formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
             formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
 
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new JWTValidationHandler());
         }
     }
 }
