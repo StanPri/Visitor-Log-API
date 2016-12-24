@@ -31,7 +31,6 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
@@ -149,7 +148,6 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="128" />
           <Property Name="Address2" Type="varchar" MaxLength="128" />
@@ -167,7 +165,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CampusID" Type="int" Nullable="false" />
-          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="Address2" Type="varchar" MaxLength="128" />
@@ -311,6 +308,10 @@
           <Property Name="VisitorID" Type="int" Nullable="false" />
           <Property Name="BadgeID" Type="int" Nullable="false" />
           <Property Name="AssetID" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="LogVisitor">
           <Key>
@@ -754,7 +755,6 @@
         <EntityContainer Name="VisitorLogContext" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Assets" EntityType="VL.Data.Model.Asset" />
           <EntitySet Name="AssetHistories" EntityType="VL.Data.Model.AssetHistory" />
-          <EntitySet Name="AssetTypes" EntityType="VL.Data.Model.AssetType" />
           <EntitySet Name="AssetTypeAssets" EntityType="VL.Data.Model.AssetTypeAsset" />
           <EntitySet Name="AssetTypeAssetHistories" EntityType="VL.Data.Model.AssetTypeAssetHistory" />
           <EntitySet Name="AssetTypeHistories" EntityType="VL.Data.Model.AssetTypeHistory" />
@@ -764,8 +764,6 @@
           <EntitySet Name="BadgeTypeBadges" EntityType="VL.Data.Model.BadgeTypeBadge" />
           <EntitySet Name="BadgeTypeBadgeHistories" EntityType="VL.Data.Model.BadgeTypeBadgeHistory" />
           <EntitySet Name="BadgeTypeHistories" EntityType="VL.Data.Model.BadgeTypeHistory" />
-          <EntitySet Name="Campus1" EntityType="VL.Data.Model.Campus" />
-          <EntitySet Name="CampusHistories" EntityType="VL.Data.Model.CampusHistory" />
           <EntitySet Name="CampusLocations" EntityType="VL.Data.Model.CampusLocation" />
           <EntitySet Name="CampusLocationHistories" EntityType="VL.Data.Model.CampusLocationHistory" />
           <EntitySet Name="CampusStations" EntityType="VL.Data.Model.CampusStation" />
@@ -792,10 +790,6 @@
             <End Role="Asset" EntitySet="Assets" />
             <End Role="LogVisit" EntitySet="LogVisits" />
           </AssociationSet>
-          <AssociationSet Name="FK_AssetTypeAsset_AssetType" Association="VL.Data.Model.FK_AssetTypeAsset_AssetType">
-            <End Role="AssetType" EntitySet="AssetTypes" />
-            <End Role="AssetTypeAsset" EntitySet="AssetTypeAssets" />
-          </AssociationSet>
           <AssociationSet Name="FK_BadgeTypeBadge_Badge" Association="VL.Data.Model.FK_BadgeTypeBadge_Badge">
             <End Role="Badge" EntitySet="Badges" />
             <End Role="BadgeTypeBadge" EntitySet="BadgeTypeBadges" />
@@ -807,14 +801,6 @@
           <AssociationSet Name="FK_BadgeTypeBadge_BadgeType" Association="VL.Data.Model.FK_BadgeTypeBadge_BadgeType">
             <End Role="BadgeType" EntitySet="BadgeTypes" />
             <End Role="BadgeTypeBadge" EntitySet="BadgeTypeBadges" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CampusStation_Campus" Association="VL.Data.Model.FK_CampusStation_Campus">
-            <End Role="Campu" EntitySet="Campus1" />
-            <End Role="CampusStation" EntitySet="CampusStations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SiteRoom_Site" Association="VL.Data.Model.FK_SiteRoom_Site">
-            <End Role="Campu" EntitySet="Campus1" />
-            <End Role="CampusLocation" EntitySet="CampusLocations" />
           </AssociationSet>
           <AssociationSet Name="FK_SiteRoom_Room" Association="VL.Data.Model.FK_SiteRoom_Room">
             <End Role="Location" EntitySet="Locations" />
@@ -860,6 +846,21 @@
             <End Role="Visitor" EntitySet="Visitors" />
             <End Role="LogVisitor" EntitySet="LogVisitors" />
           </AssociationSet>
+          <EntitySet Name="AssetTypes" EntityType="VL.Data.Model.AssetType" />
+          <AssociationSet Name="FK_AssetTypeAsset_AssetType" Association="VL.Data.Model.FK_AssetTypeAsset_AssetType">
+            <End Role="AssetType" EntitySet="AssetTypes" />
+            <End Role="AssetTypeAsset" EntitySet="AssetTypeAssets" />
+          </AssociationSet>
+          <EntitySet Name="Campus1" EntityType="VL.Data.Model.Campus" />
+          <AssociationSet Name="FK_CampusStation_Campus" Association="VL.Data.Model.FK_CampusStation_Campus">
+            <End Role="Campu" EntitySet="Campus1" />
+            <End Role="CampusStation" EntitySet="CampusStations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteRoom_Site" Association="VL.Data.Model.FK_SiteRoom_Site">
+            <End Role="Campu" EntitySet="Campus1" />
+            <End Role="CampusLocation" EntitySet="CampusLocations" />
+          </AssociationSet>
+          <EntitySet Name="CampusHistories" EntityType="VL.Data.Model.CampusHistory" />
         </EntityContainer>
         <EntityType Name="Asset">
           <Key>
@@ -883,19 +884,6 @@
           <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="AssetType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AssetTypeAssets" Relationship="VL.Data.Model.FK_AssetTypeAsset_AssetType" FromRole="AssetType" ToRole="AssetTypeAsset" />
         </EntityType>
         <EntityType Name="AssetTypeAsset">
           <Key>
@@ -1010,42 +998,6 @@
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="Campus">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CampusStations" Relationship="VL.Data.Model.FK_CampusStation_Campus" FromRole="Campu" ToRole="CampusStation" />
-          <NavigationProperty Name="CampusLocations" Relationship="VL.Data.Model.FK_SiteRoom_Site" FromRole="Campu" ToRole="CampusLocation" />
-        </EntityType>
-        <EntityType Name="CampusHistory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CampusID" Type="Int32" Nullable="false" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <EntityType Name="CampusLocation">
           <Key>
             <PropertyRef Name="CampusID" />
@@ -1057,8 +1009,8 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Campu" Relationship="VL.Data.Model.FK_SiteRoom_Site" FromRole="CampusLocation" ToRole="Campu" />
           <NavigationProperty Name="Location" Relationship="VL.Data.Model.FK_SiteRoom_Room" FromRole="CampusLocation" ToRole="Location" />
+          <NavigationProperty Name="Campu" Relationship="VL.Data.Model.FK_SiteRoom_Site" FromRole="CampusLocation" ToRole="Campu" />
         </EntityType>
         <EntityType Name="CampusLocationHistory">
           <Key>
@@ -1082,8 +1034,8 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Campus" Relationship="VL.Data.Model.FK_CampusStation_Campus" FromRole="CampusStation" ToRole="Campu" />
           <NavigationProperty Name="Station" Relationship="VL.Data.Model.FK_CampusStation_Station" FromRole="CampusStation" ToRole="Station" />
+          <NavigationProperty Name="Campu" Relationship="VL.Data.Model.FK_CampusStation_Campus" FromRole="CampusStation" ToRole="Campu" />
         </EntityType>
         <EntityType Name="CampusStationHistory">
           <Key>
@@ -1196,6 +1148,10 @@
           <NavigationProperty Name="Log" Relationship="VL.Data.Model.FK_LogVisit_Log" FromRole="LogVisit" ToRole="Log" />
           <NavigationProperty Name="Visit" Relationship="VL.Data.Model.FK_LogVisit_Visit" FromRole="LogVisit" ToRole="Visit" />
           <NavigationProperty Name="Visitor" Relationship="VL.Data.Model.FK_LogVisit_Visitor" FromRole="LogVisit" ToRole="Visitor" />
+          <Property Name="CreatedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="LogVisitor">
           <Key>
@@ -1327,18 +1283,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AssetTypeAsset_AssetType">
-          <End Type="VL.Data.Model.AssetType" Role="AssetType" Multiplicity="1" />
-          <End Type="VL.Data.Model.AssetTypeAsset" Role="AssetTypeAsset" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AssetType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AssetTypeAsset">
-              <PropertyRef Name="AssetTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BadgeTypeBadge_Badge">
           <End Type="VL.Data.Model.Badge" Role="Badge" Multiplicity="1" />
           <End Type="VL.Data.Model.BadgeTypeBadge" Role="BadgeTypeBadge" Multiplicity="*" />
@@ -1372,30 +1316,6 @@
             </Principal>
             <Dependent Role="BadgeTypeBadge">
               <PropertyRef Name="BadgeTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CampusStation_Campus">
-          <End Type="VL.Data.Model.Campus" Role="Campu" Multiplicity="1" />
-          <End Type="VL.Data.Model.CampusStation" Role="CampusStation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Campu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CampusStation">
-              <PropertyRef Name="CampusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SiteRoom_Site">
-          <End Type="VL.Data.Model.Campus" Role="Campu" Multiplicity="1" />
-          <End Type="VL.Data.Model.CampusLocation" Role="CampusLocation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Campu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CampusLocation">
-              <PropertyRef Name="CampusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1531,6 +1451,88 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AssetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AssetTypeAssets" Relationship="VL.Data.Model.FK_AssetTypeAsset_AssetType" FromRole="AssetType" ToRole="AssetTypeAsset" />
+        </EntityType>
+        <Association Name="FK_AssetTypeAsset_AssetType">
+          <End Type="VL.Data.Model.AssetType" Role="AssetType" Multiplicity="1" />
+          <End Type="VL.Data.Model.AssetTypeAsset" Role="AssetTypeAsset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssetType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AssetTypeAsset">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Campus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CampusStations" Relationship="VL.Data.Model.FK_CampusStation_Campus" FromRole="Campu" ToRole="CampusStation" />
+          <NavigationProperty Name="CampusLocations" Relationship="VL.Data.Model.FK_SiteRoom_Site" FromRole="Campu" ToRole="CampusLocation" />
+        </EntityType>
+        <Association Name="FK_CampusStation_Campus">
+          <End Type="VL.Data.Model.Campus" Role="Campu" Multiplicity="1" />
+          <End Type="VL.Data.Model.CampusStation" Role="CampusStation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CampusStation">
+              <PropertyRef Name="CampusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteRoom_Site">
+          <End Type="VL.Data.Model.Campus" Role="Campu" Multiplicity="1" />
+          <End Type="VL.Data.Model.CampusLocation" Role="CampusLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CampusLocation">
+              <PropertyRef Name="CampusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CampusHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampusID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedByUserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AuditDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1556,19 +1558,6 @@
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
                 <ScalarProperty Name="AssetID" ColumnName="AssetID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AssetTypes">
-            <EntityTypeMapping TypeName="VL.Data.Model.AssetType">
-              <MappingFragment StoreEntitySet="AssetType">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1682,42 +1671,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="BadgeTypeID" ColumnName="BadgeTypeID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Campus1">
-            <EntityTypeMapping TypeName="VL.Data.Model.Campus">
-              <MappingFragment StoreEntitySet="Campus">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CampusHistories">
-            <EntityTypeMapping TypeName="VL.Data.Model.CampusHistory">
-              <MappingFragment StoreEntitySet="CampusHistory">
-                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1853,6 +1806,10 @@
           <EntitySetMapping Name="LogVisits">
             <EntityTypeMapping TypeName="VL.Data.Model.LogVisit">
               <MappingFragment StoreEntitySet="LogVisit">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
                 <ScalarProperty Name="AssetID" ColumnName="AssetID" />
                 <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
                 <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
@@ -1957,6 +1914,52 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="VisitorID" ColumnName="VisitorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetTypes">
+            <EntityTypeMapping TypeName="VL.Data.Model.AssetType">
+              <MappingFragment StoreEntitySet="AssetType">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campus1">
+            <EntityTypeMapping TypeName="VL.Data.Model.Campus">
+              <MappingFragment StoreEntitySet="Campus">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusHistories">
+            <EntityTypeMapping TypeName="VL.Data.Model.CampusHistory">
+              <MappingFragment StoreEntitySet="CampusHistory">
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByUserID" ColumnName="ModifiedByUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CampusID" ColumnName="CampusID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

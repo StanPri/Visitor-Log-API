@@ -75,6 +75,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\AssetDTOTest.cs" />
+    <Compile Include="Validators\AssetTypeDTOTest.cs" />
+    <Compile Include="Validators\BadgeDTOTest.cs" />
     <Compile Include="Validators\CampusDTOTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +87,10 @@
     <ProjectReference Include="..\VL.Business.Entities\VL.Business.Entities.csproj">
       <Project>{b47f9643-53fa-4f91-b5d2-03f4cb4d12e4}</Project>
       <Name>VL.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VL.Tests.Helpers\VL.Tests.Helpers.csproj">
+      <Project>{b8a5a28f-41f6-4aa8-bdfb-7877fc62cbe7}</Project>
+      <Name>VL.Tests.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

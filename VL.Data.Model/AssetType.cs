@@ -21,7 +21,6 @@ namespace VL.Data.Model
         }
     
         public int ID { get; set; }
-        public string Code { get; set; }
         public string Name { get; set; }
         public string CreatedByUserID { get; set; }
         public System.DateTime CreatedDate { get; set; }

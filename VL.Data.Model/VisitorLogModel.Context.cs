@@ -28,7 +28,6 @@ namespace VL.Data.Model
     
         public virtual DbSet<Asset> Assets { get; set; }
         public virtual DbSet<AssetHistory> AssetHistories { get; set; }
-        public virtual DbSet<AssetType> AssetTypes { get; set; }
         public virtual DbSet<AssetTypeAsset> AssetTypeAssets { get; set; }
         public virtual DbSet<AssetTypeAssetHistory> AssetTypeAssetHistories { get; set; }
         public virtual DbSet<AssetTypeHistory> AssetTypeHistories { get; set; }
@@ -38,8 +37,6 @@ namespace VL.Data.Model
         public virtual DbSet<BadgeTypeBadge> BadgeTypeBadges { get; set; }
         public virtual DbSet<BadgeTypeBadgeHistory> BadgeTypeBadgeHistories { get; set; }
         public virtual DbSet<BadgeTypeHistory> BadgeTypeHistories { get; set; }
-        public virtual DbSet<Campus> Campus1 { get; set; }
-        public virtual DbSet<CampusHistory> CampusHistories { get; set; }
         public virtual DbSet<CampusLocation> CampusLocations { get; set; }
         public virtual DbSet<CampusLocationHistory> CampusLocationHistories { get; set; }
         public virtual DbSet<CampusStation> CampusStations { get; set; }
@@ -58,5 +55,8 @@ namespace VL.Data.Model
         public virtual DbSet<VisitHistory> VisitHistories { get; set; }
         public virtual DbSet<Visitor> Visitors { get; set; }
         public virtual DbSet<VisitorHistory> VisitorHistories { get; set; }
+        public virtual DbSet<AssetType> AssetTypes { get; set; }
+        public virtual DbSet<Campus> Campus1 { get; set; }
+        public virtual DbSet<CampusHistory> CampusHistories { get; set; }
     }
 }

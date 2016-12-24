@@ -21,7 +21,7 @@ namespace VL.Data.Model
         public string ModifiedByUserID { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     
-        public virtual Campus Campus { get; set; }
         public virtual Station Station { get; set; }
+        public virtual Campus Campu { get; set; }
     }
 }

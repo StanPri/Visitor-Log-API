@@ -35,6 +35,18 @@ namespace VL.Business.Entities
         [DataMember()]
         public int AssetID { get; set; }
     
+        [DataMember()]
+        public string CreatedByUserID { get; set; }
+    
+        [DataMember()]
+        public System.DateTime CreatedDate { get; set; }
+    
+        [DataMember()]
+        public string ModifiedByUserID { get; set; }
+    
+        [DataMember()]
+        public System.DateTime ModifiedDate { get; set; }
+    
         #region [Navigation Properties]
     
         [DataMember()]

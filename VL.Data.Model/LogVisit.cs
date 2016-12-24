@@ -19,6 +19,10 @@ namespace VL.Data.Model
         public int VisitorID { get; set; }
         public int BadgeID { get; set; }
         public int AssetID { get; set; }
+        public string CreatedByUserID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedByUserID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     
         public virtual Asset Asset { get; set; }
         public virtual Badge Badge { get; set; }

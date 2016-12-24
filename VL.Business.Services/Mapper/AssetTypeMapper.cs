@@ -47,7 +47,6 @@ namespace VL.Business.Services.Mapper
             var entity = new AssetType();
                  
             entity.ID = dto.ID;     
-            entity.Code = dto.Code;     
             entity.Name = dto.Name;     
             entity.CreatedByUserID = dto.CreatedByUserID;     
             entity.CreatedDate = dto.CreatedDate;     
@@ -69,7 +68,6 @@ namespace VL.Business.Services.Mapper
             var dto = new AssetTypeDTO();
                  
             dto.ID = entity.ID;     
-            dto.Code = entity.Code;     
             dto.Name = entity.Name;     
             dto.CreatedByUserID = entity.CreatedByUserID;     
             dto.CreatedDate = entity.CreatedDate;     

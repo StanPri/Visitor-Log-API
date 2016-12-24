@@ -41,10 +41,10 @@ namespace VL.Business.Entities
         #region [Navigation Properties]
     
         [DataMember()]
-        public CampusDTO Campus { get; set; }
+        public StationDTO Station { get; set; }
     
         [DataMember()]
-        public StationDTO Station { get; set; }
+        public CampusDTO Campu { get; set; }
                 
         #endregion [Navigation Properties]
     

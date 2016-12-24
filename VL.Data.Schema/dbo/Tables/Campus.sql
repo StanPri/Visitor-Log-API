@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [dbo].[Campus] (
     [ID]               INT           IDENTITY (1, 1) NOT NULL,
-    [Code]             VARCHAR (10)  NOT NULL,
     [Name]             VARCHAR (50)  NOT NULL,
     [Address]          VARCHAR (128) NULL,
     [Address2]         VARCHAR (128) NULL,
@@ -13,6 +12,10 @@
     [ModifiedDate]     DATETIME      CONSTRAINT [DF_Campus_ModifiedDate] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_Site] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+
+
+
+
 
 
 
@@ -31,9 +34,9 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	IF(UPDATE(CODE) OR UPDATE(NAME) OR UPDATE(Address) OR UPDATE(Address2) OR UPDATE(CITY) OR UPDATE(ZipCode) OR UPDATE(IsActive))
-    INSERT INTO CampusHistory ([CampusID], [Code], [Name], [Address] ,[Address2], [City], [ZipCode], [IsActive], [ModifiedByUserID], [ModifiedDate], [AuditDate])
-	SELECT ID, Code, Name, Address, Address2, City, ZipCode, IsActive, ModifiedByUserID, ModifiedDate, GETDATE()
+	IF(UPDATE(NAME) OR UPDATE(Address) OR UPDATE(Address2) OR UPDATE(CITY) OR UPDATE(ZipCode) OR UPDATE(IsActive))
+    INSERT INTO CampusHistory ([CampusID], [Name], [Address] ,[Address2], [City], [ZipCode], [IsActive], [ModifiedByUserID], [ModifiedDate], [AuditDate])
+	SELECT ID, Name, Address, Address2, City, ZipCode, IsActive, ModifiedByUserID, ModifiedDate, GETDATE()
 	FROM deleted
 
 END

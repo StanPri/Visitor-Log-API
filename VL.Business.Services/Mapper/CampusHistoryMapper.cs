@@ -48,7 +48,6 @@ namespace VL.Business.Services.Mapper
                  
             entity.ID = dto.ID;     
             entity.CampusID = dto.CampusID;     
-            entity.Code = dto.Code;     
             entity.Name = dto.Name;     
             entity.Address = dto.Address;     
             entity.Address2 = dto.Address2;     
@@ -75,7 +74,6 @@ namespace VL.Business.Services.Mapper
                  
             dto.ID = entity.ID;     
             dto.CampusID = entity.CampusID;     
-            dto.Code = entity.Code;     
             dto.Name = entity.Name;     
             dto.Address = entity.Address;     
             dto.Address2 = entity.Address2;     

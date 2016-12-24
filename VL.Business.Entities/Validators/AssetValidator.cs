@@ -14,10 +14,6 @@ namespace VL.Business.Entities
         {
             //Validate object Property State
             if (string.IsNullOrWhiteSpace(this.Name)) yield return new ValidationResult("Name cannot be empty", new[] { "Name" });
-            //Validate object Database State
-            IUnitOfWork uow = new UnitOfWork();
-            var assetDTOs = uow.AssetRepository.Get(a => a.Name.ToUpper() == this.Name.ToUpper());
-            if (assetDTOs != null) yield return new ValidationResult("Name already exists", new[] { "Name" });
         }
     }
 }

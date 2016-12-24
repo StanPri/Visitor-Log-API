@@ -50,7 +50,11 @@ namespace VL.Business.Services.Mapper
             entity.VisitID = dto.VisitID;     
             entity.VisitorID = dto.VisitorID;     
             entity.BadgeID = dto.BadgeID;     
-            entity.AssetID = dto.AssetID;        
+            entity.AssetID = dto.AssetID;     
+            entity.CreatedByUserID = dto.CreatedByUserID;     
+            entity.CreatedDate = dto.CreatedDate;     
+            entity.ModifiedByUserID = dto.ModifiedByUserID;     
+            entity.ModifiedDate = dto.ModifiedDate;        
             dto.OnEntity(entity);
     
             return entity;
@@ -70,7 +74,11 @@ namespace VL.Business.Services.Mapper
             dto.VisitID = entity.VisitID;     
             dto.VisitorID = entity.VisitorID;     
             dto.BadgeID = entity.BadgeID;     
-            dto.AssetID = entity.AssetID;
+            dto.AssetID = entity.AssetID;     
+            dto.CreatedByUserID = entity.CreatedByUserID;     
+            dto.CreatedDate = entity.CreatedDate;     
+            dto.ModifiedByUserID = entity.ModifiedByUserID;     
+            dto.ModifiedDate = entity.ModifiedDate;
             entity.OnDTO(dto);
     
             return dto;

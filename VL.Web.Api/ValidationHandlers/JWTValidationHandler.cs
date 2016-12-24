@@ -12,6 +12,7 @@ using System.Net;
 using System.ServiceModel.Security.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using TokenManager = Microsoft.IdentityModel.Tokens;
 
 namespace VL.Web.Api.ValidationHandlers
 {
@@ -26,15 +27,8 @@ namespace VL.Web.Api.ValidationHandlers
 
             // The header is of the form "bearer <accesstoken>", so extract to the right of the whitespace to find the access token.
             var authHeader = request.Headers.Authorization;//.FirstOrDefault(x => x.Key == "Authorization");
-            if (authHeader != null)
-            {
-                jwtToken = authHeader.Parameter.Trim();
-            }
-
-            if (string.IsNullOrWhiteSpace(jwtToken))
-            {
-                return new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            }
+            if (authHeader != null) jwtToken = authHeader.Parameter.Trim(); 
+            if (string.IsNullOrWhiteSpace(jwtToken)) return new HttpResponseMessage(HttpStatusCode.Unauthorized);
 
             var secretBytes = Encoding.UTF8.GetBytes("reactFTW!!!");
 
@@ -47,18 +41,18 @@ namespace VL.Web.Api.ValidationHandlers
 
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            var validationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            var validationParameters = new TokenManager.TokenValidationParameters
             {
                 ValidateLifetime = true,
                 //ValidateLifetime = false,
                 ValidateAudience = false,
                 ValidateIssuer = false,
-                IssuerSigningKeys = new[] { new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(secretBytes) },
+                IssuerSigningKeys = new[] { new TokenManager.SymmetricSecurityKey(secretBytes) },
             };
 
             try
             {
-                Microsoft.IdentityModel.Tokens.SecurityToken validatedToken = new JwtSecurityToken(jwtToken);
+                TokenManager.SecurityToken validatedToken = new JwtSecurityToken(jwtToken);
 
                 // Validate token.
                 ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwtToken, validationParameters, out validatedToken);
@@ -67,14 +61,11 @@ namespace VL.Web.Api.ValidationHandlers
                 Thread.CurrentPrincipal = claimsPrincipal;
 
                 // Set the ClaimsPrincipal on HttpContext.Current if the app is running in web hosted environment.
-                if (HttpContext.Current != null)
-                {
-                    HttpContext.Current.User = claimsPrincipal;
-                }
+                if (HttpContext.Current != null) HttpContext.Current.User = claimsPrincipal;
 
                 return await base.SendAsync(request, cancellationToken);
             }
-            catch (Microsoft.IdentityModel.Tokens.SecurityTokenValidationException ex)
+            catch (TokenManager.SecurityTokenValidationException ex)
             {
                 return new HttpResponseMessage(HttpStatusCode.Unauthorized);
             }
@@ -82,7 +73,7 @@ namespace VL.Web.Api.ValidationHandlers
             {
                 return new HttpResponseMessage(HttpStatusCode.Unauthorized);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }

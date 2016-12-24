@@ -17,7 +17,7 @@ namespace VL.Business.Entities.Test.Validators
 
         public CampusDTOTest()
         {
-            _campusDto = new CampusDTO { Code = "1", Name = "Name", City = "City", Address = "Address", ZipCode = "ZipCode" };
+            _campusDto = new CampusDTO { Name = "Name", City = "City", Address = "Address", ZipCode = "ZipCode" };
         }
 
         [Fact]
@@ -25,14 +25,6 @@ namespace VL.Business.Entities.Test.Validators
         {
             var validationResults = _campusDto.Validate(null);
             Assert.False(validationResults.Any());
-        }
-
-        [Fact]
-        public void WhenMissingCode_AssertError()
-        {
-            _campusDto.Code = null;
-            var validationResults = _campusDto.Validate(null);
-            Assert.NotNull(validationResults.Single());
         }
 
         [Fact]
