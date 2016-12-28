@@ -1,34 +1,35 @@
 ﻿using System.Linq;
 using Xunit;
 
+
 namespace VL.Business.Entities.Test.Validators
 {
     /// <summary>
-    /// Implements unit tests for <see cref="VL.Business.Entities.AssetDTO"/>
+    /// Implements unit tests for <see cref="VL.Business.Entities.CompanyDTO"/>
     /// </summary>
-    public class AssetDTOTest 
+    public class CompanyDTOTest
     {
-        private AssetDTO _assetDTO;
+        private CompanyDTO _companyDTO;
 
         #region Constructor - Setup
-        public AssetDTOTest()
+        public CompanyDTOTest()
         {
-            _assetDTO = new AssetDTO { Name = "Sony VAIO Laptop" };
+            _companyDTO = new CompanyDTO() { Name = "Microsoft" };
         }
         #endregion
 
         [Fact]
         public void WhenAllRequiredFieldsPresent_AssertValid()
         {
-            var validationResults = _assetDTO.Validate(null);
+            var validationResults = _companyDTO.Validate(null);
             Assert.False(validationResults.Any());
         }
 
         [Fact]
         public void WhenMissingName_AssertError()
         {
-            _assetDTO.Name = null;
-            var validationResults = _assetDTO.Validate(null);
+            _companyDTO.Name = null;
+            var validationResults = _companyDTO.Validate(null);
             Assert.NotNull(validationResults.Single());
         }
     }

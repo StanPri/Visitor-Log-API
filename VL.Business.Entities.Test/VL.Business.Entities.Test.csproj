@@ -79,6 +79,8 @@
     <Compile Include="Validators\AssetTypeDTOTest.cs" />
     <Compile Include="Validators\BadgeDTOTest.cs" />
     <Compile Include="Validators\CampusDTOTest.cs" />
+    <Compile Include="Validators\CompanyDTOTest.cs" />
+    <Compile Include="Validators\ContactDTOTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
