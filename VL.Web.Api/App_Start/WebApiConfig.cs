@@ -1,6 +1,8 @@
-﻿using System.Configuration;
+﻿using ITSD.BPAS.JwtAuthorizer;
+using System.Configuration;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using VL.Web.Api.Security;
 
 namespace VL.Web.Api
 {
@@ -26,6 +28,37 @@ namespace VL.Web.Api
                 routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+
+            var tokenBuilder = new SecurityTokenBuilder();
+            var configReader = new ConfigurationReader();
+
+            //var jwtHandlerCert = new JwtAuthenticationMessageHandler
+            //{
+            //    AllowedAudience = configReader.AllowedAudience,
+            //    AllowedAudiences = configReader.AllowedAudiences,
+            //    Issuer = configReader.Issuer,
+            //    SigningToken = tokenBuilder.CreateFromCertificate(configReader.SubjectCertificateName),
+            //    PrincipalTransformer = new SamplePrincipalTransformer()
+            //};
+
+            var jwtHandlerSharedKey = new JwtAuthenticationMessageHandler
+            {
+                AllowedAudience = configReader.AllowedAudience,
+                Issuer = configReader.Issuer,
+                SigningToken = tokenBuilder.CreateFromKey(configReader.SymmetricKey),
+                PrincipalTransformer = new SamplePrincipalTransformer(),
+                CookieNameToCheckForToken = configReader.CookieNameToCheckForToken
+            };
+
+            //config.MessageHandlers.Add(jwtHandlerCert);
+            config.MessageHandlers.Add(jwtHandlerSharedKey);
+
+
+
+
+
+
         }
     }
 }

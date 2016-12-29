@@ -10,6 +10,7 @@ using VL.Web.Common.Validation;
 
 namespace VL.Web.Api.Controllers
 {
+    [Authorize(Roles = "Iron Man")]
     [RoutePrefix("campuses")]
     public class CampusController : ApiController
     {
