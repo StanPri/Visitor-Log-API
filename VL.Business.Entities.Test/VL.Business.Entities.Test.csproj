@@ -81,6 +81,7 @@
     <Compile Include="Validators\CampusDTOTest.cs" />
     <Compile Include="Validators\CompanyDTOTest.cs" />
     <Compile Include="Validators\ContactDTOTest.cs" />
+    <Compile Include="Validators\LogDTOTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

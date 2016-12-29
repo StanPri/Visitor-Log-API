@@ -145,6 +145,7 @@
     <Compile Include="StationHistoryDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validators\LogValidator.cs" />
     <Compile Include="Validators\VisitValidator.cs" />
     <Compile Include="VisitDTO.cs">
       <DependentUpon>BusinessEntities.tt</DependentUpon>

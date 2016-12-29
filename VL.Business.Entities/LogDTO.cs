@@ -61,9 +61,10 @@ namespace VL.Business.Entities
     
         [DataMember()]
         public List<LogVisitorDTO> LogVisitors { get; set; }
-                
+        public object Name { get; set; }
+
         #endregion [Navigation Properties]
-    
+
     }
     
 }
